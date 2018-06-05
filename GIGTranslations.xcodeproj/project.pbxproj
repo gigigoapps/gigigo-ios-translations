@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6102941F20C69812002C65E0 /* GIGTranslations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6102941E20C69812002C65E0 /* GIGTranslations.swift */; };
-		6102942520C698B4002C65E0 /* ConfigurationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6102942420C698B4002C65E0 /* ConfigurationService.swift */; };
-		6102942720C698D1002C65E0 /* TranslationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6102942620C698D1002C65E0 /* TranslationsService.swift */; };
 		025AD38020C6D513007E4695 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD37F20C6D513007E4695 /* main.swift */; };
 		025AD38E20C6D538007E4695 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD38520C6D537007E4695 /* Log.swift */; };
 		025AD38F20C6D538007E4695 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD38620C6D537007E4695 /* System.swift */; };
@@ -19,6 +16,11 @@
 		025AD39320C6D538007E4695 /* Abort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD38B20C6D538007E4695 /* Abort.swift */; };
 		025AD39420C6D538007E4695 /* ConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD38C20C6D538007E4695 /* ConfigFile.swift */; };
 		025AD39520C6D538007E4695 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD38D20C6D538007E4695 /* App.swift */; };
+		025AD39720C6D93B007E4695 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD39620C6D93B007E4695 /* Request.swift */; };
+		025AD39820C6D940007E4695 /* Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD39620C6D93B007E4695 /* Request.swift */; };
+		6102941F20C69812002C65E0 /* GIGTranslations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6102941E20C69812002C65E0 /* GIGTranslations.swift */; };
+		6102942520C698B4002C65E0 /* ConfigurationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6102942420C698B4002C65E0 /* ConfigurationService.swift */; };
+		6102942720C698D1002C65E0 /* TranslationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6102942620C698D1002C65E0 /* TranslationsService.swift */; };
 		6190366520C54B27005897C0 /* GIGTranslations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6190365B20C54B27005897C0 /* GIGTranslations.framework */; };
 		6190366A20C54B27005897C0 /* GIGTranslationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6190366920C54B27005897C0 /* GIGTranslationsTests.swift */; };
 		6190366C20C54B27005897C0 /* GIGTranslations.h in Headers */ = {isa = PBXBuildFile; fileRef = 6190365E20C54B27005897C0 /* GIGTranslations.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -47,9 +49,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6102941E20C69812002C65E0 /* GIGTranslations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIGTranslations.swift; sourceTree = "<group>"; };
-		6102942420C698B4002C65E0 /* ConfigurationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationService.swift; sourceTree = "<group>"; };
-		6102942620C698D1002C65E0 /* TranslationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsService.swift; sourceTree = "<group>"; };
 		025AD37D20C6D513007E4695 /* translations-sync */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "translations-sync"; sourceTree = BUILT_PRODUCTS_DIR; };
 		025AD37F20C6D513007E4695 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		025AD38520C6D537007E4695 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -60,6 +59,10 @@
 		025AD38B20C6D538007E4695 /* Abort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Abort.swift; sourceTree = "<group>"; };
 		025AD38C20C6D538007E4695 /* ConfigFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigFile.swift; sourceTree = "<group>"; };
 		025AD38D20C6D538007E4695 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		025AD39620C6D93B007E4695 /* Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Request.swift; sourceTree = "<group>"; };
+		6102941E20C69812002C65E0 /* GIGTranslations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIGTranslations.swift; sourceTree = "<group>"; };
+		6102942420C698B4002C65E0 /* ConfigurationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationService.swift; sourceTree = "<group>"; };
+		6102942620C698D1002C65E0 /* TranslationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsService.swift; sourceTree = "<group>"; };
 		6190365B20C54B27005897C0 /* GIGTranslations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GIGTranslations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6190365E20C54B27005897C0 /* GIGTranslations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GIGTranslations.h; sourceTree = "<group>"; };
 		6190365F20C54B27005897C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -94,6 +97,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		025AD37E20C6D513007E4695 /* translations-sync */ = {
+			isa = PBXGroup;
+			children = (
+				025AD38820C6D538007E4695 /* app */,
+				025AD38420C6D537007E4695 /* helpers */,
+				025AD37F20C6D513007E4695 /* main.swift */,
+			);
+			path = "translations-sync";
+			sourceTree = "<group>";
+		};
+		025AD38420C6D537007E4695 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				025AD38520C6D537007E4695 /* Log.swift */,
+				025AD38620C6D537007E4695 /* System.swift */,
+				025AD38720C6D537007E4695 /* Dispatch.swift */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
+		025AD38820C6D538007E4695 /* app */ = {
+			isa = PBXGroup;
+			children = (
+				025AD38920C6D538007E4695 /* Strings.swift */,
+				025AD38A20C6D538007E4695 /* ArgumentsValidator.swift */,
+				025AD38B20C6D538007E4695 /* Abort.swift */,
+				025AD38C20C6D538007E4695 /* ConfigFile.swift */,
+				025AD38D20C6D538007E4695 /* App.swift */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
 		6102941D20C697E0002C65E0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +160,7 @@
 			children = (
 				6102942420C698B4002C65E0 /* ConfigurationService.swift */,
 				6102942620C698D1002C65E0 /* TranslationsService.swift */,
+				025AD39620C6D93B007E4695 /* Request.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -134,38 +170,6 @@
 			children = (
 			);
 			path = "File System";
-			sourceTree = "<group>";
-		};
-		025AD37E20C6D513007E4695 /* translations-sync */ = {
-			isa = PBXGroup;
-			children = (
-				025AD38820C6D538007E4695 /* app */,
-				025AD38420C6D537007E4695 /* helpers */,
-				025AD37F20C6D513007E4695 /* main.swift */,
-			);
-			path = "translations-sync";
-			sourceTree = "<group>";
-		};
-		025AD38420C6D537007E4695 /* helpers */ = {
-			isa = PBXGroup;
-			children = (
-				025AD38520C6D537007E4695 /* Log.swift */,
-				025AD38620C6D537007E4695 /* System.swift */,
-				025AD38720C6D537007E4695 /* Dispatch.swift */,
-			);
-			path = helpers;
-			sourceTree = "<group>";
-		};
-		025AD38820C6D538007E4695 /* app */ = {
-			isa = PBXGroup;
-			children = (
-				025AD38920C6D538007E4695 /* Strings.swift */,
-				025AD38A20C6D538007E4695 /* ArgumentsValidator.swift */,
-				025AD38B20C6D538007E4695 /* Abort.swift */,
-				025AD38C20C6D538007E4695 /* ConfigFile.swift */,
-				025AD38D20C6D538007E4695 /* App.swift */,
-			);
-			path = app;
 			sourceTree = "<group>";
 		};
 		6190365120C54B27005897C0 = {
@@ -344,6 +348,7 @@
 				025AD39020C6D538007E4695 /* Dispatch.swift in Sources */,
 				025AD39120C6D538007E4695 /* Strings.swift in Sources */,
 				025AD38F20C6D538007E4695 /* System.swift in Sources */,
+				025AD39820C6D940007E4695 /* Request.swift in Sources */,
 				025AD38020C6D513007E4695 /* main.swift in Sources */,
 				025AD39220C6D538007E4695 /* ArgumentsValidator.swift in Sources */,
 			);
@@ -354,6 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6102942520C698B4002C65E0 /* ConfigurationService.swift in Sources */,
+				025AD39720C6D93B007E4695 /* Request.swift in Sources */,
 				6102941F20C69812002C65E0 /* GIGTranslations.swift in Sources */,
 				6102942720C698D1002C65E0 /* TranslationsService.swift in Sources */,
 			);

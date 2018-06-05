@@ -8,6 +8,10 @@
 
 import Foundation
 
+enum ConfigFileFields: String {
+    case index
+}
+
 struct ConfigFile {
     
     // MARK: - Private attributes
@@ -24,7 +28,7 @@ struct ConfigFile {
         guard
             let contents = System.contents(atPath: self.configJsonPath),
             let configValues = try? JSONDecoder().decode([String: String].self, from: contents),
-            let indexURL = configValues["index"],
+            let indexURL = configValues[ConfigFileFields.index.rawValue],
             let url = URL(string: indexURL)
         else {
             throw Abort(reason: Strings.Errors.configurationFileIsNotCorrect)
@@ -42,7 +46,7 @@ struct ConfigFile {
         LogInfo(Strings.Configuration.creatingFile)
         Log(Strings.Configuration.insertIndexURL)
         if let urlString = readLine(), let URL = URL(string: urlString) {
-            let configFile = ["index": URL.absoluteString]
+            let configFile = [ConfigFileFields.index.rawValue: URL.absoluteString]
             let configData = try JSONEncoder().encode(configFile)
             System.createFile(at: self.configJsonPath, contents: configData)
             LogInfo(Strings.Configuration.configFileCreated + " in " + self.configJsonPath)

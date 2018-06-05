@@ -35,7 +35,14 @@ class App {
     
     private func start() throws {
         let indexURL = try self.configFile.indexURL()
-        
+        Request.get(indexURL) { result in
+            switch result {
+            case .success(let data):
+                print(String(data: data, encoding: .utf8))
+            case .error(let error):
+                print(error)
+            }
+        }
         // Now we have to download the configuration file
         // Then we have to download all jsons linked to the config file
     }
