@@ -10,6 +10,15 @@
 		6102941F20C69812002C65E0 /* GIGTranslations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6102941E20C69812002C65E0 /* GIGTranslations.swift */; };
 		6102942520C698B4002C65E0 /* ConfigurationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6102942420C698B4002C65E0 /* ConfigurationService.swift */; };
 		6102942720C698D1002C65E0 /* TranslationsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6102942620C698D1002C65E0 /* TranslationsService.swift */; };
+		025AD38020C6D513007E4695 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD37F20C6D513007E4695 /* main.swift */; };
+		025AD38E20C6D538007E4695 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD38520C6D537007E4695 /* Log.swift */; };
+		025AD38F20C6D538007E4695 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD38620C6D537007E4695 /* System.swift */; };
+		025AD39020C6D538007E4695 /* Dispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD38720C6D537007E4695 /* Dispatch.swift */; };
+		025AD39120C6D538007E4695 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD38920C6D538007E4695 /* Strings.swift */; };
+		025AD39220C6D538007E4695 /* ArgumentsValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD38A20C6D538007E4695 /* ArgumentsValidator.swift */; };
+		025AD39320C6D538007E4695 /* Abort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD38B20C6D538007E4695 /* Abort.swift */; };
+		025AD39420C6D538007E4695 /* ConfigFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD38C20C6D538007E4695 /* ConfigFile.swift */; };
+		025AD39520C6D538007E4695 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD38D20C6D538007E4695 /* App.swift */; };
 		6190366520C54B27005897C0 /* GIGTranslations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6190365B20C54B27005897C0 /* GIGTranslations.framework */; };
 		6190366A20C54B27005897C0 /* GIGTranslationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6190366920C54B27005897C0 /* GIGTranslationsTests.swift */; };
 		6190366C20C54B27005897C0 /* GIGTranslations.h in Headers */ = {isa = PBXBuildFile; fileRef = 6190365E20C54B27005897C0 /* GIGTranslations.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -25,10 +34,32 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		025AD37B20C6D513007E4695 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		6102941E20C69812002C65E0 /* GIGTranslations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIGTranslations.swift; sourceTree = "<group>"; };
 		6102942420C698B4002C65E0 /* ConfigurationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationService.swift; sourceTree = "<group>"; };
 		6102942620C698D1002C65E0 /* TranslationsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsService.swift; sourceTree = "<group>"; };
+		025AD37D20C6D513007E4695 /* translations-sync */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "translations-sync"; sourceTree = BUILT_PRODUCTS_DIR; };
+		025AD37F20C6D513007E4695 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		025AD38520C6D537007E4695 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
+		025AD38620C6D537007E4695 /* System.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		025AD38720C6D537007E4695 /* Dispatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatch.swift; sourceTree = "<group>"; };
+		025AD38920C6D538007E4695 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		025AD38A20C6D538007E4695 /* ArgumentsValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArgumentsValidator.swift; sourceTree = "<group>"; };
+		025AD38B20C6D538007E4695 /* Abort.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Abort.swift; sourceTree = "<group>"; };
+		025AD38C20C6D538007E4695 /* ConfigFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigFile.swift; sourceTree = "<group>"; };
+		025AD38D20C6D538007E4695 /* App.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		6190365B20C54B27005897C0 /* GIGTranslations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GIGTranslations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6190365E20C54B27005897C0 /* GIGTranslations.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GIGTranslations.h; sourceTree = "<group>"; };
 		6190365F20C54B27005897C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -38,6 +69,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		025AD37A20C6D513007E4695 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6190365720C54B27005897C0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -98,11 +136,44 @@
 			path = "File System";
 			sourceTree = "<group>";
 		};
+		025AD37E20C6D513007E4695 /* translations-sync */ = {
+			isa = PBXGroup;
+			children = (
+				025AD38820C6D538007E4695 /* app */,
+				025AD38420C6D537007E4695 /* helpers */,
+				025AD37F20C6D513007E4695 /* main.swift */,
+			);
+			path = "translations-sync";
+			sourceTree = "<group>";
+		};
+		025AD38420C6D537007E4695 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				025AD38520C6D537007E4695 /* Log.swift */,
+				025AD38620C6D537007E4695 /* System.swift */,
+				025AD38720C6D537007E4695 /* Dispatch.swift */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
+		025AD38820C6D538007E4695 /* app */ = {
+			isa = PBXGroup;
+			children = (
+				025AD38920C6D538007E4695 /* Strings.swift */,
+				025AD38A20C6D538007E4695 /* ArgumentsValidator.swift */,
+				025AD38B20C6D538007E4695 /* Abort.swift */,
+				025AD38C20C6D538007E4695 /* ConfigFile.swift */,
+				025AD38D20C6D538007E4695 /* App.swift */,
+			);
+			path = app;
+			sourceTree = "<group>";
+		};
 		6190365120C54B27005897C0 = {
 			isa = PBXGroup;
 			children = (
 				6190365D20C54B27005897C0 /* GIGTranslations */,
 				6190366820C54B27005897C0 /* GIGTranslationsTests */,
+				025AD37E20C6D513007E4695 /* translations-sync */,
 				6190365C20C54B27005897C0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -112,6 +183,7 @@
 			children = (
 				6190365B20C54B27005897C0 /* GIGTranslations.framework */,
 				6190366420C54B27005897C0 /* GIGTranslationsTests.xctest */,
+				025AD37D20C6D513007E4695 /* translations-sync */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -149,6 +221,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		025AD37C20C6D513007E4695 /* translations-sync */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 025AD38320C6D513007E4695 /* Build configuration list for PBXNativeTarget "translations-sync" */;
+			buildPhases = (
+				025AD37920C6D513007E4695 /* Sources */,
+				025AD37A20C6D513007E4695 /* Frameworks */,
+				025AD37B20C6D513007E4695 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "translations-sync";
+			productName = "translations-sync";
+			productReference = 025AD37D20C6D513007E4695 /* translations-sync */;
+			productType = "com.apple.product-type.tool";
+		};
 		6190365A20C54B27005897C0 /* GIGTranslations */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6190366F20C54B27005897C0 /* Build configuration list for PBXNativeTarget "GIGTranslations" */;
@@ -195,6 +284,9 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = Gigigo;
 				TargetAttributes = {
+					025AD37C20C6D513007E4695 = {
+						CreatedOnToolsVersion = 9.3.1;
+					};
 					6190365A20C54B27005897C0 = {
 						CreatedOnToolsVersion = 9.3;
 						LastSwiftMigration = 0930;
@@ -218,6 +310,7 @@
 			targets = (
 				6190365A20C54B27005897C0 /* GIGTranslations */,
 				6190366320C54B27005897C0 /* GIGTranslationsTests */,
+				025AD37C20C6D513007E4695 /* translations-sync */,
 			);
 		};
 /* End PBXProject section */
@@ -240,6 +333,22 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		025AD37920C6D513007E4695 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				025AD39520C6D538007E4695 /* App.swift in Sources */,
+				025AD39320C6D538007E4695 /* Abort.swift in Sources */,
+				025AD39420C6D538007E4695 /* ConfigFile.swift in Sources */,
+				025AD38E20C6D538007E4695 /* Log.swift in Sources */,
+				025AD39020C6D538007E4695 /* Dispatch.swift in Sources */,
+				025AD39120C6D538007E4695 /* Strings.swift in Sources */,
+				025AD38F20C6D538007E4695 /* System.swift in Sources */,
+				025AD38020C6D513007E4695 /* main.swift in Sources */,
+				025AD39220C6D538007E4695 /* ArgumentsValidator.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6190365620C54B27005897C0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -269,6 +378,32 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		025AD38120C6D513007E4695 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SU5BA5HAQK;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		025AD38220C6D513007E4695 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = SU5BA5HAQK;
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
 		6190366D20C54B27005897C0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -485,6 +620,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		025AD38320C6D513007E4695 /* Build configuration list for PBXNativeTarget "translations-sync" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				025AD38120C6D513007E4695 /* Debug */,
+				025AD38220C6D513007E4695 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6190365520C54B27005897C0 /* Build configuration list for PBXProject "GIGTranslations" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
