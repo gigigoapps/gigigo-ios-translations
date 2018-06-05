@@ -1,0 +1,6 @@
+framework module GIGTranslations {
+  umbrella header "GIGTranslations.h"
+
+  export *
+  module * { export * }
+}

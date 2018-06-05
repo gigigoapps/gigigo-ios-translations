@@ -1,0 +1,1 @@
+# gigigo-tranlations-ios-lib
