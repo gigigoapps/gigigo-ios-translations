@@ -13,6 +13,33 @@ enum Result<SuccessType, ErrorType> {
     case error(ErrorType)
 }
 
+class Response {
+    
+    // MARK: - Public attributes
+    
+    let data: Data?
+    let response: HTTPURLResponse?
+    let error: Error?
+    
+    // MARK: - Public methods
+    
+    init(data: Data?, response: HTTPURLResponse?, error: Error?) {
+        self.data = data
+        self.response = response
+        self.error = error
+    }
+    
+    func body() throws -> [AnyHashable: Any]? {
+        guard let data = self.data else { throw self.error ?? NSError(domain: "The response doesn't contain a body", code: 0, userInfo: nil) }
+        return try JSONSerialization.jsonObject(with: data) as? [AnyHashable: Any]
+    }
+    
+    func headers() -> [AnyHashable: Any]? {
+        guard let response = self.response else { return nil }
+        return response.allHeaderFields
+    }
+}
+
 class Request {
     
     // MARK: - Public methods
@@ -20,14 +47,29 @@ class Request {
     static func get(_
         url: URL,
         headers: [String: String]? = nil,
-        completion: @escaping (Result<Data, Error>) -> Void
+        completion: @escaping (Result<Response, Error>) -> Void
     ) {
-        _request(url, method: "GET") { data, responseData, error in
+        _request(url, method: "GET") { data, response, error in
             guard let data = data else {
                 completion(.error(error ?? NSError(domain: "Unexpected error", code: 0, userInfo: nil)))
                 return
             }
-            completion(.success(data))
+            completion(.success(Response(data: data, response: response as? HTTPURLResponse, error: error)))
+        }
+    }
+    
+    static func head(_
+        url: URL,
+        headers: [String: String]? = nil,
+        completion: @escaping (Result<[AnyHashable: Any]?, Error>) -> Void
+    ) {
+        _request(url, method: "HEAD") { data, response, error in
+            guard let data = data else {
+                completion(.error(error ?? NSError(domain: "Unexpected error", code: 0, userInfo: nil)))
+                return
+            }
+            let response = Response(data: data, response: response as? HTTPURLResponse, error: error)
+            completion(.success(response.headers()))
         }
     }
 }
