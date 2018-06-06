@@ -23,5 +23,7 @@ struct Strings {
     struct Errors {
         static let urlFormatIsNotCorrect = "The url inserted is not valid"
         static let configurationFileIsNotCorrect = "The configuration file is not correct"
+        static let configurationURLIsNotCorrect = "The configuration URL or the configuration file is not correct"
+        static let translationFileIsNotCorrect = "The translation file is not correct"
     }
 }

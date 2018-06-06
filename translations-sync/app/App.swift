@@ -13,7 +13,8 @@ class App {
     // MARK: - Private attributes
     
     private var argumentsValidator: ArgumentsValidator?
-    private let configFile = ConfigFile()
+    private let configurationFile = ConfigurationFile()
+    private var downloadManager: DownloadManager?
     
     // MARK: - Public methods
     
@@ -34,16 +35,10 @@ class App {
     // MARK: - Private methods
     
     private func start() throws {
-        let indexURL = try self.configFile.indexURL()
-        /*Request.get(indexURL) { result in
-            switch result {
-            case .success(let response):
-                break
-            case .error(let error):
-                print(error)
-            }
-        }*/
-        // Now we have to download the configuration file
-        // Then we have to download all jsons linked to the config file
+        let indexURL = try self.configurationFile.indexURL()
+        self.downloadManager = DownloadManager(indexURL: indexURL)
+        try self.downloadManager?.downloadAll() {
+            exit(0)
+        }
     }
 }

@@ -12,10 +12,5 @@ import Foundation
 do {
     try App().run(args: CommandLine.arguments)
 } catch(let error) {
-    if let error = error as? Abort {
-        LogError(error.reason)
-        exit(1)
-    } else {
-        LogError(error.localizedDescription)
-    }
+    handleThrow(error)
 }

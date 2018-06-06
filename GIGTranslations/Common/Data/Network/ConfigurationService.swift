@@ -9,12 +9,20 @@
 import Foundation
 
 protocol ConfigurationServiceInput {
-    func get_(parameter: Any?, completion: @escaping (Error?) -> Void)
+    // func fetchConfig(of url: URL, completion: @escaping (Result<Configuration, Error>) -> Void)
 }
 
 struct ConfigurationService: ConfigurationServiceInput {
     
-    func get_(parameter: Any?, completion: @escaping (Error?) -> Void) {
-        // TODO: !!!
+    func fetchConfig(of url: URL, completion: @escaping (Result<Configuration, Error>) -> Void) {
+        Request.get(url, to: [String: String].self) { result in
+            switch result {
+            case .success(let languages):
+                let configuration = Configuration(languages: languages.mapValues({ URL(string: $0) }))
+                completion(.success(configuration))
+            case .error(let error):
+                completion(.error(error))
+            }
+        }
     }
 }

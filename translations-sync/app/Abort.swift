@@ -11,3 +11,12 @@ import Foundation
 struct Abort: Error {
     let reason: String
 }
+
+func handleThrow(_ error: Error) {
+    if let error = error as? Abort {
+        LogError(error.reason)
+    } else {
+        LogError(error.localizedDescription)
+    }
+    exit(1)
+}
