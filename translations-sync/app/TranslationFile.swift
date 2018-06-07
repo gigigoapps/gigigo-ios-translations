@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TranslationFile {
+struct TranslationsFile {
     
     // MARK: - Public attributes
     
@@ -19,10 +19,10 @@ struct TranslationFile {
     func set(contents: [String: String]) throws {
         let jsonEncoder = JSONEncoder()
         jsonEncoder.outputFormatting = .prettyPrinted
-        try System.createFile(at: pwd() + "/" + self.language + ".json", contents: jsonEncoder.encode(contents))
+        try System.createFile(at: pwd() + self.language + ".json", contents: jsonEncoder.encode(contents))
     }
     
     func exist() -> Bool {
-        return System.exist(path: pwd() + "/" + self.language + ".json")
+        return System.exist(path: pwd() + self.language + ".json")
     }
 }

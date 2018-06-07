@@ -15,44 +15,70 @@ private struct TranslationsResponse {
 
 class DownloadManager {
     
+    // MARK: - Public attributes
+    
     let indexURL: URL
+    
+    // MARK: - Private attributes
+    
     private let configurationService = ConfigurationService()
     private let translationsService = TranslationsService()
     private var languages: [String] = []
     private let configurationFile = ConfigurationFile()
     
+    // MARK: - Public methods
+    
+    /// Setup with the coonfiguration index URL
+    ///
+    /// - Parameter indexURL: The index URL
     init(indexURL: URL) {
         self.indexURL = indexURL
     }
     
-    // MARK: - Public methods
-    
+    /// Start the download process of all information (config file + all translation files)
+    ///
+    /// - Parameter completion: when the process did finish
+    /// - Throws: if any error occurs
     func downloadAll(_ completion: () -> Void) throws {
         try self.downloadConfig { config in
             Log("The config file contains the following languages: \(String(describing: config.languages.keys))")
             self.languages = config.languages.keys.map({ $0 })
+            self.removeDeletedLanguages()
             try self.checkTranslationsAndDownload(of: 0, in: config)
         }
     }
     
     // MARK: - Private methods
     
+    private func removeDeletedLanguages() {
+        let setOfLanguages = Set(self.languages)
+        var setOfCurrentLanguages = Set(self.currentLanguageFiles())
+        setOfCurrentLanguages.subtract(setOfLanguages)
+        setOfCurrentLanguages.forEach {
+            System.removeItem(at: pwd() + $0 + ".json")
+            LogWarn("Removing '\($0)'")
+        }
+    }
+    
     private func checkTranslationsAndDownload(of index: Int, in configuration: Configuration) throws {
         let language = self.languages[index]
-        if TranslationFile(language: language).exist() {
+        if TranslationsFile(language: language).exist() {
             self.checkTranslationsFile(of: language, in: configuration) { newDate in
                 if let newDate = newDate, let lastModified = self.configurationFile.lastModified(of: language) {
                     if !lastModified.isSameDate(that: newDate) {
+                        Log("Updating '\(language)'")
                         try self.downloadTranslation(of: index, in: configuration)
                     } else {
                         Log("The language '\(language)' doesn't have changes")
                         try self.downloadNext(index, in: configuration)
                     }
                 } else {
+                    Log("Updating '\(language)'")
                     try self.downloadTranslation(of: index, in: configuration)
                 }
             }
         } else {
+            Log("Downloading '\(language)'")
             try self.downloadTranslation(of: index, in: configuration)
         }
     }
@@ -60,9 +86,8 @@ class DownloadManager {
     private func downloadTranslation(of index: Int, in configuration: Configuration) throws {
         let language = self.languages[index]
         try self.downloadTranslations(of: language, in: configuration) { response in
-            Log("Syncronized '\(language)'")
             let lastModified = response.lastModified ?? Date()
-            try TranslationFile(language: language).set(contents: response.translations)
+            try TranslationsFile(language: language).set(contents: response.translations)
             try self.configurationFile.set(lastModifiedDate: lastModified, of: language)
             try self.downloadNext(index, in: configuration)
         }
@@ -121,5 +146,11 @@ class DownloadManager {
                 throw Abort(reason: error.localizedDescription)
             }
         }
+    }
+    
+    private func currentLanguageFiles() -> [String] {
+        return System.listItems(in: pwd())?
+            .filter { $0.contains(".json") && $0 != ".config.json" }
+            .map { $0.replacingOccurrences(of: ".json", with: "") } ?? []
     }
 }

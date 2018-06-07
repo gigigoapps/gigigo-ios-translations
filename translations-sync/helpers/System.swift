@@ -110,5 +110,5 @@ struct System {
 // MARK: - Public global methods
 
 func pwd() -> String {
-    return System.executeWithResult(command: "/bin/pwd").replacingOccurrences(of: "\n", with: "")
+    return System.executeWithResult(command: "/bin/pwd").replacingOccurrences(of: "\n", with: "") + "/"
 }

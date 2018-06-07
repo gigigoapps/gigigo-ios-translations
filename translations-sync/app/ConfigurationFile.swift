@@ -16,7 +16,7 @@ struct ConfigurationFile {
     
     // MARK: - Private attributes
     
-    private let configJsonPath = pwd() + "/.config.json"
+    private let configJsonPath = pwd() + ".config.json"
     
     // MARK: - Public methods
     
