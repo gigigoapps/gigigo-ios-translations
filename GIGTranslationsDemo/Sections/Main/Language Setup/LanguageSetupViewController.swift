@@ -8,10 +8,17 @@
 
 import UIKit
 
-class LanguageSetupViewController: UIViewController {
+class LanguageSetupViewController: UIViewController, LanguageSetupPresenterOutput {
     
     // MARK: - IBOutlets
     
     @IBOutlet weak var languagesTableView: UITableView!
     
+    // MARK: - Public properties
+    
+    static let storyboardIdentifier = "LanguageSetupViewController"
+    var presenter: LanguageSetupPresenterInput?
+    
+    // MARK: - LanguageSetupPresenterOutput
+
 }

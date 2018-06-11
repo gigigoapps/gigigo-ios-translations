@@ -23,11 +23,13 @@ class MainPresenter: MainPresenterInput {
         
     weak var view: MainPresenterOutput?
     private var viewModel: MainViewModel?
-
+    let wireframe: MainWireframeInput
+    
     // MARK: - Initializer
     
-    init(view: MainPresenterOutput, viewModel: MainViewModel) {
+    init(view: MainPresenterOutput, wireframe: MainWireframeInput, viewModel: MainViewModel) {
         self.view = view
+        self.wireframe = wireframe
         self.viewModel = viewModel
     }
     
@@ -39,16 +41,14 @@ class MainPresenter: MainPresenterInput {
     }
     
     func userSelectedInitializeOption() {
-        // TODO: Navigate to view with file name setup
-        self.viewModel?.isConfigured = true // !!!
+        self.wireframe.showConfigurationSetup()
     }
     
     func userSelectedSetLanguageOption() {
-        // TODO: Navigate to view with language key setup
-        self.viewModel?.hasLanguage = true // !!!
+        self.wireframe.showLanguageSetup()
     }
     
     func userSelectedTranslateOption() {
-        // TODO: Navigate to view with translations options
+        self.wireframe.showTranslate()
     }
 }

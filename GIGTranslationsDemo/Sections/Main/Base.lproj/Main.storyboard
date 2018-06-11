@@ -14,7 +14,7 @@
         <!--Main View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="GIGTranslationsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" id="BYZ-38-t0r" customClass="MainViewController" customModule="GIGTranslationsDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -68,7 +68,7 @@
         <!--Language Setup View Controller-->
         <scene sceneID="snQ-Un-19c">
             <objects>
-                <viewController id="lO8-E4-4nr" customClass="LanguageSetupViewController" customModule="GIGTranslationsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LanguageSetupViewController" id="lO8-E4-4nr" customClass="LanguageSetupViewController" customModule="GIGTranslationsDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BE0-Nd-e2q">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -123,7 +123,7 @@
         <!--Configuration Setup View Controller-->
         <scene sceneID="tgu-cN-ztR">
             <objects>
-                <viewController id="HpA-Pz-W8G" customClass="ConfigurationSetupViewController" customModule="GIGTranslationsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ConfigurationSetupViewController" id="HpA-Pz-W8G" customClass="ConfigurationSetupViewController" customModule="GIGTranslationsDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="K5I-hb-aIz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -165,7 +165,7 @@
         <!--Translate View Controller-->
         <scene sceneID="Jhx-uG-EjY">
             <objects>
-                <viewController id="PAs-6T-fV8" customClass="TranslateViewController" customModule="GIGTranslationsDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TranslateViewController" id="PAs-6T-fV8" customClass="TranslateViewController" customModule="GIGTranslationsDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sn0-mb-Xcu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

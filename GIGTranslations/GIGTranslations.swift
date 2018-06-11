@@ -29,8 +29,16 @@ open class GIGTranslations: NSObject {
     ///   - bundle: Add description
     public func setup(configurationURL: URL, bundle: Bundle?, completion: ((Bool) -> Void)?) {
         // !!!
+        completion?(true)
     }
     
+    /// Add description
+    ///
+    /// - Returns: Add description
+    public func languages() -> [String] {
+        // !!!
+        return ["EN", "ES", "FR"]
+    }
     
     /// Add description
     ///
@@ -39,6 +47,7 @@ open class GIGTranslations: NSObject {
     ///   - completion: Add description
     public func set(language: String, completion: ((Bool) -> Void)?) {
         // !!!
+        completion?(true)
     }
     
     /// Add description
@@ -47,6 +56,16 @@ open class GIGTranslations: NSObject {
     /// - Returns: Add description
     public func value(for key: String) -> String? {
         // !!!
-        return nil
+        return "Value"
+    }
+    
+    public func translations() -> [String: String] {
+        // !!!
+        return [
+            "k1": "Value 1",
+            "k2": "Value 2",
+            "k3": "Value 3",
+            "k4": "Value 4"
+        ]
     }
 }

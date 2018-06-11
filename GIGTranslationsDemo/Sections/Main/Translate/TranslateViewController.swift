@@ -8,10 +8,16 @@
 
 import UIKit
 
-class TranslateViewController: UIViewController {
+class TranslateViewController: UIViewController, TranslatePresenterOutput {
     
     // MARK: - IBOutlets
 
     @IBOutlet weak var translationsTableView: UITableView!
     
+    // MARK: - Public properties
+    
+    static let storyboardIdentifier = "TranslateViewController"
+    var presenter: TranslatePresenterInput?
+    
+    // MARK: - TranslatePresenterOutput
 }

@@ -53,6 +53,15 @@
 		6190366520C54B27005897C0 /* GIGTranslations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6190365B20C54B27005897C0 /* GIGTranslations.framework */; };
 		6190366A20C54B27005897C0 /* GIGTranslationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6190366920C54B27005897C0 /* GIGTranslationsTests.swift */; };
 		6190366C20C54B27005897C0 /* GIGTranslations.h in Headers */ = {isa = PBXBuildFile; fileRef = 6190365E20C54B27005897C0 /* GIGTranslations.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		61D7C3BF20CE84EF0041CC8C /* AppWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7C3BE20CE84EF0041CC8C /* AppWireframe.swift */; };
+		61D7C3C320CE9BC30041CC8C /* ConfigurationSetupWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7C3C220CE9BC30041CC8C /* ConfigurationSetupWireframe.swift */; };
+		61D7C3C520CE9BD10041CC8C /* LanguageSetupWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7C3C420CE9BD10041CC8C /* LanguageSetupWireframe.swift */; };
+		61D7C3C720CE9CEE0041CC8C /* TranslateWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7C3C620CE9CED0041CC8C /* TranslateWireframe.swift */; };
+		61D7C3CB20CEBF6D0041CC8C /* TranslationsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7C3CA20CEBF6D0041CC8C /* TranslationsInteractor.swift */; };
+		61D7C3CC20CEC0690041CC8C /* GIGTranslations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6190365B20C54B27005897C0 /* GIGTranslations.framework */; };
+		61D7C3CD20CEC0690041CC8C /* GIGTranslations.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6190365B20C54B27005897C0 /* GIGTranslations.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		61D7C3D320CEC0EA0041CC8C /* TranslationsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7C3D220CEC0EA0041CC8C /* TranslationsWrapper.swift */; };
+		61D7C3D720CED1940041CC8C /* UIButton+RoundedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7C3D620CED1940041CC8C /* UIButton+RoundedBorder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +79,13 @@
 			remoteGlobalIDString = 6190365A20C54B27005897C0;
 			remoteInfo = GIGTranslations;
 		};
+		61D7C3CE20CEC0690041CC8C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6190365220C54B27005897C0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6190365A20C54B27005897C0;
+			remoteInfo = GIGTranslations;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -81,6 +97,17 @@
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
+		};
+		61D7C3D020CEC0690041CC8C /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				61D7C3CD20CEC0690041CC8C /* GIGTranslations.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -133,6 +160,13 @@
 		6190366420C54B27005897C0 /* GIGTranslationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GIGTranslationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6190366920C54B27005897C0 /* GIGTranslationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GIGTranslationsTests.swift; sourceTree = "<group>"; };
 		6190366B20C54B27005897C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61D7C3BE20CE84EF0041CC8C /* AppWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppWireframe.swift; sourceTree = "<group>"; };
+		61D7C3C220CE9BC30041CC8C /* ConfigurationSetupWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationSetupWireframe.swift; sourceTree = "<group>"; };
+		61D7C3C420CE9BD10041CC8C /* LanguageSetupWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSetupWireframe.swift; sourceTree = "<group>"; };
+		61D7C3C620CE9CED0041CC8C /* TranslateWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateWireframe.swift; sourceTree = "<group>"; };
+		61D7C3CA20CEBF6D0041CC8C /* TranslationsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsInteractor.swift; sourceTree = "<group>"; };
+		61D7C3D220CEC0EA0041CC8C /* TranslationsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsWrapper.swift; sourceTree = "<group>"; };
+		61D7C3D620CED1940041CC8C /* UIButton+RoundedBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+RoundedBorder.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +181,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				61D7C3CC20CEC0690041CC8C /* GIGTranslations.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,12 +303,12 @@
 		615A41A620CA817200542957 /* GIGTranslationsDemo */ = {
 			isa = PBXGroup;
 			children = (
-				615A41A720CA817200542957 /* AppDelegate.swift */,
-				615A41AB20CA817200542957 /* Main.storyboard */,
+				61D7C3C820CEBECC0041CC8C /* Common */,
 				615A41C520CA820900542957 /* Sections */,
-				615A41AE20CA817300542957 /* Assets.xcassets */,
-				615A41B020CA817300542957 /* LaunchScreen.storyboard */,
-				615A41B320CA817300542957 /* Info.plist */,
+				61D7C3D520CED17A0041CC8C /* Support */,
+				615A41A720CA817200542957 /* AppDelegate.swift */,
+				61D7C3BE20CE84EF0041CC8C /* AppWireframe.swift */,
+				61D7C3D420CECABC0041CC8C /* Resources */,
 			);
 			path = GIGTranslationsDemo;
 			sourceTree = "<group>";
@@ -302,6 +337,7 @@
 				615A41CB20CA8AF900542957 /* MainPresenter.swift */,
 				615A41C920CA8A0500542957 /* MainViewModel.swift */,
 				615A41A920CA817200542957 /* MainViewController.swift */,
+				615A41AB20CA817200542957 /* Main.storyboard */,
 				615A41CF20CAA09000542957 /* Configuration Setup */,
 				615A41D020CAA09F00542957 /* Language Setup */,
 				615A41D120CAA0BB00542957 /* Translate */,
@@ -312,6 +348,7 @@
 		615A41CF20CAA09000542957 /* Configuration Setup */ = {
 			isa = PBXGroup;
 			children = (
+				61D7C3C220CE9BC30041CC8C /* ConfigurationSetupWireframe.swift */,
 				615A41E020CAACE400542957 /* ConfigurationSetupPresenter.swift */,
 				615A41D220CAA0F600542957 /* ConfigurationSetupViewController.swift */,
 			);
@@ -321,6 +358,7 @@
 		615A41D020CAA09F00542957 /* Language Setup */ = {
 			isa = PBXGroup;
 			children = (
+				61D7C3C420CE9BD10041CC8C /* LanguageSetupWireframe.swift */,
 				615A41DE20CAACCD00542957 /* LanguageSetupPresenter.swift */,
 				615A41D420CAA10F00542957 /* LanguageSetupViewController.swift */,
 				615A41D820CAAC3300542957 /* LanguageTableViewCell.swift */,
@@ -331,6 +369,7 @@
 		615A41D120CAA0BB00542957 /* Translate */ = {
 			isa = PBXGroup;
 			children = (
+				61D7C3C620CE9CED0041CC8C /* TranslateWireframe.swift */,
 				615A41DC20CAACBB00542957 /* TranslatePresenter.swift */,
 				615A41D620CAA11D00542957 /* TranslateViewController.swift */,
 				615A41DA20CAAC6200542957 /* TranslateTableViewCell.swift */,
@@ -381,6 +420,49 @@
 			path = GIGTranslationsTests;
 			sourceTree = "<group>";
 		};
+		61D7C3C820CEBECC0041CC8C /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				61D7C3D120CEC0D70041CC8C /* Wrappers */,
+				61D7C3C920CEBEE40041CC8C /* Interactors */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		61D7C3C920CEBEE40041CC8C /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+				61D7C3CA20CEBF6D0041CC8C /* TranslationsInteractor.swift */,
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		61D7C3D120CEC0D70041CC8C /* Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				61D7C3D220CEC0EA0041CC8C /* TranslationsWrapper.swift */,
+			);
+			path = Wrappers;
+			sourceTree = "<group>";
+		};
+		61D7C3D420CECABC0041CC8C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				615A41AE20CA817300542957 /* Assets.xcassets */,
+				615A41B020CA817300542957 /* LaunchScreen.storyboard */,
+				615A41B320CA817300542957 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		61D7C3D520CED17A0041CC8C /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				61D7C3D620CED1940041CC8C /* UIButton+RoundedBorder.swift */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -419,10 +501,12 @@
 				615A41A120CA817200542957 /* Sources */,
 				615A41A220CA817200542957 /* Frameworks */,
 				615A41A320CA817200542957 /* Resources */,
+				61D7C3D020CEC0690041CC8C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				61D7C3CF20CEC0690041CC8C /* PBXTargetDependency */,
 			);
 			name = GIGTranslationsDemo;
 			productName = GIGTranslationsDemo;
@@ -600,9 +684,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				615A41DF20CAACCD00542957 /* LanguageSetupPresenter.swift in Sources */,
+				61D7C3C720CE9CEE0041CC8C /* TranslateWireframe.swift in Sources */,
+				61D7C3D720CED1940041CC8C /* UIButton+RoundedBorder.swift in Sources */,
+				61D7C3CB20CEBF6D0041CC8C /* TranslationsInteractor.swift in Sources */,
 				615A41CE20CA910400542957 /* MainWireframe.swift in Sources */,
 				615A41E120CAACE400542957 /* ConfigurationSetupPresenter.swift in Sources */,
 				615A41AA20CA817200542957 /* MainViewController.swift in Sources */,
+				61D7C3BF20CE84EF0041CC8C /* AppWireframe.swift in Sources */,
 				615A41A820CA817200542957 /* AppDelegate.swift in Sources */,
 				615A41D920CAAC3300542957 /* LanguageTableViewCell.swift in Sources */,
 				615A41D320CAA0F600542957 /* ConfigurationSetupViewController.swift in Sources */,
@@ -610,8 +698,11 @@
 				615A41DB20CAAC6200542957 /* TranslateTableViewCell.swift in Sources */,
 				615A41D720CAA11D00542957 /* TranslateViewController.swift in Sources */,
 				615A41D520CAA10F00542957 /* LanguageSetupViewController.swift in Sources */,
+				61D7C3D320CEC0EA0041CC8C /* TranslationsWrapper.swift in Sources */,
 				615A41CC20CA8AF900542957 /* MainPresenter.swift in Sources */,
 				615A41DD20CAACBB00542957 /* TranslatePresenter.swift in Sources */,
+				61D7C3C520CE9BD10041CC8C /* LanguageSetupWireframe.swift in Sources */,
+				61D7C3C320CE9BC30041CC8C /* ConfigurationSetupWireframe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -657,6 +748,11 @@
 			isa = PBXTargetDependency;
 			target = 6190365A20C54B27005897C0 /* GIGTranslations */;
 			targetProxy = 6190366620C54B27005897C0 /* PBXContainerItemProxy */;
+		};
+		61D7C3CF20CEC0690041CC8C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6190365A20C54B27005897C0 /* GIGTranslations */;
+			targetProxy = 61D7C3CE20CEC0690041CC8C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -709,10 +805,11 @@
 		615A41BF20CA817400542957 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TVRY3QTMW2;
-				INFOPLIST_FILE = GIGTranslationsDemo/Info.plist;
+				DEVELOPMENT_TEAM = SU5BA5HAQK;
+				INFOPLIST_FILE = "$(SRCROOT)/GIGTranslationsDemo/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -720,17 +817,18 @@
 				PRODUCT_BUNDLE_IDENTIFIER = gigigo.es.GIGTranslationsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		615A41C020CA817400542957 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TVRY3QTMW2;
-				INFOPLIST_FILE = GIGTranslationsDemo/Info.plist;
+				DEVELOPMENT_TEAM = SU5BA5HAQK;
+				INFOPLIST_FILE = "$(SRCROOT)/GIGTranslationsDemo/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -738,7 +836,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = gigigo.es.GIGTranslationsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -836,7 +934,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -893,7 +991,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -911,7 +1009,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = TVRY3QTMW2;
+				DEVELOPMENT_TEAM = SU5BA5HAQK;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -939,7 +1037,7 @@
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = TVRY3QTMW2;
+				DEVELOPMENT_TEAM = SU5BA5HAQK;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

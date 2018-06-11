@@ -18,6 +18,7 @@ class MainViewController: UIViewController {
     
     // MARK: - Public properties
     
+    static let storyboardIdentifier = "MainViewController"
     var presenter: MainPresenterInput?
 
     // MARK: - Lifecycle methods
@@ -25,9 +26,6 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
-        // FIXME: Set the presenter on the AppWireframe and remove this assignment
-        let viewModel = MainViewModel(isConfigured: false, hasLanguage: false)
-        self.presenter = MainPresenter(view: self, viewModel: viewModel) // !!!
         self.presenter?.viewDidLoad()
     }
     
@@ -41,25 +39,16 @@ class MainViewController: UIViewController {
         self.presenter?.userSelectedSetLanguageOption()
     }
     
-    
     @IBAction func didTapOnTranslateButton(_ sender: Any) {
         self.presenter?.userSelectedTranslateOption()
     }
 
     // MARK: - Private methods
     
-    private func setupView() {
-        self.setupButton(self.initializeOptionButton)
-        self.setupButton(self.setLanguageOptionButton)
-        self.setupButton(self.translateOptionButton)
-    }
-    
-    private func setupButton(_ button: UIButton) {
-        button.backgroundColor = .clear
-        button.layer.cornerRadius = 5
-        button.layer.borderWidth = 1
-        button.layer.borderColor = button.isEnabled ? button.tintColor.cgColor : UIColor.lightGray.cgColor
-        button.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    private func setupView() {        
+        self.initializeOptionButton.setupRoundedButton()
+        self.setLanguageOptionButton.setupRoundedButton()
+        self.translateOptionButton.setupRoundedButton()
     }
 }
 
@@ -71,5 +60,4 @@ extension MainViewController: MainPresenterOutput {
         self.translateOptionButton.isEnabled = viewModel.isConfigured && viewModel.hasLanguage ? true : false
         self.setupView()
     }
-
 }
