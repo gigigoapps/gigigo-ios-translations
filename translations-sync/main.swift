@@ -11,6 +11,6 @@ import Foundation
 
 do {
     try App().run(args: CommandLine.arguments)
-} catch(let error) {
+} catch let error {
     handleThrow(error)
 }

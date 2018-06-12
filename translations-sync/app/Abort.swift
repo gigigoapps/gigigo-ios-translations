@@ -14,9 +14,9 @@ struct Abort: Error {
 
 func handleThrow(_ error: Error) {
     if let error = error as? Abort {
-        LogError(error.reason)
+        logError(error.reason)
     } else {
-        LogError(error.localizedDescription)
+        logError(error.localizedDescription)
     }
     exit(1)
 }

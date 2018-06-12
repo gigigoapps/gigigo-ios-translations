@@ -41,7 +41,7 @@ class App {
     private func start() throws {
         let indexURL = try self.configurationFile.indexURL()
         self.downloadManager = DownloadManager(indexURL: indexURL)
-        try self.downloadManager?.downloadAll() {
+        try self.downloadManager?.downloadAll {
             exit(0)
         }
     }

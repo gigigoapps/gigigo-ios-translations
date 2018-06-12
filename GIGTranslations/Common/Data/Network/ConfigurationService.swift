@@ -15,7 +15,7 @@ protocol ConfigurationServiceInput {
 struct ConfigurationService: ConfigurationServiceInput {
     
     func fetchConfig(of url: URL, completion: @escaping (Result<Configuration, Error>) -> Void) {
-        Request.get(url, to: [String: String].self) { result in
+        Request.get(url, toType: [String: String].self) { result in
             switch result {
             case .success(let languages):
                 let configuration = Configuration(

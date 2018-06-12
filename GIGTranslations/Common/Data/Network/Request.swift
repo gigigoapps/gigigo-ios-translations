@@ -8,7 +8,7 @@
 
 import Foundation
 
-private enum httpMethod: String {
+private enum HTTPMethod: String {
     case get = "GET"
     case head = "HEAD"
 }
@@ -49,10 +49,7 @@ class Request {
     
     // MARK: - Public methods
     
-    static func get(_
-        url: URL,
-        completion: @escaping (Result<Response, Error>) -> Void
-    ) {
+    static func get(_ url: URL, completion: @escaping (Result<Response, Error>) -> Void) {
         _request(url, method: .get) { data, response, error in
             guard let data = data else {
                 completion(.error(error ?? NSError.unexpected()))
@@ -62,11 +59,7 @@ class Request {
         }
     }
     
-    static func get<T: Decodable>(_
-        url: URL,
-        to: T.Type,
-        completion: @escaping (Result<T, Error>) -> Void
-    ) {
+    static func get<T: Decodable>(_ url: URL, toType: T.Type, completion: @escaping (Result<T, Error>) -> Void) {
         _request(url, method: .get) { data, _, error in
             guard let data = data else {
                 completion(.error(error ?? NSError.unexpected()))
@@ -81,10 +74,7 @@ class Request {
         }
     }
     
-    static func head(_
-        url: URL,
-        completion: @escaping (Result<[AnyHashable: Any]?, Error>) -> Void
-    ) {
+    static func head(_ url: URL, completion: @escaping (Result<[AnyHashable: Any]?, Error>) -> Void) {
         _request(url, method: .head) { data, response, error in
             guard let data = data else {
                 completion(.error(error ?? NSError.unexpected()))
@@ -98,7 +88,7 @@ class Request {
 
 private extension Request {
     
-    static func _request(_ url: URL, method: httpMethod, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    static func _request(_ url: URL, method: HTTPMethod, completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         let sessionConfiguration = URLSessionConfiguration.default

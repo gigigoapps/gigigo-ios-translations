@@ -22,7 +22,7 @@ class ConfigurationFile {
     
     func indexURL() throws -> URL {
         if !exist() {
-            LogWarn(Strings.Warnings.configurationFileMissed)
+            logWarn(Strings.Warnings.configurationFileMissed)
             try create()
         }
         guard
@@ -87,15 +87,15 @@ class ConfigurationFile {
     }
     
     private func create() throws {
-        LogInfo(Strings.Configuration.creatingFile)
-        Log(Strings.Configuration.insertIndexURL)
+        logInfo(Strings.Configuration.creatingFile)
+        log(Strings.Configuration.insertIndexURL)
         if let urlString = readLine(), let URL = URL(string: urlString) {
             let configFile = [ConfigurationFileFields.index.rawValue: URL.absoluteString]
             let encoder = JSONEncoder()
             encoder.outputFormatting = .prettyPrinted
             let configData = try encoder.encode(configFile)
             System.createFile(at: self.configJsonPath, contents: configData)
-            LogInfo(Strings.Configuration.configFileCreated + " in " + self.configJsonPath)
+            logInfo(Strings.Configuration.configFileCreated + " in " + self.configJsonPath)
         } else {
             throw Abort(reason: Strings.Errors.urlFormatIsNotCorrect)
         }

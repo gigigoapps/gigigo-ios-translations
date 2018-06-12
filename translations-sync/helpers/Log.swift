@@ -46,32 +46,32 @@ class LogManager {
 }
 
 
-func Log(_ log: String, color: LogColor = .white) {
+func log(_ log: String, color: LogColor = .white) {
     guard LogManager.shared.logLevel != .none else { return }
     let logString = color.rawValue + log + "\u{001B}[0;0m"
     print(logString)
 }
 
-func LogInfo(_ log: String) {
+func logInfo(_ log: String) {
     guard LogManager.shared.logLevel >= .info else { return }
     
-    Log(log, color: .green)
+    log(log, color: .green)
 }
 
-func LogLine() {
+func logLine() {
     print()
 }
 
-func LogWarn(_ message: String, filename: NSString = #file, line: Int = #line, funcname: String = #function) {
+func logWarn(_ message: String, filename: NSString = #file, line: Int = #line, funcname: String = #function) {
     guard LogManager.shared.logLevel >= .error else { return }
-    Log(message, color: .yellow)
+    log(message, color: .yellow)
 }
 
-func LogError(_ error: String, filename: NSString = #file, line: Int = #line, funcname: String = #function) {
+func logError(_ error: String, filename: NSString = #file, line: Int = #line, funcname: String = #function) {
     guard
         LogManager.shared.logLevel >= .error
         else { return }
-    Log(error, color: .red)
+    log(error, color: .red)
 }
 
 extension String {
@@ -93,8 +93,7 @@ extension Data {
             }
             fileHandle.seekToEndOfFile()
             fileHandle.write(self)
-        }
-        else {
+        } else {
             try write(to: fileURL, options: .atomic)
         }
     }

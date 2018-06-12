@@ -13,7 +13,7 @@ struct System {
     // MARK: - Command
     
     static func execute(command: String, with params: [String]? = nil) {
-        let _ = executeWithResult(command: command, with: params)
+        _ = executeWithResult(command: command, with: params)
     }
 
     static func executeWithResult(command: String, with params: [String]? = nil) -> String {
@@ -35,7 +35,7 @@ struct System {
         return FileManager.default.currentDirectoryPath
     }
     
-    static func listItems(in path: String) -> [String]?  {
+    static func listItems(in path: String) -> [String]? {
         let directoryContents = try? FileManager.default.contentsOfDirectory(atPath: path)
         return directoryContents
     }
@@ -56,7 +56,7 @@ struct System {
     
     static func moveItem(at path: String, to toPath: String) {
         do {
-            var isDir : ObjCBool = false
+            var isDir: ObjCBool = false
             if FileManager.default.fileExists(atPath: toPath, isDirectory: &isDir) {
                 self.removeItem(at: toPath)
                 try FileManager.default.moveItem(atPath: path, toPath: toPath)
@@ -70,7 +70,7 @@ struct System {
     
     static func copyItem(at path: String, to toPath: String) {
         do {
-            var isDir : ObjCBool = false
+            var isDir: ObjCBool = false
             if FileManager.default.fileExists(atPath: toPath, isDirectory: &isDir) {
                 self.removeItem(at: toPath)
                 try FileManager.default.copyItem(atPath: path, toPath: toPath)

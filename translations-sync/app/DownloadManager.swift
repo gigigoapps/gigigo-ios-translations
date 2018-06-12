@@ -41,7 +41,7 @@ class DownloadManager {
     /// - Throws: if any error occurs
     func downloadAll(_ completion: () -> Void) throws {
         try self.downloadConfig { config in
-            Log("The config file contains the following languages: \(String(describing: config.languages.keys))")
+            log("The config file contains the following languages: \(String(describing: config.languages.keys))")
             self.languages = config.languages.keys.map({ $0 })
             self.removeDeletedLanguages()
             try self.checkTranslationsAndDownload(of: 0, in: config)
@@ -56,7 +56,7 @@ class DownloadManager {
         setOfCurrentLanguages.subtract(setOfLanguages)
         setOfCurrentLanguages.forEach {
             System.removeItem(at: pwd() + $0 + ".json")
-            LogWarn("Removing '\($0)'")
+            logWarn("Removing '\($0)'")
         }
     }
     
@@ -66,19 +66,19 @@ class DownloadManager {
             self.checkTranslationsFile(of: language, in: configuration) { newDate in
                 if let newDate = newDate, let lastModified = self.configurationFile.lastModified(of: language) {
                     if !lastModified.isSameDate(that: newDate) {
-                        Log("Updating '\(language)'")
+                        log("Updating '\(language)'")
                         try self.downloadTranslation(of: index, in: configuration)
                     } else {
-                        Log("The language '\(language)' doesn't have changes")
+                        log("The language '\(language)' doesn't have changes")
                         try self.downloadNext(index, in: configuration)
                     }
                 } else {
-                    Log("Updating '\(language)'")
+                    log("Updating '\(language)'")
                     try self.downloadTranslation(of: index, in: configuration)
                 }
             }
         } else {
-            Log("Downloading '\(language)'")
+            log("Downloading '\(language)'")
             try self.downloadTranslation(of: index, in: configuration)
         }
     }
@@ -97,7 +97,7 @@ class DownloadManager {
         if self.languages.count > index + 1 {
             try self.checkTranslationsAndDownload(of: index + 1, in: configuration)
         } else {
-            Log("Sync process finished")
+            log("Sync process finished")
             exit(0)
         }
     }
