@@ -38,7 +38,7 @@ class ConfigurationFile {
     
     func set(indexURL: URL) throws {
         if !exist() {
-            LogWarn(Strings.Warnings.configurationFileMissed)
+            logWarn(Strings.Warnings.configurationFileMissed)
             try create()
         }
         guard

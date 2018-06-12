@@ -52,10 +52,10 @@ func log(_ log: String, color: LogColor = .white) {
     print(logString)
 }
 
-func logInfo(_ log: String) {
+func logInfo(_ info: String) {
     guard LogManager.shared.logLevel >= .info else { return }
     
-    log(log, color: .green)
+    log(info, color: .green)
 }
 
 func logLine() {

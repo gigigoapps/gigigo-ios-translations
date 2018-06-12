@@ -25,7 +25,7 @@ class App {
     ///
     /// - Parameter args: arguments of app
     func run(args: [String]?) throws {
-        Log("Tranlations sync v1.0.0")
+        log("Tranlations sync v1.0.0")
         let argumentsValidator = ArgumentsValidator(args: args, helpMessage: "Usage:\ntranslations-sync [-u|--update-config]", minArgs: 1, maxArgs: 2)
         try argumentsValidator.validate()
         let indexURLArgument = argumentsValidator.arguments(for: 1).first
