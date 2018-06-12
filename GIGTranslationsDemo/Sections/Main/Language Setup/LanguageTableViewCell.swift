@@ -14,6 +14,11 @@ class LanguageTableViewCell: UITableViewCell {
 
     // MARK: - IBOutlets
     
-    @IBOutlet weak var languageKeyLabel: UIView!
+    @IBOutlet weak var languageKeyLabel: UILabel!
     
+    // MARK: - Public methods
+    
+    func setup(languageKey: String) {
+        self.languageKeyLabel.text = languageKey
+    }
 }

@@ -27,8 +27,8 @@ struct MainWireframe: MainWireframeInput {
         guard let mainVC = storyboard.instantiateViewController(withIdentifier: MainViewController.storyboardIdentifier) as? MainViewController else {
             return nil
         }
-        let viewModel = MainViewModel(isConfigured: false, hasLanguage: false)
-        mainVC.presenter = MainPresenter(view: mainVC, wireframe: self, viewModel: viewModel)
+        let interactor = TranslationsInteractor()
+        mainVC.presenter = MainPresenter(view: mainVC, interactor: interactor, wireframe: self)
         return mainVC
     }
     

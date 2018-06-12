@@ -10,6 +10,7 @@ import UIKit
 
 protocol LanguageSetupWireframeInput {
     func languageSetupViewController() -> LanguageSetupViewController?
+    func dismiss()
 }
 
 struct LanguageSetupWireframe: LanguageSetupWireframeInput {
@@ -23,7 +24,12 @@ struct LanguageSetupWireframe: LanguageSetupWireframeInput {
         guard let languageSetupVC = storyboard.instantiateViewController(withIdentifier: LanguageSetupViewController.storyboardIdentifier) as? LanguageSetupViewController else {
             return nil
         }
-        languageSetupVC.presenter = LanguageSetupPresenter(view: languageSetupVC, wireframe: self, interactor: nil) //!!!
+        let interactor = TranslationsInteractor()
+        languageSetupVC.presenter = LanguageSetupPresenter(view: languageSetupVC, interactor: interactor, wireframe: self)
         return languageSetupVC
+    }
+    
+    func dismiss() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

@@ -9,37 +9,65 @@
 import Foundation
 import GIGTranslations
 
-typealias TranslationsModel = (configuration: URL?, language: String?, translations: [String: String]?)
+protocol TranslationsInteractorInput {
+    func configureTranslations(with url: String, completion: ((Bool) -> Void)?)
+    func isConfigured() -> Bool
+    func getLanguages() -> [String]
+    func hasLanguage() -> Bool
+    func setLanguage(_ language: String, completion: ((Bool) -> Void)?)
+    func getValue(for key: String) -> String?
+    func getTranslations() -> [String: String]
+}
 
-class TranslationsInteractor {
+
+class TranslationsInteractor: TranslationsInteractorInput {
     
-    var translationsModel: TranslationsModel = TranslationsModel(configuration: nil, language: nil, translations: nil)
+    var translationsModel: TranslationsModel = TranslationsModel.shared
     
-    // MARK: - Public methods
+    // MARK: - TranslationsInteractorInput
     
-    func configureTranslations(with url: String) {
+    func configureTranslations(with url: String, completion: ((Bool) -> Void)?) {
         guard let URL = URL(string: url) else { return }
         TranslationsWrapper.shared.configure(with: URL) { (result) in
             if result {
                 self.translationsModel.configuration = URL
+                completion?(true)
+            } else {
+                completion?(false)
             }
         }
     }
     
+    func isConfigured() -> Bool {
+        return self.translationsModel.configuration != nil
+    }
+
     func getLanguages() -> [String] {
         return TranslationsWrapper.shared.getLanguages()
     }
-    func setLanguage(_ language: String) {
+    
+    func setLanguage(_ language: String, completion: ((Bool) -> Void)?) {
         guard !language.isEmpty else { return }
         TranslationsWrapper.shared.setLanguage(language) { (result) in
             if result {
                 self.translationsModel.language = language
+                completion?(true)
+            } else {
+                completion?(false)
             }
         }
+    }
+    
+    func hasLanguage() -> Bool {
+        return self.translationsModel.language != nil
     }
     
     func getValue(for key: String) -> String? {
         guard !key.isEmpty else { return nil }
         return TranslationsWrapper.shared.value(for: key)
+    }
+    
+    func getTranslations() -> [String: String] {
+        return TranslationsWrapper.shared.getTranslations()
     }
 }

@@ -16,4 +16,11 @@ class TranslateTableViewCell: UITableViewCell {
     
     @IBOutlet weak var translationKeyLabel: UILabel!
     @IBOutlet weak var translationValueLabel: UILabel!
+    
+    // MARK: - Public methods
+    
+    func setup(key: String, value: String) {
+        self.translationKeyLabel.text = key
+        self.translationValueLabel.text = value
+    }
 }

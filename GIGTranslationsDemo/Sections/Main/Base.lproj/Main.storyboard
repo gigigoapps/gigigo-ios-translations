@@ -97,7 +97,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="languageKeyLabel" destination="oJV-de-qcP" id="okW-mZ-a4H"/>
+                                            <outlet property="languageKeyLabel" destination="4nT-4U-BVC" id="SYY-Us-mbP"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

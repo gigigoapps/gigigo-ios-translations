@@ -24,7 +24,8 @@ struct TranslateWireframe: TranslateWireframeInput {
             return nil
         }
         let wireframe = TranslateWireframe(navigationController: self.navigationController)
-        translateVC.presenter = TranslatePresenter(view: translateVC, wireframe: wireframe, interactor: nil) //!!!
+        let interactor = TranslationsInteractor()
+        translateVC.presenter = TranslatePresenter(view: translateVC, interactor: interactor, wireframe: wireframe)
         return translateVC
     }
     

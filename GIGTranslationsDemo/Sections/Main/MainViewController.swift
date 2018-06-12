@@ -26,7 +26,11 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupView()
-        self.presenter?.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.presenter?.viewWillAppear()
     }
     
     // MARK: - IBActions
@@ -55,7 +59,7 @@ class MainViewController: UIViewController {
 extension MainViewController: MainPresenterOutput {
     
     func loadView(with viewModel: MainViewModel) {
-        self.initializeOptionButton.isEnabled = viewModel.isConfigured ? false : true
+        self.initializeOptionButton.isEnabled = true
         self.setLanguageOptionButton.isEnabled = viewModel.isConfigured ? true : false
         self.translateOptionButton.isEnabled = viewModel.isConfigured && viewModel.hasLanguage ? true : false
         self.setupView()

@@ -8,8 +8,13 @@
 
 import Foundation
 
+struct MainViewModel {
+    var isConfigured: Bool
+    var hasLanguage: Bool
+}
+
 protocol MainPresenterInput {
-    func viewDidLoad()
+    func viewWillAppear()
     func userSelectedInitializeOption()
     func userSelectedSetLanguageOption()
     func userSelectedTranslateOption()
@@ -24,19 +29,21 @@ class MainPresenter: MainPresenterInput {
     weak var view: MainPresenterOutput?
     private var viewModel: MainViewModel?
     let wireframe: MainWireframeInput
+    let interactor: TranslationsInteractorInput
     
     // MARK: - Initializer
     
-    init(view: MainPresenterOutput, wireframe: MainWireframeInput, viewModel: MainViewModel) {
+    init(view: MainPresenterOutput, interactor: TranslationsInteractorInput, wireframe: MainWireframeInput) {
         self.view = view
+        self.interactor = interactor
         self.wireframe = wireframe
-        self.viewModel = viewModel
     }
     
     // MARK: - MainPresenterInput
     
-    func viewDidLoad() {
-        guard let viewModel = self.viewModel else { return }
+    func viewWillAppear() {
+        let viewModel = MainViewModel(isConfigured: self.interactor.isConfigured(), hasLanguage: self.interactor.hasLanguage())
+        self.viewModel = viewModel
         self.view?.loadView(with: viewModel)
     }
     
