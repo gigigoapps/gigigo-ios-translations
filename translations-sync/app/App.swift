@@ -12,7 +12,6 @@ class App {
     
     // MARK: - Private attributes
     
-    private var argumentsValidator: ArgumentsValidator?
     private let configurationFile = ConfigurationFile()
     private var downloadManager: DownloadManager?
     
@@ -26,8 +25,13 @@ class App {
     ///
     /// - Parameter args: arguments of app
     func run(args: [String]?) throws {
-        self.argumentsValidator = ArgumentsValidator(args: args, helpMessage: "TBD...")
-        try self.argumentsValidator?.validate()
+        Log("Tranlations sync v1.0.0")
+        let argumentsValidator = ArgumentsValidator(args: args, helpMessage: "Usage:\ntranslations-sync [-u|--update-config]", minArgs: 1, maxArgs: 2)
+        try argumentsValidator.validate()
+        let indexURLArgument = argumentsValidator.arguments(for: 1).first
+        if let indexURLArgument = indexURLArgument, let indexURL = URL(string: indexURLArgument) {
+            try self.configurationFile.set(indexURL: indexURL)
+        }
         try self.start()
         RunLoop.main.run()
     }

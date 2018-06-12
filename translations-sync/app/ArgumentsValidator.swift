@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ArgumentsValidator {
+class ArgumentsValidator {
     
     // MARK: - Public attributes
     
@@ -16,6 +16,14 @@ struct ArgumentsValidator {
     let minArgs: Int?
     let maxArgs: Int?
     let helpMessage: String
+    
+    // MARK: - Private attributes
+    
+    typealias Validation = ([Int], ([String]) -> Bool)
+    
+    private var validations: [Validation] = []
+    private var finallyCompletionBlock: (() throws -> Void)?
+    
     
     // MARK: - Public methods
     
@@ -39,23 +47,15 @@ struct ArgumentsValidator {
         }
     }
     
-    /// Use if to validate a specific argument
-    ///
-    /// - Parameters:
-    ///   - index: the argument to validate
-    ///   - completion: block for performing the validation
-    /// - Throws: the help message if the arguments are not well-formed
-    func validate(_ indices: Int..., completion: @escaping ([String]) -> Bool) throws {
-        guard let arguments = self.args else { return }
+    func arguments(for indices: Int...) -> [String] {
+        guard let arguments = self.args else { return [] }
         let values = arguments
             .enumerated()
             .filter { offset, _ in
                 indices.contains(offset)
             }.map { _, value in
                 value
-            }
-        if !completion(values) {
-            throw Abort(reason: self.helpMessage)
         }
+        return values
     }
 }

@@ -12,7 +12,7 @@ enum ConfigurationFileFields: String {
     case index
 }
 
-struct ConfigurationFile {
+class ConfigurationFile {
     
     // MARK: - Private attributes
     
@@ -34,6 +34,24 @@ struct ConfigurationFile {
             throw Abort(reason: Strings.Errors.configurationFileIsNotCorrect)
         }
         return url
+    }
+    
+    func set(indexURL: URL) throws {
+        if !exist() {
+            LogWarn(Strings.Warnings.configurationFileMissed)
+            try create()
+        }
+        guard
+            let contents = System.contents(atPath: self.configJsonPath),
+            var configValues = try? JSONDecoder().decode([String: String].self, from: contents)
+        else {
+            throw Abort(reason: Strings.Errors.configurationFileIsNotCorrect)
+        }
+        configValues[ConfigurationFileFields.index.rawValue] = indexURL.absoluteString
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        let configData = try encoder.encode(configValues)
+        System.createFile(at: self.configJsonPath, contents: configData)
     }
     
     func lastModified(of language: String) -> Date? {
