@@ -18,7 +18,11 @@ struct ConfigurationService: ConfigurationServiceInput {
         Request.get(url, to: [String: String].self) { result in
             switch result {
             case .success(let languages):
-                let configuration = Configuration(languages: languages.mapValues({ URL(string: $0) }))
+                let configuration = Configuration(
+                    path: url,
+                    lastUpdateDate: Date(), // !!!
+                    languages: languages.mapValues({ URL(string: $0) })
+                )
                 completion(.success(configuration))
             case .error(let error):
                 completion(.error(error))
