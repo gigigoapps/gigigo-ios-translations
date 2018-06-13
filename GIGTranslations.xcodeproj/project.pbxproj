@@ -70,6 +70,7 @@
 		61D7C3D320CEC0EA0041CC8C /* TranslationsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7C3D220CEC0EA0041CC8C /* TranslationsWrapper.swift */; };
 		61D7C3D720CED1940041CC8C /* UIButton+RoundedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7C3D620CED1940041CC8C /* UIButton+RoundedBorder.swift */; };
 		61EAB38820D111D90018AE17 /* Translations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EAB38720D111D90018AE17 /* Translations.swift */; };
+		61EAB38A20D17A960018AE17 /* FileSystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EAB38920D17A960018AE17 /* FileSystemManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +184,7 @@
 		61D7C3D220CEC0EA0041CC8C /* TranslationsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsWrapper.swift; sourceTree = "<group>"; };
 		61D7C3D620CED1940041CC8C /* UIButton+RoundedBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+RoundedBorder.swift"; sourceTree = "<group>"; };
 		61EAB38720D111D90018AE17 /* Translations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translations.swift; sourceTree = "<group>"; };
+		61EAB38920D17A960018AE17 /* FileSystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -315,6 +317,7 @@
 		6102942820C69AAF002C65E0 /* File System */ = {
 			isa = PBXGroup;
 			children = (
+				61EAB38920D17A960018AE17 /* FileSystemManager.swift */,
 			);
 			path = "File System";
 			sourceTree = "<group>";
@@ -805,6 +808,7 @@
 				0291D8D520C7D7A000B95143 /* Configuration.swift in Sources */,
 				025AD39720C6D93B007E4695 /* Request.swift in Sources */,
 				61B0B8E820D00FDF00E1BB89 /* UserDefaultsManager.swift in Sources */,
+				61EAB38A20D17A960018AE17 /* FileSystemManager.swift in Sources */,
 				022E3A9520D13093000ECEDA /* TranslationsDataManager.swift in Sources */,
 				6102941F20C69812002C65E0 /* GIGTranslations.swift in Sources */,
 				0291D8E720C8249300B95143 /* Date+Extension.swift in Sources */,

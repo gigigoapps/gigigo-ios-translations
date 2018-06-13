@@ -47,7 +47,7 @@ class Session: TranslationsStore {
         return self.translations.first(where: { $0.language == language })
     }
     
-    func translation(for key: String) -> String? {
+    func translations(for key: String) -> String? {
         guard let language = self.language else { return nil }
         return self.loadTranslations(for: language)?.tanslations[key]
     }

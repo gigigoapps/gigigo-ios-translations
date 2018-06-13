@@ -18,7 +18,8 @@ class TranslationsController {
             memory: Session.shared,
             disk: UserDefaultsManager(
                 userDefaults: UserDefaults.standard
-            )
+            ),
+            local: FileSystemManager()
         )
     )
     

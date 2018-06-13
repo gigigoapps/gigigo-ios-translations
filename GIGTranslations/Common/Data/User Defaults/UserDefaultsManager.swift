@@ -34,8 +34,7 @@ class UserDefaultsManager {
     func setTranslations(_ translations: [String: String], for language: String) {
         guard !language.isEmpty else { return }
         let key = UserDefaultsKeys.translationsPrefix + "_" + language
-        let value = Translations(language: language, lastUpdateDate: Date(), tanslations: translations)
-        if let encodedTranslations = try? PropertyListEncoder().encode(value) {
+        if let encodedTranslations = try? PropertyListEncoder().encode(translations) {
             // Store translations
             self.userDefaults.set(encodedTranslations, forKey: key)
             // Add key for language translations
@@ -116,7 +115,7 @@ extension UserDefaultsManager: TranslationsStore {
         return nil
     }
     
-    func translation(for key: String) -> String? {
+    func translations(for key: String) -> String? {
         return nil
     }
     

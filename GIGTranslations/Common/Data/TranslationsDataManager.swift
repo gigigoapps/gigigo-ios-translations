@@ -14,7 +14,7 @@ protocol TranslationsStore {
     func loadConfiguration() -> Configuration?
     func save(translations: Translations)
     func loadTranslations(for language: String) -> Translations?
-    func translation(for key: String) -> String?
+    func translations(for key: String) -> String?
 }
 
 class TranslationsDataManager {
@@ -23,12 +23,14 @@ class TranslationsDataManager {
     
     private let memoryStore: TranslationsStore
     private let diskStore: TranslationsStore
+    private let localStore: TranslationsStore //!!!
     
     // MARK: - Public methods
     
-    init(memory: TranslationsStore, disk: TranslationsStore) {
+    init(memory: TranslationsStore, disk: TranslationsStore, local: TranslationsStore) {
         self.memoryStore = memory
         self.diskStore = disk
+        self.localStore = local
     }
     
     func save(configuration: Configuration) {
@@ -49,6 +51,16 @@ class TranslationsDataManager {
     
     func loadConfiguration() -> Configuration? {
         return self.memoryStore.loadConfiguration() ?? self.diskStore.loadConfiguration()
+    }
+    
+    func save(translations: Translations) {
+        self.memoryStore.save(translations: translations)
+        self.diskStore.save(translations: translations)
+    }
+
+    func loadTranslations(for language: String) -> Translations? {
+        let memoryTranslations = self.memoryStore.loadTranslations(for: language)
+        return memoryTranslations ?? self.diskStore.loadTranslations(for: language)
     }
     
 }
