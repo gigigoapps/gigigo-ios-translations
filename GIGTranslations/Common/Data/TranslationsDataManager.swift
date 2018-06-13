@@ -21,34 +21,34 @@ class TranslationsDataManager {
     
     // MARK: - Private attributes
     
-    private let memoryStorageLayer: TranslationsStore
-    private let diskStorageLayer: TranslationsStore
+    private let memoryStore: TranslationsStore
+    private let diskStore: TranslationsStore
     
     // MARK: - Public methods
     
     init(memory: TranslationsStore, disk: TranslationsStore) {
-        self.memoryStorageLayer = memory
-        self.diskStorageLayer = disk
+        self.memoryStore = memory
+        self.diskStore = disk
     }
     
     func save(configuration: Configuration) {
-        self.memoryStorageLayer.save(configuration: configuration)
-        self.diskStorageLayer.save(configuration: configuration)
+        self.memoryStore.save(configuration: configuration)
+        self.diskStore.save(configuration: configuration)
     }
     
     func save(language: String) {
-        self.memoryStorageLayer.save(language: language)
-        self.diskStorageLayer.save(language: language)
+        self.memoryStore.save(language: language)
+        self.diskStore.save(language: language)
     }
     
     func languages() -> [String] {
-        let memoryLanguages = self.memoryStorageLayer.loadConfiguration()?.languages.keys.map({ $0 })
-        let diskLanguages = self.diskStorageLayer.loadConfiguration()?.languages.keys.map({ $0 })
+        let memoryLanguages = self.memoryStore.loadConfiguration()?.languages.keys.map({ $0 })
+        let diskLanguages = self.diskStore.loadConfiguration()?.languages.keys.map({ $0 })
         return (memoryLanguages ?? diskLanguages) ?? []
     }
     
     func loadConfiguration() -> Configuration? {
-        return self.memoryStorageLayer.loadConfiguration() ?? self.diskStorageLayer.loadConfiguration()
+        return self.memoryStore.loadConfiguration() ?? self.diskStore.loadConfiguration()
     }
     
 }
