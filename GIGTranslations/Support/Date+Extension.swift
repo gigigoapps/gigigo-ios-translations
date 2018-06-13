@@ -21,7 +21,8 @@ extension Date {
         return self.toString(withFormat: "dd/MM/yyyy HH:mm") == date.toString(withFormat: "dd/MM/yyyy HH:mm")
     }
     
-    init?(from string: String, withFormat format: String) {
+    init?(from string: String?, withFormat format: String) {
+        guard let string = string else { return nil }
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = format
         dateFormat.timeZone = TimeZone(abbreviation: "CET")

@@ -39,6 +39,12 @@ class Response {
         return try JSONSerialization.jsonObject(with: data) as? [AnyHashable: Any]
     }
     
+    func body<T: Decodable>(toType: T.Type) -> T? {
+        guard let data = self.data else { return nil }
+        let object = try? JSONDecoder().decode(T.self, from: data)
+        return object
+    }
+    
     func headers() -> [AnyHashable: Any]? {
         guard let response = self.response else { return nil }
         return response.allHeaderFields

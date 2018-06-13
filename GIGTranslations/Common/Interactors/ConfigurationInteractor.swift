@@ -10,4 +10,29 @@ import Foundation
 
 class ConfigurationInteractor {
     
+    // MARK: - Public attributes
+    
+    let configurationService: ConfigurationServiceInput
+    let userDefaults: UserDefaultsManager
+    let session: Session
+    
+    // MARK: - Public methods
+    
+    init(configurationService: ConfigurationServiceInput, userDefaults: UserDefaultsManager, session: Session) {
+        self.configurationService = configurationService
+        self.userDefaults = userDefaults
+        self.session = session
+    }
+    
+    func configure(with url: URL, bundle: Bundle?, completion: @escaping (Bool) -> Void) {
+        self.configurationService.fetchConfig(of: url) { result in
+            switch result {
+            case .success(let configuration):
+                self.session.save(configuration: configuration)
+                completion(true)
+            case .error:
+                completion(false)
+            }
+        }
+    }
 }

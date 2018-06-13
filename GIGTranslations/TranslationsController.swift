@@ -13,9 +13,14 @@ class TranslationsController {
     static let shared = TranslationsController()
     
     func setup(configurationURL: URL, bundle: Bundle?, completion: ((Bool) -> Void)?) {
-        //let configurationInteractor = ConfigurationInteractor()
-        //configurationInteractor.configure()
-        completion?(true)
+        let configurationInteractor = ConfigurationInteractor(
+            configurationService: ConfigurationService(),
+            userDefaults: UserDefaultsManager(),
+            session: Session.shared
+        )
+        configurationInteractor.configure(with: configurationURL, bundle: bundle) { success in
+            completion?(success)
+        }
     }
     
     func languages() -> [String] {

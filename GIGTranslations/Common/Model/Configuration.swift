@@ -11,6 +11,7 @@ import Foundation
 struct Configuration: Codable {
     
     // MARK: - Public attributes
+    
     var path: URL
     var lastUpdateDate: Date
     var languages: [String: URL?]
