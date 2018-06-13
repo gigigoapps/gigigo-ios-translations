@@ -18,7 +18,7 @@ class Session: TranslationsStorable {
     
     private var configuration: Configuration?
     private var language: String?
-    private var translations: [String: Translations] = [:]
+    private var translations: Set<Translations> = []
     private var bundle: Bundle?
 
     // MARK: - Public methods
@@ -40,16 +40,16 @@ class Session: TranslationsStorable {
     }
     
     func save(translations: Translations) {
-        self.translations[translations.language] = translations
+        self.translations.insert(translations)
     }
     
     func loadTranslations(for language: String) -> Translations? {
-        return self.translations[language]
+        return self.translations.first(where: { $0.language == language })
     }
     
     func translation(for key: String) -> String? {
         guard let language = self.language else { return nil }
-        return self.translations[language]?.tanslations[key]
+        return self.loadTranslations(for: language)?.tanslations[key]
     }
     
     func save(language: String) {

@@ -8,11 +8,15 @@
 
 import Foundation
 
-struct Translations: Codable {
-    
+struct Translations: Codable, Hashable {
+   
     // MARK: - Public attributes
     
     var language: String
     var lastUpdateDate: Date
     var tanslations: [String: String]
+    
+    var hashValue: Int {
+        return self.language.hashValue
+    }
 }
