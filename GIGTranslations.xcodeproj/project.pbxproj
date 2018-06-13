@@ -68,6 +68,7 @@
 		61D7C3CD20CEC0690041CC8C /* GIGTranslations.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6190365B20C54B27005897C0 /* GIGTranslations.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		61D7C3D320CEC0EA0041CC8C /* TranslationsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7C3D220CEC0EA0041CC8C /* TranslationsWrapper.swift */; };
 		61D7C3D720CED1940041CC8C /* UIButton+RoundedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7C3D620CED1940041CC8C /* UIButton+RoundedBorder.swift */; };
+		61EAB38820D111D90018AE17 /* Translations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EAB38720D111D90018AE17 /* Translations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,6 +180,7 @@
 		61D7C3CA20CEBF6D0041CC8C /* TranslationsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsInteractor.swift; sourceTree = "<group>"; };
 		61D7C3D220CEC0EA0041CC8C /* TranslationsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsWrapper.swift; sourceTree = "<group>"; };
 		61D7C3D620CED1940041CC8C /* UIButton+RoundedBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+RoundedBorder.swift"; sourceTree = "<group>"; };
+		61EAB38720D111D90018AE17 /* Translations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,8 +263,9 @@
 		0291D8D320C7D5C000B95143 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0291D8D420C7D7A000B95143 /* Configuration.swift */,
 				022E3A9220D0FAB2000ECEDA /* Session.swift */,
+				0291D8D420C7D7A000B95143 /* Configuration.swift */,
+				61EAB38720D111D90018AE17 /* Translations.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -801,6 +804,7 @@
 				61B0B8E820D00FDF00E1BB89 /* UserDefaultsManager.swift in Sources */,
 				6102941F20C69812002C65E0 /* GIGTranslations.swift in Sources */,
 				0291D8E720C8249300B95143 /* Date+Extension.swift in Sources */,
+				61EAB38820D111D90018AE17 /* Translations.swift in Sources */,
 				6102942720C698D1002C65E0 /* TranslationsService.swift in Sources */,
 				022E3A9320D0FAB2000ECEDA /* Session.swift in Sources */,
 				0291D8E020C7EECE00B95143 /* NSError+Extension.swift in Sources */,

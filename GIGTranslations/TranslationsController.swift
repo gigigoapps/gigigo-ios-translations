@@ -40,6 +40,10 @@ class TranslationsController {
     }
     
     func translations() -> [String: String] {
-        return ["": ""]
+        return [
+            "k1": "Value 1",
+            "k2": "Value 2",
+            "k3": "Value 3"
+        ]
     }
 }

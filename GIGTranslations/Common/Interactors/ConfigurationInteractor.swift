@@ -16,7 +16,7 @@ class ConfigurationInteractor {
     let userDefaults: UserDefaultsManager
     let session: Session
     
-    // MARK: - Public methods
+    // MARK: - Initializer
     
     init(configurationService: ConfigurationServiceInput, userDefaults: UserDefaultsManager, session: Session) {
         self.configurationService = configurationService
@@ -24,6 +24,8 @@ class ConfigurationInteractor {
         self.session = session
     }
     
+    // MARK: - Public methods
+
     func configure(with url: URL, bundle: Bundle?, completion: @escaping (Bool) -> Void) {
         self.configurationService.fetchConfig(of: url) { result in
             switch result {
