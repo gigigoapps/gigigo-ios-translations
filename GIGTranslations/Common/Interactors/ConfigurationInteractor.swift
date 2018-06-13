@@ -13,15 +13,13 @@ class ConfigurationInteractor {
     // MARK: - Public attributes
     
     let configurationService: ConfigurationServiceInput
-    let userDefaults: UserDefaultsManager
-    let session: Session
+    let translationsDataManager: TranslationsDataManager
     
     // MARK: - Initializer
     
-    init(configurationService: ConfigurationServiceInput, userDefaults: UserDefaultsManager, session: Session) {
+    init(configurationService: ConfigurationServiceInput, translationsDataManager: TranslationsDataManager) {
         self.configurationService = configurationService
-        self.userDefaults = userDefaults
-        self.session = session
+        self.translationsDataManager = translationsDataManager
     }
     
     // MARK: - Public methods
@@ -30,11 +28,19 @@ class ConfigurationInteractor {
         self.configurationService.fetchConfig(of: url) { result in
             switch result {
             case .success(let configuration):
-                self.session.save(configuration: configuration)
+                self.translationsDataManager.save(configuration: configuration)
                 completion(true)
             case .error:
                 completion(false)
             }
         }
+    }
+    
+    func configuration() -> Configuration? {
+        return self.translationsDataManager.loadConfiguration()
+    }
+    
+    func languages() -> [String] {
+        return self.translationsDataManager.languages()
     }
 }

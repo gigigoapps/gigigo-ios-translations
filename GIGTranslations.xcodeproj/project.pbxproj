@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		022E3A9320D0FAB2000ECEDA /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022E3A9220D0FAB2000ECEDA /* Session.swift */; };
+		022E3A9520D13093000ECEDA /* TranslationsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022E3A9420D13093000ECEDA /* TranslationsDataManager.swift */; };
 		025AD38020C6D513007E4695 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD37F20C6D513007E4695 /* main.swift */; };
 		025AD38E20C6D538007E4695 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD38520C6D537007E4695 /* Log.swift */; };
 		025AD38F20C6D538007E4695 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD38620C6D537007E4695 /* System.swift */; };
@@ -120,6 +121,7 @@
 
 /* Begin PBXFileReference section */
 		022E3A9220D0FAB2000ECEDA /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		022E3A9420D13093000ECEDA /* TranslationsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsDataManager.swift; sourceTree = "<group>"; };
 		025AD37D20C6D513007E4695 /* translations-sync */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "translations-sync"; sourceTree = BUILT_PRODUCTS_DIR; };
 		025AD37F20C6D513007E4695 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		025AD38520C6D537007E4695 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				61B0B8E620D00FBC00E1BB89 /* User Defaults */,
 				6102942820C69AAF002C65E0 /* File System */,
 				6102942320C6989C002C65E0 /* Network */,
+				022E3A9420D13093000ECEDA /* TranslationsDataManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -802,6 +805,7 @@
 				0291D8D520C7D7A000B95143 /* Configuration.swift in Sources */,
 				025AD39720C6D93B007E4695 /* Request.swift in Sources */,
 				61B0B8E820D00FDF00E1BB89 /* UserDefaultsManager.swift in Sources */,
+				022E3A9520D13093000ECEDA /* TranslationsDataManager.swift in Sources */,
 				6102941F20C69812002C65E0 /* GIGTranslations.swift in Sources */,
 				0291D8E720C8249300B95143 /* Date+Extension.swift in Sources */,
 				61EAB38820D111D90018AE17 /* Translations.swift in Sources */,

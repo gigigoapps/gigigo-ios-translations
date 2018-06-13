@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Session {
+class Session: TranslationsStorable {
     
     // MARK: - Public attributes
     
@@ -17,6 +17,8 @@ class Session {
     // MARK: - Private attributes
     
     private var configuration: Configuration?
+    private var language: String?
+    private var translations: [String: Translations] = [:]
     private var bundle: Bundle?
 
     // MARK: - Public methods
@@ -35,5 +37,22 @@ class Session {
     
     func loadConfiguration() -> Configuration? {
         return self.configuration
+    }
+    
+    func save(translations: Translations) {
+        self.translations[translations.language] = translations
+    }
+    
+    func loadTranslations(for language: String) -> Translations? {
+        return self.translations[language]
+    }
+    
+    func translation(for key: String) -> String? {
+        guard let language = self.language else { return nil }
+        return self.translations[language]?.tanslations[key]
+    }
+    
+    func save(language: String) {
+        self.language = language
     }
 }
