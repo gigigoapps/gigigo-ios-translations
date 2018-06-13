@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol TranslationsStorable {
+protocol TranslationsStore {
     func save(language: String)
     func save(configuration: Configuration)
     func loadConfiguration() -> Configuration?
@@ -21,12 +21,12 @@ class TranslationsDataManager {
     
     // MARK: - Private attributes
     
-    private let memoryStorageLayer: TranslationsStorable
-    private let diskStorageLayer: TranslationsStorable
+    private let memoryStorageLayer: TranslationsStore
+    private let diskStorageLayer: TranslationsStore
     
     // MARK: - Public methods
     
-    init(memory: TranslationsStorable, disk: TranslationsStorable) {
+    init(memory: TranslationsStore, disk: TranslationsStore) {
         self.memoryStorageLayer = memory
         self.diskStorageLayer = disk
     }

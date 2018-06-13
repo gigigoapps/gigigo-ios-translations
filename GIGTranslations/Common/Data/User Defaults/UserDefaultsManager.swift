@@ -96,7 +96,7 @@ class UserDefaultsManager {
     }
 }
 
-extension UserDefaultsManager: TranslationsStorable {
+extension UserDefaultsManager: TranslationsStore {
     
     func save(configuration: Configuration) {
         let encodedConfiguration = try? PropertyListEncoder().encode(configuration)

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Session: TranslationsStorable {
+class Session: TranslationsStore {
     
     // MARK: - Public attributes
     
