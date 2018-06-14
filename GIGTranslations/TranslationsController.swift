@@ -12,20 +12,25 @@ class TranslationsController {
     
     static let shared = TranslationsController()
     
+    private var translationsDataManager: TranslationsDataManager?
+    
     private var configurationInteractor: ConfigurationInteractor?
+    private var translationsInteractor: TranslationsInteractor?
     
     func setup(configurationURL: URL, bundle: Bundle?, completion: ((Bool) -> Void)?) {
+        let translationsDataManager = TranslationsDataManager(
+            memory: Session(),
+            disk: UserDefaultsManager(
+                userDefaults: UserDefaults.standard
+            ),
+            local: FileSystemManager(
+                bundle: bundle
+            )
+        )
+        self.translationsDataManager = translationsDataManager
         self.configurationInteractor = ConfigurationInteractor(
             configurationService: ConfigurationService(),
-            translationsDataManager: TranslationsDataManager(
-                memory: Session(),
-                disk: UserDefaultsManager(
-                    userDefaults: UserDefaults.standard
-                ),
-                local: FileSystemManager(
-                    bundle: bundle
-                )
-            )
+            translationsDataManager: translationsDataManager
         )
         self.configurationInteractor?.configure(with: configurationURL) { success in
             completion?(success)
@@ -40,7 +45,16 @@ class TranslationsController {
     }
     
     func set(language: String, completion: ((Bool) -> Void)?) {
-        completion?(true)
+        guard let translationsDataManager = self.translationsDataManager else {
+            completion?(false)
+            return
+        }
+        self.translationsInteractor = TranslationsInteractor(
+            translationsService: TranslationsService(),
+            translationsDataManager: translationsDataManager
+        )
+        self.translationsInteractor?.get(language: language, completion: completion)
+        // TODO: Set language !!!
     }
     
     func value(for key: String) -> String {
