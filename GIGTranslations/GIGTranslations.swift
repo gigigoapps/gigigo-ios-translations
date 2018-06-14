@@ -77,7 +77,7 @@ open class GIGTranslations: NSObject {
     /// - Returns: Value for the requested key, translated to the configured language.
     ///
     /// - Since: 1.0
-    public func value(for key: String) -> String? {
+    public func value(for key: String) -> String {
         return TranslationsController.shared.value(for: key)
     }
     
