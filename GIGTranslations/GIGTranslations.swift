@@ -90,3 +90,13 @@ open class GIGTranslations: NSObject {
         return TranslationsController.shared.translations()
     }
 }
+
+/// Retrieves the translation value for a given key.
+///
+/// - Parameter key: `String` representation for translation key.
+/// - Returns: Value for the requested key, translated to the configured language.
+///
+/// - Since: 1.0
+public func translate(_ key: String) -> String {
+    return GIGTranslations.shared.value(for: key)
+}
