@@ -39,7 +39,7 @@ class TranslationsInteractor {
                     self.translationsDataManager.save(language: language)
                     self.fetchTranslations(for: language, in: configuration, completion: completion)
                 } else {
-                    completion?(false)
+                    completion?(true)
                 }
             } else {
                 self.translationsDataManager.save(language: language)
