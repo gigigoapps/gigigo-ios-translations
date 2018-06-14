@@ -14,6 +14,11 @@ class FileSystemManager: TranslationsStore {
         // !!!
     }
     
+    func loadLanguage() -> String? {
+        // !!!
+        return nil
+    }
+    
     func save(configuration: Configuration) {
         // !!!
     }
@@ -32,7 +37,7 @@ class FileSystemManager: TranslationsStore {
         return nil
     }
     
-    func translations(for key: String) -> String? {
+    func translation(for key: String) -> String? {
         // !!!
         return nil
     }

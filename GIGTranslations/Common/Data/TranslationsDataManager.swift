@@ -10,11 +10,12 @@ import Foundation
 
 protocol TranslationsStore {
     func save(language: String)
+    func loadLanguage() -> String?
     func save(configuration: Configuration)
     func loadConfiguration() -> Configuration?
     func save(translations: Translations)
     func loadTranslations(for language: String) -> Translations?
-    func translations(for key: String) -> String?
+    func translation(for key: String) -> String?
 }
 
 class TranslationsDataManager {
