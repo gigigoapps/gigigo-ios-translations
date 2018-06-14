@@ -34,6 +34,7 @@ class TranslationsController {
         )
         self.configurationInteractor?.configure(with: configurationURL) { success in
             completion?(success)
+            self.syncTranslations()
         }
     }
     
@@ -45,16 +46,12 @@ class TranslationsController {
     }
     
     func set(language: String, completion: ((Bool) -> Void)?) {
-        guard let translationsDataManager = self.translationsDataManager else {
+        self.setTranslationsInteractor()
+        guard self.translationsInteractor != nil else {
             completion?(false)
             return
         }
-        self.translationsInteractor = TranslationsInteractor(
-            translationsService: TranslationsService(),
-            translationsDataManager: translationsDataManager
-        )
-        translationsDataManager.save(language: language)
-        self.translationsInteractor?.get(language: language, completion: completion)
+        self.translationsInteractor?.set(language: language, completion: completion)
     }
     
     func value(for key: String) -> String {
@@ -73,5 +70,22 @@ class TranslationsController {
             return [:]
         }
         return translations.translations
+    }
+    
+    // MARK: - Private helpers
+    
+    private func syncTranslations() {
+        self.setTranslationsInteractor()
+        self.translationsInteractor?.syncTranslations()
+    }
+    
+    private func setTranslationsInteractor() {
+        if self.translationsInteractor == nil {
+            guard let translationsDataManager = self.translationsDataManager else { return }
+            self.translationsInteractor = TranslationsInteractor(
+                translationsService: TranslationsService(),
+                translationsDataManager: translationsDataManager
+            )
+        }
     }
 }

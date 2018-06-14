@@ -15,6 +15,10 @@ class TranslationsInteractor {
     let translationsService: TranslationsServiceInput
     let translationsDataManager: TranslationsDataManager
     
+    // MARK: - Private properties
+    
+    lazy var fetchLanguagesGroup =  DispatchGroup()
+
     // MARK: - Initializer
     
     init(translationsService: TranslationsServiceInput, translationsDataManager: TranslationsDataManager) {
@@ -24,7 +28,7 @@ class TranslationsInteractor {
     
     // MARK: - Public methods
     
-    func get(language: String, completion: ((Bool) -> Void)?) {
+    func set(language: String, completion: ((Bool) -> Void)?) {
         guard let configuration = self.translationsDataManager.loadConfiguration() else {
             completion?(false)
             return
@@ -32,13 +36,32 @@ class TranslationsInteractor {
         self.translationsService.fetchTranslationsLastUpdateDate(of: language, in: configuration) { (lastUpdateDate) in
             if let translations = self.translationsDataManager.loadTranslations(for: language) {
                 if translations.lastUpdateDate != lastUpdateDate {
+                    self.translationsDataManager.save(language: language)
                     self.fetchTranslations(for: language, in: configuration, completion: completion)
                 } else {
                     completion?(false)
                 }
             } else {
+                self.translationsDataManager.save(language: language)
                 self.fetchTranslations(for: language, in: configuration, completion: completion)
             }
+        }
+    }
+    
+    func syncTranslations() {
+        guard let configuration = self.translationsDataManager.loadConfiguration() else {
+            return
+        }
+        for language in configuration.languages {
+            self.fetchLanguagesGroup.enter()
+            print("Will fetch translations for language: \(language)")
+            self.fetchTranslations(for: language.key, in: configuration) { (result) in
+                self.fetchLanguagesGroup.leave()
+                print("Fetch completed \(result ? "succesfully" : "with failure")")
+            }
+        }
+        self.fetchLanguagesGroup.notify(queue: DispatchQueue.main) {
+            print("All translations synched")
         }
     }
     
