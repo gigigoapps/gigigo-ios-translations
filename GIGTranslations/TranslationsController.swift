@@ -43,8 +43,7 @@ class TranslationsController {
         completion?(true)
     }
     
-    func value(for key: String) -> String? {
-        // !!!
+    func value(for key: String) -> String {
         return "Value"
     }
     
