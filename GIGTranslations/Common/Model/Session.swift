@@ -10,26 +10,13 @@ import Foundation
 
 class Session: TranslationsStore {
     
-    // MARK: - Public attributes
-    
-    static let shared = Session()
-    
     // MARK: - Private attributes
     
     private var configuration: Configuration?
     private var language: String?
     private var translations: Set<Translations> = []
-    private var bundle: Bundle?
 
     // MARK: - Public methods
-    
-    func save(bundle: Bundle) {
-        self.bundle = bundle
-    }
-    
-    func loadBundle() -> Bundle? {
-        return self.bundle
-    }
     
     func save(configuration: Configuration) {
         self.configuration = configuration

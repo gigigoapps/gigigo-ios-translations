@@ -8,9 +8,14 @@
 
 import Foundation
 
-protocol TranslationsStore {
-    func save(language: String)
+protocol TranslationsLoader {
     func loadLanguage() -> String?
+    func loadTranslations(for language: String) -> Translations?
+    func translation(for key: String) -> String?
+}
+
+protocol TranslationsStore: TranslationsLoader {
+    func save(language: String)
     func save(configuration: Configuration)
     func loadConfiguration() -> Configuration?
     func save(translations: Translations)
@@ -24,14 +29,14 @@ class TranslationsDataManager {
     
     private let memoryStore: TranslationsStore
     private let diskStore: TranslationsStore
-    private let localStore: TranslationsStore //!!!
+    private let localLoader: TranslationsLoader
     
     // MARK: - Public methods
     
-    init(memory: TranslationsStore, disk: TranslationsStore, local: TranslationsStore) {
+    init(memory: TranslationsStore, disk: TranslationsStore, local: TranslationsLoader) {
         self.memoryStore = memory
         self.diskStore = disk
-        self.localStore = local
+        self.localLoader = local
     }
     
     func save(configuration: Configuration) {
@@ -47,7 +52,7 @@ class TranslationsDataManager {
     func languages() -> [String] {
         let memoryLanguages = self.memoryStore.loadConfiguration()?.languages.keys.map({ $0 })
         let diskLanguages = self.diskStore.loadConfiguration()?.languages.keys.map({ $0 })
-        return (memoryLanguages ?? diskLanguages) ?? []
+        return memoryLanguages ?? diskLanguages ?? []
     }
     
     func loadConfiguration() -> Configuration? {
@@ -64,4 +69,10 @@ class TranslationsDataManager {
         return memoryTranslations ?? self.diskStore.loadTranslations(for: language)
     }
     
+    func loadLanguage() -> String? {
+        let memoryLanguage = self.memoryStore.loadLanguage()
+        let diskLanguage = self.diskStore.loadLanguage()
+        let localLanguage = self.localLoader.loadLanguage()
+        return memoryLanguage ?? diskLanguage ?? localLanguage
+    }
 }

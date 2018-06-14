@@ -8,29 +8,18 @@
 
 import Foundation
 
-class FileSystemManager: TranslationsStore {
+class FileSystemManager: TranslationsLoader {
     
-    func save(language: String) {
-        // !!!
+    // MARK: - Private attributes
+    
+    private let bundle: Bundle?
+    // MARK: - Public methods
+    
+    init(bundle: Bundle?) {
+        self.bundle = bundle
     }
     
-    func loadLanguage() -> String? {
-        // !!!
-        return nil
-    }
-    
-    func save(configuration: Configuration) {
-        // !!!
-    }
-    
-    func loadConfiguration() -> Configuration? {
-        // !!!
-        return nil
-    }
-    
-    func save(translations: Translations) {
-        // !!!
-    }
+    // MARK: - TranslationsLoader
     
     func loadTranslations(for language: String) -> Translations? {
         // !!!
@@ -40,5 +29,9 @@ class FileSystemManager: TranslationsStore {
     func translation(for key: String) -> String? {
         // !!!
         return nil
+    }
+    
+    func loadLanguage() -> String? {
+        return Locale.preferredLanguages.first
     }
 }
