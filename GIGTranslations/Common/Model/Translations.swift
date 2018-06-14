@@ -14,7 +14,7 @@ struct Translations: Codable, Hashable {
     
     var language: String
     var lastUpdateDate: Date
-    var tanslations: [String: String]
+    var translations: [String: String]
     
     var hashValue: Int {
         return self.language.hashValue

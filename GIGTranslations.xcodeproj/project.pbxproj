@@ -54,6 +54,7 @@
 		6190366520C54B27005897C0 /* GIGTranslations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6190365B20C54B27005897C0 /* GIGTranslations.framework */; };
 		6190366A20C54B27005897C0 /* GIGTranslationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6190366920C54B27005897C0 /* GIGTranslationsTests.swift */; };
 		6190366C20C54B27005897C0 /* GIGTranslations.h in Headers */ = {isa = PBXBuildFile; fileRef = 6190365E20C54B27005897C0 /* GIGTranslations.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		61A7ABC420D25FEF00D078A0 /* Translations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EAB38720D111D90018AE17 /* Translations.swift */; };
 		61B0B8DA20CFCBA200E1BB89 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B0B8D920CFCBA200E1BB89 /* LoadingView.swift */; };
 		61B0B8DD20CFDDC500E1BB89 /* TranslationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B0B8DC20CFDDC500E1BB89 /* TranslationsModel.swift */; };
 		61B0B8DF20D00DA500E1BB89 /* TranslationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B0B8DE20D00DA500E1BB89 /* TranslationsController.swift */; };
@@ -752,6 +753,7 @@
 				025AD39120C6D538007E4695 /* Strings.swift in Sources */,
 				0291D8DE20C7E3D000B95143 /* TranslationService+Throw.swift in Sources */,
 				025AD38F20C6D538007E4695 /* System.swift in Sources */,
+				61A7ABC420D25FEF00D078A0 /* Translations.swift in Sources */,
 				025AD39820C6D940007E4695 /* Request.swift in Sources */,
 				025AD38020C6D513007E4695 /* main.swift in Sources */,
 				0291D8E320C7F28D00B95143 /* TranslationFile.swift in Sources */,

@@ -8,11 +8,6 @@
 
 import Foundation
 
-private struct TranslationsResponse {
-    let translations: [String: String]
-    let lastModified: Date?
-}
-
 class DownloadManager {
     
     // MARK: - Public attributes
@@ -86,7 +81,7 @@ class DownloadManager {
     private func downloadTranslation(of index: Int, in configuration: Configuration) throws {
         let language = self.languages[index]
         try self.downloadTranslations(of: language, in: configuration) { response in
-            let lastModified = response.lastModified ?? Date()
+            let lastModified = response.lastUpdateDate
             try TranslationsFile(language: language).set(contents: response.translations)
             try self.configurationFile.set(lastModifiedDate: lastModified, of: language)
             try self.downloadNext(index, in: configuration)
@@ -127,18 +122,12 @@ class DownloadManager {
         }
     }
     
-    private func downloadTranslations(of language: String, in configuration: Configuration, completion: @escaping (TranslationsResponse) throws -> Void) throws {
+    private func downloadTranslations(of language: String, in configuration: Configuration, completion: @escaping (Translations) throws -> Void) throws {
         self.translationsService.fetchTranslations(of: language, in: configuration) { result in
             switch result {
             case .success(let response):
                 do {
-                    let body = try response.body()
-                    guard let translations = body as? [String: String] else {
-                        throw Abort(reason: Strings.Errors.translationFileIsNotCorrect)
-                    }
-                    let lastModifiedString = response.headers()?["Last-Modified"] as? String
-                    let date = Date(from: lastModifiedString ?? "", withFormat: "E, d MMM yyyy HH:mm:ss Z")
-                    try completion(TranslationsResponse(translations: translations, lastModified: date))
+                    try completion(response)
                 } catch let error {
                     throw Abort(reason: error.localizedDescription)
                 }

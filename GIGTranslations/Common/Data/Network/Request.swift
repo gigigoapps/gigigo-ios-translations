@@ -18,6 +18,10 @@ enum Result<SuccessType, ErrorType> {
     case error(ErrorType)
 }
 
+enum RequestError: Error {
+    case invalidResponseFormat
+}
+
 class Response {
     
     // MARK: - Public attributes
