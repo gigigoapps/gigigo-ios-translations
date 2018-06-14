@@ -9,13 +9,16 @@
 import Foundation
 
 class TranslationsController {
+
+    // MARK: - Singleton
     
     static let shared = TranslationsController()
     
+    // MARK: - Private properties
+    
     private var translationsDataManager: TranslationsDataManager?
     
-    private var configurationInteractor: ConfigurationInteractor?
-    private var translationsInteractor: TranslationsInteractor?
+    // MARK: - Public methods
     
     func setup(configurationURL: URL, bundle: Bundle, completion: ((Bool) -> Void)?) {
         let translationsDataManager = TranslationsDataManager(
@@ -28,30 +31,37 @@ class TranslationsController {
             )
         )
         self.translationsDataManager = translationsDataManager
-        self.configurationInteractor = ConfigurationInteractor(
+        let configurationInteractor = ConfigurationInteractor(
             configurationService: ConfigurationService(),
             translationsDataManager: translationsDataManager
         )
-        self.configurationInteractor?.configure(with: configurationURL) { success in
+        configurationInteractor.configure(with: configurationURL) { success in
             completion?(success)
             self.syncTranslations()
         }
     }
     
     func languages() -> [String] {
-        guard let configurationInteractor = self.configurationInteractor else {
+        guard let translationsDataManager = self.translationsDataManager else {
             return []
         }
+        let configurationInteractor = ConfigurationInteractor(
+            configurationService: ConfigurationService(),
+            translationsDataManager: translationsDataManager
+        )
         return configurationInteractor.languages()
     }
     
     func set(language: String, completion: ((Bool) -> Void)?) {
-        self.setTranslationsInteractor()
-        guard self.translationsInteractor != nil else {
+        guard let translationsDataManager = self.translationsDataManager else {
             completion?(false)
             return
         }
-        self.translationsInteractor?.set(language: language, completion: completion)
+        let translationsInteractor = TranslationsInteractor(
+            translationsService: TranslationsService(),
+            translationsDataManager: translationsDataManager
+        )
+        translationsInteractor.set(language: language, completion: completion)
     }
     
     func value(for key: String) -> String {
@@ -75,17 +85,11 @@ class TranslationsController {
     // MARK: - Private helpers
     
     private func syncTranslations() {
-        self.setTranslationsInteractor()
-        self.translationsInteractor?.syncTranslations()
-    }
-    
-    private func setTranslationsInteractor() {
-        if self.translationsInteractor == nil {
-            guard let translationsDataManager = self.translationsDataManager else { return }
-            self.translationsInteractor = TranslationsInteractor(
-                translationsService: TranslationsService(),
-                translationsDataManager: translationsDataManager
-            )
-        }
+        guard let translationsDataManager = self.translationsDataManager else { return }
+        let translationsInteractor = TranslationsInteractor(
+            translationsService: TranslationsService(),
+            translationsDataManager: translationsDataManager
+        )
+        translationsInteractor.syncTranslations()
     }
 }
