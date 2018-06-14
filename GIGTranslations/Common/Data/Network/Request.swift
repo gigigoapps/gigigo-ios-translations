@@ -107,6 +107,10 @@ private extension Request {
             delegate: nil,
             delegateQueue: nil
         )
-        session.dataTask(with: request, completionHandler: completion).resume()
+        session.dataTask(with: request) { data, response, error in
+            DispatchQueue.main.async {
+                completion(data, response, error)
+            }
+        }.resume()
     }
 }
