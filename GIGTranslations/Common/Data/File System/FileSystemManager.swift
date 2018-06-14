@@ -12,12 +12,12 @@ class FileSystemManager: TranslationsLoader {
     
     // MARK: - Private attributes
     
-    private let bundle: Bundle?
+    private let bundle: Bundle
     private var language: String?
     
     // MARK: - Public methods
     
-    init(bundle: Bundle?) {
+    init(bundle: Bundle) {
         self.bundle = bundle
     }
     
@@ -25,7 +25,7 @@ class FileSystemManager: TranslationsLoader {
     
     func loadTranslations(for language: String) -> Translations? {
         guard
-            let path = self.bundle?.path(forResource: language, ofType: "json"),
+            let path = self.bundle.path(forResource: language, ofType: "json"),
             let data = FileManager.default.contents(atPath: path),
             let translations = try? JSONDecoder().decode([String: String].self, from: data)
         else {

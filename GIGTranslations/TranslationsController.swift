@@ -17,7 +17,7 @@ class TranslationsController {
     private var configurationInteractor: ConfigurationInteractor?
     private var translationsInteractor: TranslationsInteractor?
     
-    func setup(configurationURL: URL, bundle: Bundle?, completion: ((Bool) -> Void)?) {
+    func setup(configurationURL: URL, bundle: Bundle, completion: ((Bool) -> Void)?) {
         let translationsDataManager = TranslationsDataManager(
             memory: Session(),
             disk: UserDefaultsManager(
@@ -53,19 +53,25 @@ class TranslationsController {
             translationsService: TranslationsService(),
             translationsDataManager: translationsDataManager
         )
+        translationsDataManager.save(language: language)
         self.translationsInteractor?.get(language: language, completion: completion)
-        // TODO: Set language !!!
     }
     
     func value(for key: String) -> String {
-        return "Value"
+        guard let translationsDataManager = self.translationsDataManager else {
+            return key
+        }
+        return translationsDataManager.translation(for: key)
     }
     
     func translations() -> [String: String] {
-        return [
-            "k1": "Value 1",
-            "k2": "Value 2",
-            "k3": "Value 3"
-        ]
+        guard
+            let translationsDataManager = self.translationsDataManager,
+            let language = translationsDataManager.loadLanguage(),
+            let translations = translationsDataManager.loadTranslations(for: language)
+        else {
+            return [:]
+        }
+        return translations.translations
     }
 }

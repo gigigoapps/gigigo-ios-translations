@@ -36,11 +36,26 @@ open class GIGTranslations: NSObject {
     ///
     /// - Parameters:
     ///   - configurationURL: `URL` to the translations configuration file for the integrating app.
+    ///   - completion: Closure for handling the result of the setup operation. Returns: `true` on success, `false` otherwise.
+    ///
+    /// - Since: 1.0
+    public func setup(configurationURL: URL, completion: ((Bool) -> Void)?) {
+        TranslationsController.shared.setup(
+            configurationURL: configurationURL,
+            bundle: Bundle.main,
+            completion: completion
+        )
+    }
+    
+    /// Configures the framework to support translations for the integrating app.
+    ///
+    /// - Parameters:
+    ///   - configurationURL: `URL` to the translations configuration file for the integrating app.
     ///   - bundle: `Bundle`for the integrating app, used for loading default translations.
     ///   - completion: Closure for handling the result of the setup operation. Returns: `true` on success, `false` otherwise.
     ///
     /// - Since: 1.0
-    public func setup(configurationURL: URL, bundle: Bundle?, completion: ((Bool) -> Void)?) {
+    public func setup(configurationURL: URL, bundle: Bundle, completion: ((Bool) -> Void)?) {
         TranslationsController.shared.setup(
             configurationURL: configurationURL,
             bundle: bundle,
