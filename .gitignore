@@ -24,4 +24,4 @@ project.xcworkspace/
 *.xcscmblueprint
 
 # Carthage
-Carthage/Build
+Carthage
