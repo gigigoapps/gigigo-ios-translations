@@ -19,8 +19,6 @@ protocol TranslationsStore: TranslationsLoader {
     func save(configuration: Configuration)
     func loadConfiguration() -> Configuration?
     func save(translations: Translations)
-    func loadTranslations(for language: String) -> Translations?
-    func translation(for key: String) -> String?
 }
 
 class TranslationsDataManager {
@@ -67,7 +65,9 @@ class TranslationsDataManager {
 
     func loadTranslations(for language: String) -> Translations? {
         let memoryTranslations = self.memoryStore.loadTranslations(for: language)
-        return memoryTranslations ?? self.diskStore.loadTranslations(for: language)
+        let diskTranslations = self.diskStore.loadTranslations(for: language)
+        let localTranlations = self.localLoader.loadTranslations(for: language)
+        return memoryTranslations ?? diskTranslations ?? localTranlations
     }
     
     func loadLanguage() -> String? {
