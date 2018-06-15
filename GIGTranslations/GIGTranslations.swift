@@ -14,7 +14,7 @@ import Foundation
 /// The `GIGTranslations` framework offers an interface to load translated copies for an app from `Gigigo Translation Center`
 ///
 /// ### Usage
-/// Use `GIGTranslations` singleton (i.e.: `GIGTranslations.shared`) to setup the framework for the integrating app
+/// Use `GIGTranslations` class (i.e.: `GIGTranslations`) to setup the framework for the integrating app
 /// and retrieve translated copies.
 ///
 /// ### Notes
@@ -25,10 +25,7 @@ import Foundation
 /// - Copyright: Gigigo S.L.
 open class GIGTranslations: NSObject {
     
-    /// Singleton instance
-    ///
-    /// - Since: 1.0
-    public static let shared = GIGTranslations()
+    private static let translationsController = TranslationsController.shared
     
     // MARK: - Public methods
     
@@ -39,8 +36,8 @@ open class GIGTranslations: NSObject {
     ///   - completion: Closure for handling the result of the setup operation. Returns: `true` on success, `false` otherwise.
     ///
     /// - Since: 1.0
-    public func setup(configurationURL: URL, completion: ((Bool) -> Void)?) {
-        TranslationsController.shared.setup(
+    public class func setup(configurationURL: URL, completion: ((Bool) -> Void)?) {
+        self.translationsController.setup(
             configurationURL: configurationURL,
             bundle: Bundle.main,
             completion: completion
@@ -55,8 +52,8 @@ open class GIGTranslations: NSObject {
     ///   - completion: Closure for handling the result of the setup operation. Returns: `true` on success, `false` otherwise.
     ///
     /// - Since: 1.0
-    public func setup(configurationURL: URL, bundle: Bundle, completion: ((Bool) -> Void)?) {
-        TranslationsController.shared.setup(
+    public class func setup(configurationURL: URL, bundle: Bundle, completion: ((Bool) -> Void)?) {
+        self.translationsController.setup(
             configurationURL: configurationURL,
             bundle: bundle,
             completion: completion
@@ -68,8 +65,8 @@ open class GIGTranslations: NSObject {
     /// - Returns: A collection with the keys for all available languages.
     ///
     /// - Since: 1.0
-    public func languages() -> [String] {
-        return TranslationsController.shared.languages()
+    public class func languages() -> [String] {
+        return self.translationsController.languages()
     }
     
     /// Configures the language for translations.
@@ -79,8 +76,8 @@ open class GIGTranslations: NSObject {
     ///   - completion: Closure for handling the result of the set language operation. Returns: `true` on success, `false` otherwise.
     ///
     /// - Since: 1.0
-    public func set(language: String, completion: ((Bool) -> Void)?) {
-        TranslationsController.shared.set(
+    public class func set(language: String, completion: ((Bool) -> Void)?) {
+        self.translationsController.set(
             language: language,
             completion: completion
         )
@@ -92,8 +89,8 @@ open class GIGTranslations: NSObject {
     /// - Returns: Value for the requested key, translated to the configured language.
     ///
     /// - Since: 1.0
-    public func value(for key: String) -> String {
-        return TranslationsController.shared.value(for: key)
+    public class func value(for key: String) -> String {
+        return self.translationsController.value(for: key)
     }
     
     /// Retrieves available translations for the current configuration.
@@ -101,8 +98,8 @@ open class GIGTranslations: NSObject {
     /// - Returns: A dictionary where the key is the translation key, and the value is the translation value.
     ///
     /// - Since: 1.0
-    public func translations() -> [String: String] {
-        return TranslationsController.shared.translations()
+    public class func translations() -> [String: String] {
+        return self.translationsController.translations()
     }
 }
 
@@ -113,5 +110,5 @@ open class GIGTranslations: NSObject {
 ///
 /// - Since: 1.0
 public func translate(_ key: String) -> String {
-    return GIGTranslations.shared.value(for: key)
+    return GIGTranslations.value(for: key)
 }

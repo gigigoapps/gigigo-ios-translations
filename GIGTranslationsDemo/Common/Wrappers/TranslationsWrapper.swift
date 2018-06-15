@@ -11,28 +11,27 @@ import GIGTranslations
 
 class TranslationsWrapper {
     
-    let translations: GIGTranslations = GIGTranslations()
     public static let shared: TranslationsWrapper = TranslationsWrapper()
     
     // MARK: - Public methods
     
     func configure(with URL: URL, completion: ((Bool) -> Void)?) {
-        self.translations.setup(configurationURL: URL, bundle: Bundle.main, completion: completion)
+        GIGTranslations.setup(configurationURL: URL, bundle: Bundle.main, completion: completion)
     }
     
     func getLanguages() -> [String] {
-        return self.translations.languages()
+        return GIGTranslations.languages()
     }
     
     func setLanguage(_ language: String, completion: ((Bool) -> Void)?) {
-        self.translations.set(language: language, completion: completion)
+        GIGTranslations.set(language: language, completion: completion)
     }
     
     func value(for key: String) -> String? {
-        return self.translations.value(for: key)
+        return GIGTranslations.value(for: key)
     }
     
     func getTranslations() -> [String: String] {
-        return self.translations.translations()
+        return GIGTranslations.translations()
     }
 }
