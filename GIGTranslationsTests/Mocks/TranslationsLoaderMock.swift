@@ -11,7 +11,7 @@ import Foundation
 
 class TranslationsLoaderMock: TranslationsLoader {
     
-    var translations: Translations?
+    var translations: TranslationsModel?
     
     // MARK: - TranslationsLoader
     
@@ -23,7 +23,7 @@ class TranslationsLoaderMock: TranslationsLoader {
         return nil
     }
     
-    func loadTranslations(for language: String) -> Translations? {
+    func loadTranslations(for language: String) -> TranslationsModel? {
         return self.translations
     }
     

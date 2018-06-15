@@ -1,5 +1,5 @@
 //
-//  Translations+Mock.swift
+//  TranslationsModel+Mock.swift
 //  GIGTranslationsTests
 //
 //  Created by José Estela on 15/6/18.
@@ -9,13 +9,13 @@
 import Foundation
 @testable import GIGTranslations
 
-extension Translations {
+extension TranslationsModel {
     
     static func mock(
         language: String = "\(Date().timeIntervalSince1970)",
         lastUpdateDate: Date = Date(),
         translations: [String: String] = [:]
-    ) -> Translations {
-        return Translations(language: language, lastUpdateDate: lastUpdateDate, translations: translations)
+    ) -> TranslationsModel {
+        return TranslationsModel(language: language, lastUpdateDate: lastUpdateDate, translations: translations)
     }
 }

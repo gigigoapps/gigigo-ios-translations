@@ -86,7 +86,7 @@ extension UserDefaultsManager: TranslationsStore {
         return language
     }
     
-    func save(translations: Translations) {
+    func save(translations: TranslationsModel) {
         guard !translations.language.isEmpty else { return }
         let key = UserDefaultsKeys.translationsPrefix + "_" + translations.language
         if let encodedTranslations = try? PropertyListEncoder().encode(translations) {
@@ -98,10 +98,10 @@ extension UserDefaultsManager: TranslationsStore {
         self.userDefaults.synchronize()
     }
     
-    func loadTranslations(for language: String) -> Translations? {
+    func loadTranslations(for language: String) -> TranslationsModel? {
         let key = UserDefaultsKeys.translationsPrefix + "_" + language
         if let data = self.userDefaults.value(forKey: key) as? Data {
-            let value = try? PropertyListDecoder().decode(Translations.self, from: data)
+            let value = try? PropertyListDecoder().decode(TranslationsModel.self, from: data)
             return value
         }
         return nil

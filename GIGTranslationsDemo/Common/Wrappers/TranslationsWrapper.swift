@@ -16,22 +16,22 @@ class TranslationsWrapper {
     // MARK: - Public methods
     
     func configure(with URL: URL, completion: ((Bool) -> Void)?) {
-        GIGTranslations.setup(configurationURL: URL, bundle: Bundle.main, completion: completion)
+        Translations.setup(configurationURL: URL, bundle: Bundle.main, completion: completion)
     }
     
     func getLanguages() -> [String] {
-        return GIGTranslations.languages()
+        return Translations.languages()
     }
     
     func setLanguage(_ language: String, completion: ((Bool) -> Void)?) {
-        GIGTranslations.set(language: language, completion: completion)
+        Translations.set(language: language, completion: completion)
     }
     
     func value(for key: String) -> String? {
-        return GIGTranslations.value(for: key)
+        return Translations.value(for: key)
     }
     
     func getTranslations() -> [String: String] {
-        return GIGTranslations.translations()
+        return Translations.translations()
     }
 }

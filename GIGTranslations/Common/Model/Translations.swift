@@ -1,5 +1,5 @@
 //
-//  Translations.swift
+//  TranslationsModel.swift
 //  GIGTranslations
 //
 //  Created by Jerilyn Goncalves on 13/06/2018.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Translations: Codable, Hashable {
+struct TranslationsModel: Codable, Hashable {
    
     // MARK: - Public attributes
     

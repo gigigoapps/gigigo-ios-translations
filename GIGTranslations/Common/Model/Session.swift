@@ -14,7 +14,7 @@ class Session: TranslationsStore {
     
     private var configuration: Configuration?
     private var language: String?
-    private var translations: Set<Translations> = []
+    private var translations: Set<TranslationsModel> = []
 
     // MARK: - Public methods
     
@@ -26,11 +26,11 @@ class Session: TranslationsStore {
         return self.configuration
     }
     
-    func save(translations: Translations) {
+    func save(translations: TranslationsModel) {
         self.translations.insert(translations)
     }
     
-    func loadTranslations(for language: String) -> Translations? {
+    func loadTranslations(for language: String) -> TranslationsModel? {
         return self.translations.first(where: { $0.language == language })
     }
     

@@ -9,13 +9,13 @@
 import Foundation
 
 protocol TranslationsServiceInput {
-    func fetchTranslations(of language: String, in configuration: Configuration, completion: @escaping (Result<Translations, Error>) -> Void)
+    func fetchTranslations(of language: String, in configuration: Configuration, completion: @escaping (Result<TranslationsModel, Error>) -> Void)
     func fetchTranslationsLastUpdateDate(of language: String, in configuration: Configuration, completion: @escaping (Date?) -> Void)
 }
 
 struct TranslationsService: TranslationsServiceInput {
     
-    func fetchTranslations(of language: String, in configuration: Configuration, completion: @escaping (Result<Translations, Error>) -> Void) {
+    func fetchTranslations(of language: String, in configuration: Configuration, completion: @escaping (Result<TranslationsModel, Error>) -> Void) {
         guard let languageURL = configuration.languages[language], let URL = languageURL else {
             return completion(.error(NSError(domain: "The url for language \(language) is not correct", code: 0, userInfo: nil)))
         }
@@ -26,7 +26,7 @@ struct TranslationsService: TranslationsServiceInput {
                         let responseTranslations = body as? [String: String],
                         let lastModifiedString = response.headers()?["Last-Modified"] as? String,
                         let lastUpdateDate = Date(from: lastModifiedString, withFormat: "E, d MMM yyyy HH:mm:ss Z") {
-                        let translations = Translations(language: language, lastUpdateDate: lastUpdateDate, translations: responseTranslations)
+                        let translations = TranslationsModel(language: language, lastUpdateDate: lastUpdateDate, translations: responseTranslations)
                         completion(.success(translations))
                     } else {
                         completion(.error(RequestError.invalidResponseFormat))

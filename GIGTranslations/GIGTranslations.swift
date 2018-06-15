@@ -14,7 +14,7 @@ import Foundation
 /// The `GIGTranslations` framework offers an interface to load translated copies for an app from `Gigigo Translation Center`
 ///
 /// ### Usage
-/// Use `GIGTranslations` class (i.e.: `GIGTranslations`) to setup the framework for the integrating app
+/// Use `Translations` class (i.e.: `Translations`) to setup the framework for the integrating app
 /// and retrieve translated copies.
 ///
 /// ### Notes
@@ -23,7 +23,7 @@ import Foundation
 /// - Version: 1.0
 /// - Authors: José Carlos Estela, Jerilyn Gonçalves
 /// - Copyright: Gigigo S.L.
-open class GIGTranslations: NSObject {
+open class Translations: NSObject {
     
     private static let translationsController = TranslationsController.shared
     
@@ -110,5 +110,5 @@ open class GIGTranslations: NSObject {
 ///
 /// - Since: 1.0
 public func translate(_ key: String) -> String {
-    return GIGTranslations.value(for: key)
+    return Translations.value(for: key)
 }

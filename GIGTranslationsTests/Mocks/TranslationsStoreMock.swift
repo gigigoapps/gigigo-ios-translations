@@ -11,7 +11,7 @@ import Foundation
 
 class TranslationsStoreMock: TranslationsStore {
     
-    var translations: Translations?
+    var translations: TranslationsModel?
     
     // MARK: - TranslationsStore
     
@@ -23,7 +23,7 @@ class TranslationsStoreMock: TranslationsStore {
         return nil
     }
     
-    func loadTranslations(for language: String) -> Translations? {
+    func loadTranslations(for language: String) -> TranslationsModel? {
         return self.translations
     }
     
@@ -40,7 +40,7 @@ class TranslationsStoreMock: TranslationsStore {
         return nil
     }
     
-    func save(translations: Translations) {
+    func save(translations: TranslationsModel) {
         
     }
 }

@@ -11,14 +11,14 @@ import Foundation
 protocol TranslationsLoader {
     func save(language: String)
     func loadLanguage() -> String?
-    func loadTranslations(for language: String) -> Translations?
+    func loadTranslations(for language: String) -> TranslationsModel?
     func translation(for key: String) -> String?
 }
 
 protocol TranslationsStore: TranslationsLoader {
     func save(configuration: Configuration)
     func loadConfiguration() -> Configuration?
-    func save(translations: Translations)
+    func save(translations: TranslationsModel)
 }
 
 class TranslationsDataManager {
@@ -58,12 +58,12 @@ class TranslationsDataManager {
         return self.memoryStore.loadConfiguration() ?? self.diskStore.loadConfiguration()
     }
     
-    func save(translations: Translations) {
+    func save(translations: TranslationsModel) {
         self.memoryStore.save(translations: translations)
         self.diskStore.save(translations: translations)
     }
 
-    func loadTranslations(for language: String) -> Translations? {
+    func loadTranslations(for language: String) -> TranslationsModel? {
         let memoryTranslations = self.memoryStore.loadTranslations(for: language)
         let diskTranslations = self.diskStore.loadTranslations(for: language)
         let localTranlations = self.localLoader.loadTranslations(for: language)

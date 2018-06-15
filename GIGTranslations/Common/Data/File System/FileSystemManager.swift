@@ -23,7 +23,7 @@ class FileSystemManager: TranslationsLoader {
     
     // MARK: - TranslationsLoader
     
-    func loadTranslations(for language: String) -> Translations? {
+    func loadTranslations(for language: String) -> TranslationsModel? {
         guard
             let path = self.bundle.path(forResource: language, ofType: "json"),
             let data = FileManager.default.contents(atPath: path),
@@ -31,7 +31,7 @@ class FileSystemManager: TranslationsLoader {
         else {
             return nil
         }
-        return Translations(language: language, lastUpdateDate: Date(), translations: translations)
+        return TranslationsModel(language: language, lastUpdateDate: Date(), translations: translations)
     }
     
     func translation(for key: String) -> String? {

@@ -45,54 +45,54 @@ class TranslationsDataManagerTests: XCTestCase {
     // MARK: - Tests
     
     func test_translationsDataManager_shouldReturnTranslationsFromMemory_ifThereAreTranslationsInMemory() {
-        self.memoryStoreMock.translations = Translations.mock(language: "es")
-        self.diskStoreMock.translations = Translations.mock(language: "es")
-        self.localLoaderMock.translations = Translations.mock(language: "es")
+        self.memoryStoreMock.translations = TranslationsModel.mock(language: "es")
+        self.diskStoreMock.translations = TranslationsModel.mock(language: "es")
+        self.localLoaderMock.translations = TranslationsModel.mock(language: "es")
         // Assert
         expect(self.translationsDataManager.loadTranslations(for: "es")) == self.memoryStoreMock.translations
     }
     
     func test_translationsDataManager_shouldReturnTranslationsFromDisk_ifThereAreNotMemoryTranslations_andThereAreDiskTranslations() {
-        self.diskStoreMock.translations = Translations.mock(language: "es")
-        self.localLoaderMock.translations = Translations.mock(language: "es")
+        self.diskStoreMock.translations = TranslationsModel.mock(language: "es")
+        self.localLoaderMock.translations = TranslationsModel.mock(language: "es")
         // Assert
         expect(self.translationsDataManager.loadTranslations(for: "es")) == self.diskStoreMock.translations
     }
     
     func test_translationsDataManager_shouldReturnTranslationsFromLocal_ifThereAreNotMemoryAndDiskTranlations() {
-        self.localLoaderMock.translations = Translations.mock(language: "es")
+        self.localLoaderMock.translations = TranslationsModel.mock(language: "es")
         // Assert
         expect(self.translationsDataManager.loadTranslations(for: "es")) == self.localLoaderMock.translations
     }
     
     func test_translationsDataManager_shouldReturnTranlationForKeyFromMemory_ifThereIsATranlationForThisKeyInMemory() {
-        self.memoryStoreMock.translations = Translations.mock(language: "es", translations: ["key": "memory"])
-        self.diskStoreMock.translations = Translations.mock(language: "es", translations: ["key": "disk"])
-        self.localLoaderMock.translations = Translations.mock(language: "es", translations: ["key": "local"])
+        self.memoryStoreMock.translations = TranslationsModel.mock(language: "es", translations: ["key": "memory"])
+        self.diskStoreMock.translations = TranslationsModel.mock(language: "es", translations: ["key": "disk"])
+        self.localLoaderMock.translations = TranslationsModel.mock(language: "es", translations: ["key": "local"])
         // Assert
         expect(self.translationsDataManager.translation(for: "key")) == "memory"
     }
     
     func test_translationsDataManager_shouldReturnTranlationForKeyFromDisk_ifThereIsNotAnyValueForKeyInMemory_andThereIsATranlationForThisKeyInDisk() {
-        self.memoryStoreMock.translations = Translations.mock(language: "es", translations: [:])
-        self.diskStoreMock.translations = Translations.mock(language: "es", translations: ["key": "disk"])
-        self.localLoaderMock.translations = Translations.mock(language: "es", translations: ["key": "local"])
+        self.memoryStoreMock.translations = TranslationsModel.mock(language: "es", translations: [:])
+        self.diskStoreMock.translations = TranslationsModel.mock(language: "es", translations: ["key": "disk"])
+        self.localLoaderMock.translations = TranslationsModel.mock(language: "es", translations: ["key": "local"])
         // Assert
         expect(self.translationsDataManager.translation(for: "key")) == "disk"
     }
     
     func test_translationsDataManager_shouldReturnTranlationForKeyFromLocal_ifThereIsNotAnyValueForKeyInMemoryAndDisk_andThereIsATranlationForThisKeyInLocal() {
-        self.memoryStoreMock.translations = Translations.mock(language: "es", translations: [:])
-        self.diskStoreMock.translations = Translations.mock(language: "es", translations: [:])
-        self.localLoaderMock.translations = Translations.mock(language: "es", translations: ["key": "local"])
+        self.memoryStoreMock.translations = TranslationsModel.mock(language: "es", translations: [:])
+        self.diskStoreMock.translations = TranslationsModel.mock(language: "es", translations: [:])
+        self.localLoaderMock.translations = TranslationsModel.mock(language: "es", translations: ["key": "local"])
         // Assert
         expect(self.translationsDataManager.translation(for: "key")) == "local"
     }
     
     func test_translationsDataManager_shouldReturnKey_ifThereIsNotAnyTranslationForThisKeyInAllLayers() {
-        self.memoryStoreMock.translations = Translations.mock(language: "es", translations: [:])
-        self.diskStoreMock.translations = Translations.mock(language: "es", translations: [:])
-        self.localLoaderMock.translations = Translations.mock(language: "es", translations: [:])
+        self.memoryStoreMock.translations = TranslationsModel.mock(language: "es", translations: [:])
+        self.diskStoreMock.translations = TranslationsModel.mock(language: "es", translations: [:])
+        self.localLoaderMock.translations = TranslationsModel.mock(language: "es", translations: [:])
         // Assert
         expect(self.translationsDataManager.translation(for: "key")) == "key"
     }
