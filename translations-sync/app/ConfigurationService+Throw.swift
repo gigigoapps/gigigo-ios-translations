@@ -10,7 +10,7 @@ import Foundation
 
 extension ConfigurationService {
     
-    func fetchConfig(of url: URL, completion: @escaping (Result<Configuration, Error>) throws -> Void) {
+    func fetchConfig(of url: URL, completion: @escaping (Result<ConfigurationModel, Error>) throws -> Void) {
         self.fetchConfig(of: url) { result in
             do {
                 try completion(result)

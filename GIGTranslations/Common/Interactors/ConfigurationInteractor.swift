@@ -36,7 +36,7 @@ class ConfigurationInteractor {
         }
     }
     
-    func configuration() -> Configuration? {
+    func configuration() -> ConfigurationModel? {
         return self.translationsDataManager.loadConfiguration()
     }
     

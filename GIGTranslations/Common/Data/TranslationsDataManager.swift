@@ -16,8 +16,8 @@ protocol TranslationsLoader {
 }
 
 protocol TranslationsStore: TranslationsLoader {
-    func save(configuration: Configuration)
-    func loadConfiguration() -> Configuration?
+    func save(configuration: ConfigurationModel)
+    func loadConfiguration() -> ConfigurationModel?
     func save(translations: TranslationsModel)
 }
 
@@ -37,7 +37,7 @@ class TranslationsDataManager {
         self.localLoader = local
     }
     
-    func save(configuration: Configuration) {
+    func save(configuration: ConfigurationModel) {
         self.memoryStore.save(configuration: configuration)
         self.diskStore.save(configuration: configuration)
     }
@@ -54,7 +54,7 @@ class TranslationsDataManager {
         return memoryLanguages ?? diskLanguages ?? []
     }
     
-    func loadConfiguration() -> Configuration? {
+    func loadConfiguration() -> ConfigurationModel? {
         return self.memoryStore.loadConfiguration() ?? self.diskStore.loadConfiguration()
     }
     

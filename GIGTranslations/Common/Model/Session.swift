@@ -12,17 +12,17 @@ class Session: TranslationsStore {
     
     // MARK: - Private attributes
     
-    private var configuration: Configuration?
+    private var configuration: ConfigurationModel?
     private var language: String?
     private var translations: Set<TranslationsModel> = []
 
     // MARK: - Public methods
     
-    func save(configuration: Configuration) {
+    func save(configuration: ConfigurationModel) {
         self.configuration = configuration
     }
     
-    func loadConfiguration() -> Configuration? {
+    func loadConfiguration() -> ConfigurationModel? {
         return self.configuration
     }
     

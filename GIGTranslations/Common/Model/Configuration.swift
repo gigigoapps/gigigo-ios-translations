@@ -1,5 +1,5 @@
 //
-//  Configuration.swift
+//  ConfigurationModel.swift
 //  GIGTranslations
 //
 //  Created by José Estela on 6/6/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Configuration: Codable {
+struct ConfigurationModel: Codable {
     
     // MARK: - Public attributes
     

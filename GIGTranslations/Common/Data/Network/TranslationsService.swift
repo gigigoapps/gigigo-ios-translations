@@ -9,13 +9,13 @@
 import Foundation
 
 protocol TranslationsServiceInput {
-    func fetchTranslations(of language: String, in configuration: Configuration, completion: @escaping (Result<TranslationsModel, Error>) -> Void)
-    func fetchTranslationsLastUpdateDate(of language: String, in configuration: Configuration, completion: @escaping (Date?) -> Void)
+    func fetchTranslations(of language: String, in configuration: ConfigurationModel, completion: @escaping (Result<TranslationsModel, Error>) -> Void)
+    func fetchTranslationsLastUpdateDate(of language: String, in configuration: ConfigurationModel, completion: @escaping (Date?) -> Void)
 }
 
 struct TranslationsService: TranslationsServiceInput {
     
-    func fetchTranslations(of language: String, in configuration: Configuration, completion: @escaping (Result<TranslationsModel, Error>) -> Void) {
+    func fetchTranslations(of language: String, in configuration: ConfigurationModel, completion: @escaping (Result<TranslationsModel, Error>) -> Void) {
         guard let languageURL = configuration.languages[language], let URL = languageURL else {
             return completion(.error(NSError(domain: "The url for language \(language) is not correct", code: 0, userInfo: nil)))
         }
@@ -38,7 +38,7 @@ struct TranslationsService: TranslationsServiceInput {
         //(URL, completion: )
     }
     
-    func fetchTranslationsLastUpdateDate(of language: String, in configuration: Configuration, completion: @escaping (Date?) -> Void) {
+    func fetchTranslationsLastUpdateDate(of language: String, in configuration: ConfigurationModel, completion: @escaping (Date?) -> Void) {
         guard let languageURL = configuration.languages[language], let URL = languageURL else {
             return completion(nil)
         }

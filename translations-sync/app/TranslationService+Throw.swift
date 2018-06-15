@@ -10,7 +10,7 @@ import Foundation
 
 extension TranslationsService {
     
-    func fetchTranslations(of language: String, in configuration: Configuration, completion: @escaping (Result<Translations, Error>) throws -> Void) {
+    func fetchTranslations(of language: String, in configuration: ConfigurationModel, completion: @escaping (Result<Translations, Error>) throws -> Void) {
         self.fetchTranslations(of: language, in: configuration) { result in
             do {
                 try completion(result)
@@ -20,7 +20,7 @@ extension TranslationsService {
         }
     }
     
-    func fetchTranslationsLastUpdateDate(of language: String, in configuration: Configuration, completion: @escaping (Date?) throws -> Void) {
+    func fetchTranslationsLastUpdateDate(of language: String, in configuration: ConfigurationModel, completion: @escaping (Date?) throws -> Void) {
         self.fetchTranslationsLastUpdateDate(of: language, in: configuration) { date in
             do {
                 try completion(date)

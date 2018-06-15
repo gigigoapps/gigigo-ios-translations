@@ -65,7 +65,7 @@ class TranslationsInteractor {
     
     // MARK: - Private helpers
     
-    func fetchTranslations(for language: String, in configuration: Configuration, completion: ((Bool) -> Void)?) {
+    func fetchTranslations(for language: String, in configuration: ConfigurationModel, completion: ((Bool) -> Void)?) {
         self.translationsService.fetchTranslations(of: language, in: configuration, completion: { (result) in
             switch result {
             case .success(let translations):

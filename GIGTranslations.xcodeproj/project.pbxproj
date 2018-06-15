@@ -66,7 +66,10 @@
 		615A41E120CAACE400542957 /* ConfigurationSetupPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615A41E020CAACE400542957 /* ConfigurationSetupPresenter.swift */; };
 		6190366520C54B27005897C0 /* GIGTranslations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6190365B20C54B27005897C0 /* GIGTranslations.framework */; };
 		6190366C20C54B27005897C0 /* GIGTranslations.h in Headers */ = {isa = PBXBuildFile; fileRef = 6190365E20C54B27005897C0 /* GIGTranslations.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		61A7ABC420D25FEF00D078A0 /* Translations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EAB38720D111D90018AE17 /* Translations.swift */; };
+		61A7ABC420D25FEF00D078A0 /* TranslationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EAB38720D111D90018AE17 /* TranslationsModel.swift */; };
+		61A7ABC620D3ACC300D078A0 /* UserDefaultsManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A7ABC520D3ACC300D078A0 /* UserDefaultsManagerTests.swift */; };
+		61A7ABC820D3AEBA00D078A0 /* UserDefaultsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A7ABC720D3AEBA00D078A0 /* UserDefaultsMock.swift */; };
+		61A7ABCA20D3AF1600D078A0 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A7ABC920D3AF1600D078A0 /* UserDefaultsProtocol.swift */; };
 		61B0B8DA20CFCBA200E1BB89 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B0B8D920CFCBA200E1BB89 /* LoadingView.swift */; };
 		61B0B8DD20CFDDC500E1BB89 /* TranslationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B0B8DC20CFDDC500E1BB89 /* TranslationsModel.swift */; };
 		61B0B8DF20D00DA500E1BB89 /* TranslationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61B0B8DE20D00DA500E1BB89 /* TranslationsController.swift */; };
@@ -82,7 +85,7 @@
 		61D7C3CD20CEC0690041CC8C /* GIGTranslations.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6190365B20C54B27005897C0 /* GIGTranslations.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		61D7C3D320CEC0EA0041CC8C /* TranslationsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7C3D220CEC0EA0041CC8C /* TranslationsWrapper.swift */; };
 		61D7C3D720CED1940041CC8C /* UIButton+RoundedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D7C3D620CED1940041CC8C /* UIButton+RoundedBorder.swift */; };
-		61EAB38820D111D90018AE17 /* Translations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EAB38720D111D90018AE17 /* Translations.swift */; };
+		61EAB38820D111D90018AE17 /* TranslationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EAB38720D111D90018AE17 /* TranslationsModel.swift */; };
 		61EAB38A20D17A960018AE17 /* FileSystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61EAB38920D17A960018AE17 /* FileSystemManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -204,6 +207,9 @@
 		6190365F20C54B27005897C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6190366420C54B27005897C0 /* GIGTranslationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GIGTranslationsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6190366B20C54B27005897C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		61A7ABC520D3ACC300D078A0 /* UserDefaultsManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManagerTests.swift; sourceTree = "<group>"; };
+		61A7ABC720D3AEBA00D078A0 /* UserDefaultsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsMock.swift; sourceTree = "<group>"; };
+		61A7ABC920D3AF1600D078A0 /* UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProtocol.swift; sourceTree = "<group>"; };
 		61B0B8D920CFCBA200E1BB89 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		61B0B8DC20CFDDC500E1BB89 /* TranslationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsModel.swift; sourceTree = "<group>"; };
 		61B0B8DE20D00DA500E1BB89 /* TranslationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsController.swift; sourceTree = "<group>"; };
@@ -217,7 +223,7 @@
 		61D7C3CA20CEBF6D0041CC8C /* TranslationsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsInteractor.swift; sourceTree = "<group>"; };
 		61D7C3D220CEC0EA0041CC8C /* TranslationsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsWrapper.swift; sourceTree = "<group>"; };
 		61D7C3D620CED1940041CC8C /* UIButton+RoundedBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+RoundedBorder.swift"; sourceTree = "<group>"; };
-		61EAB38720D111D90018AE17 /* Translations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translations.swift; sourceTree = "<group>"; };
+		61EAB38720D111D90018AE17 /* TranslationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsModel.swift; sourceTree = "<group>"; };
 		61EAB38920D17A960018AE17 /* FileSystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -280,6 +286,7 @@
 				022953AD20D2B15000BE9CC6 /* TranslationsLoaderMock.swift */,
 				022953AF20D2B15A00BE9CC6 /* TranslationsStoreMock.swift */,
 				02A830A520D398410018B378 /* Translations+Mock.swift */,
+				61A7ABC720D3AEBA00D078A0 /* UserDefaultsMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -334,7 +341,7 @@
 			children = (
 				022E3A9220D0FAB2000ECEDA /* Session.swift */,
 				0291D8D420C7D7A000B95143 /* Configuration.swift */,
-				61EAB38720D111D90018AE17 /* Translations.swift */,
+				61EAB38720D111D90018AE17 /* TranslationsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -352,6 +359,7 @@
 			children = (
 				022953AA20D2B09900BE9CC6 /* TranslationsDataManagerTests.swift */,
 				02A830A720D39E260018B378 /* FileSystemManagerTests.swift */,
+				61A7ABC520D3ACC300D078A0 /* UserDefaultsManagerTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -558,6 +566,7 @@
 		61B0B8E620D00FBC00E1BB89 /* User Defaults */ = {
 			isa = PBXGroup;
 			children = (
+				61A7ABC920D3AF1600D078A0 /* UserDefaultsProtocol.swift */,
 				61B0B8E720D00FDF00E1BB89 /* UserDefaultsManager.swift */,
 			);
 			path = "User Defaults";
@@ -835,7 +844,7 @@
 				025AD39120C6D538007E4695 /* Strings.swift in Sources */,
 				0291D8DE20C7E3D000B95143 /* TranslationService+Throw.swift in Sources */,
 				025AD38F20C6D538007E4695 /* System.swift in Sources */,
-				61A7ABC420D25FEF00D078A0 /* Translations.swift in Sources */,
+				61A7ABC420D25FEF00D078A0 /* TranslationsModel.swift in Sources */,
 				025AD39820C6D940007E4695 /* Request.swift in Sources */,
 				025AD38020C6D513007E4695 /* main.swift in Sources */,
 				0291D8E320C7F28D00B95143 /* TranslationFile.swift in Sources */,
@@ -896,11 +905,12 @@
 				022E3A9520D13093000ECEDA /* TranslationsDataManager.swift in Sources */,
 				6102941F20C69812002C65E0 /* GIGTranslations.swift in Sources */,
 				0291D8E720C8249300B95143 /* Date+Extension.swift in Sources */,
-				61EAB38820D111D90018AE17 /* Translations.swift in Sources */,
+				61EAB38820D111D90018AE17 /* TranslationsModel.swift in Sources */,
 				6102942720C698D1002C65E0 /* TranslationsService.swift in Sources */,
 				022E3A9320D0FAB2000ECEDA /* Session.swift in Sources */,
 				0291D8E020C7EECE00B95143 /* NSError+Extension.swift in Sources */,
 				61B0B8DF20D00DA500E1BB89 /* TranslationsController.swift in Sources */,
+				61A7ABCA20D3AF1600D078A0 /* UserDefaultsProtocol.swift in Sources */,
 				61B0B8E220D00EB800E1BB89 /* ConfigurationInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -910,6 +920,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				02A830A820D39E260018B378 /* FileSystemManagerTests.swift in Sources */,
+				61A7ABC820D3AEBA00D078A0 /* UserDefaultsMock.swift in Sources */,
+				61A7ABC620D3ACC300D078A0 /* UserDefaultsManagerTests.swift in Sources */,
 				022953AE20D2B15000BE9CC6 /* TranslationsLoaderMock.swift in Sources */,
 				02A830A620D398410018B378 /* Translations+Mock.swift in Sources */,
 				022953B020D2B15A00BE9CC6 /* TranslationsStoreMock.swift in Sources */,
