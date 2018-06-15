@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02182F0920D3D07800B83135 /* en.json in Resources */ = {isa = PBXBuildFile; fileRef = 02182F0720D3D07700B83135 /* en.json */; };
+		02182F0A20D3D07800B83135 /* es.json in Resources */ = {isa = PBXBuildFile; fileRef = 02182F0820D3D07800B83135 /* es.json */; };
+		02182F0C20D3D48600B83135 /* default.json in Resources */ = {isa = PBXBuildFile; fileRef = 02182F0B20D3D48500B83135 /* default.json */; };
 		022953AB20D2B09900BE9CC6 /* TranslationsDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022953AA20D2B09900BE9CC6 /* TranslationsDataManagerTests.swift */; };
 		022953AE20D2B15000BE9CC6 /* TranslationsLoaderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022953AD20D2B15000BE9CC6 /* TranslationsLoaderMock.swift */; };
 		022953B020D2B15A00BE9CC6 /* TranslationsStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022953AF20D2B15A00BE9CC6 /* TranslationsStoreMock.swift */; };
@@ -142,6 +145,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		02182F0720D3D07700B83135 /* en.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = en.json; sourceTree = "<group>"; };
+		02182F0820D3D07800B83135 /* es.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = es.json; sourceTree = "<group>"; };
+		02182F0B20D3D48500B83135 /* default.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = default.json; sourceTree = "<group>"; };
 		022953AA20D2B09900BE9CC6 /* TranslationsDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsDataManagerTests.swift; sourceTree = "<group>"; };
 		022953AD20D2B15000BE9CC6 /* TranslationsLoaderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsLoaderMock.swift; sourceTree = "<group>"; };
 		022953AF20D2B15A00BE9CC6 /* TranslationsStoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsStoreMock.swift; sourceTree = "<group>"; };
@@ -258,6 +264,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		02182F0620D3CCC000B83135 /* Translations */ = {
+			isa = PBXGroup;
+			children = (
+				02182F0B20D3D48500B83135 /* default.json */,
+				02182F0720D3D07700B83135 /* en.json */,
+				02182F0820D3D07800B83135 /* es.json */,
+			);
+			path = Translations;
+			sourceTree = "<group>";
+		};
 		022953AC20D2B0AC00BE9CC6 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -547,13 +563,6 @@
 			path = "User Defaults";
 			sourceTree = "<group>";
 		};
-		61B0B8E920D013B500E1BB89 /* Translations */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Translations;
-			sourceTree = "<group>";
-		};
 		61D7C3C820CEBECC0041CC8C /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -582,7 +591,7 @@
 		61D7C3D420CECABC0041CC8C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				61B0B8E920D013B500E1BB89 /* Translations */,
+				02182F0620D3CCC000B83135 /* Translations */,
 				615A41AE20CA817300542957 /* Assets.xcassets */,
 				615A41B020CA817300542957 /* LaunchScreen.storyboard */,
 				615A41B320CA817300542957 /* Info.plist */,
@@ -761,8 +770,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				02182F0A20D3D07800B83135 /* es.json in Resources */,
 				615A41B220CA817300542957 /* LaunchScreen.storyboard in Resources */,
 				615A41AF20CA817300542957 /* Assets.xcassets in Resources */,
+				02182F0C20D3D48600B83135 /* default.json in Resources */,
+				02182F0920D3D07800B83135 /* en.json in Resources */,
 				615A41AD20CA817200542957 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

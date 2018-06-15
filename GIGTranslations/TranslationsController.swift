@@ -20,7 +20,7 @@ class TranslationsController {
     
     // MARK: - Public methods
     
-    func setup(configurationURL: URL, bundle: Bundle, completion: ((Bool) -> Void)?) {
+    func setup(bundle: Bundle) {
         let translationsDataManager = TranslationsDataManager(
             memory: Session(),
             disk: UserDefaultsManager(
@@ -31,6 +31,14 @@ class TranslationsController {
             )
         )
         self.translationsDataManager = translationsDataManager
+    }
+    
+    func set(configurationURL: URL, completion: ((Bool) -> Void)?) {
+        guard let translationsDataManager = self.translationsDataManager else {
+            print("The SDK is not configure yet. Please, call to setup(bundle:) method")
+            completion?(false)
+            return
+        }
         let configurationInteractor = ConfigurationInteractor(
             configurationService: ConfigurationService(),
             translationsDataManager: translationsDataManager
@@ -43,6 +51,7 @@ class TranslationsController {
     
     func languages() -> [String] {
         guard let translationsDataManager = self.translationsDataManager else {
+            print("The SDK is not configure yet. Please, call to setup(bundle:) method")
             return []
         }
         let configurationInteractor = ConfigurationInteractor(
@@ -54,6 +63,7 @@ class TranslationsController {
     
     func set(language: String, completion: ((Bool) -> Void)?) {
         guard let translationsDataManager = self.translationsDataManager else {
+            print("The SDK is not configure yet. Please, call to setup(bundle:) method")
             completion?(false)
             return
         }
@@ -61,11 +71,13 @@ class TranslationsController {
             translationsService: TranslationsService(),
             translationsDataManager: translationsDataManager
         )
+        translationsDataManager.save(language: language)
         translationsInteractor.set(language: language, completion: completion)
     }
     
     func value(for key: String) -> String {
         guard let translationsDataManager = self.translationsDataManager else {
+            print("The SDK is not configure yet. Please, call to setup(bundle:) method")
             return key
         }
         return translationsDataManager.translation(for: key)

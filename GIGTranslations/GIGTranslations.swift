@@ -32,16 +32,12 @@ open class Translations: NSObject {
     /// Configures the framework to support translations for the integrating app.
     ///
     /// - Parameters:
-    ///   - configurationURL: `URL` to the translations configuration file for the integrating app.
+    ///   - bundle: `Bundle`for the integrating app, used for loading default translations.
     ///   - completion: Closure for handling the result of the setup operation. Returns: `true` on success, `false` otherwise.
     ///
     /// - Since: 1.0
-    public class func setup(configurationURL: URL, completion: ((Bool) -> Void)?) {
-        self.translationsController.setup(
-            configurationURL: configurationURL,
-            bundle: Bundle.main,
-            completion: completion
-        )
+    public class func setup(bundle: Bundle) {
+        self.translationsController.setup(bundle: bundle)
     }
     
     /// Configures the framework to support translations for the integrating app.
@@ -53,11 +49,17 @@ open class Translations: NSObject {
     ///
     /// - Since: 1.0
     public class func setup(configurationURL: URL, bundle: Bundle, completion: ((Bool) -> Void)?) {
-        self.translationsController.setup(
-            configurationURL: configurationURL,
-            bundle: bundle,
-            completion: completion
-        )
+        self.translationsController.setup(bundle: bundle)
+        self.translationsController.set(configurationURL: configurationURL, completion: completion)
+    }
+    
+    /// !!!
+    ///
+    /// - Parameters:
+    ///   - configurationURL: `URL` to the translations configuration file for the integrating app.
+    ///   - completion: Closure for handling the result of the setup operation. Returns: `true` on success, `false` otherwise.
+    public class func set(configurationURL: URL, completion: ((Bool) -> Void)?) {
+        self.translationsController.set(configurationURL: configurationURL, completion: completion)
     }
     
     /// Retrieves available languages for the current configuration.

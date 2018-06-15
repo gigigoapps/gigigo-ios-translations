@@ -15,6 +15,10 @@ class TranslationsWrapper {
     
     // MARK: - Public methods
     
+    func configure() {
+        Translations.setup(bundle: .main)
+    }
+    
     func configure(with URL: URL, completion: ((Bool) -> Void)?) {
         Translations.setup(configurationURL: URL, bundle: Bundle.main, completion: completion)
     }

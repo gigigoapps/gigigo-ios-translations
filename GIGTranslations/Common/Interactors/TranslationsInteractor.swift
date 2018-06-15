@@ -36,13 +36,11 @@ class TranslationsInteractor {
         self.translationsService.fetchTranslationsLastUpdateDate(of: language, in: configuration) { (lastUpdateDate) in
             if let translations = self.translationsDataManager.loadTranslations(for: language) {
                 if translations.lastUpdateDate != lastUpdateDate {
-                    self.translationsDataManager.save(language: language)
                     self.fetchTranslations(for: language, in: configuration, completion: completion)
                 } else {
                     completion?(true)
                 }
             } else {
-                self.translationsDataManager.save(language: language)
                 self.fetchTranslations(for: language, in: configuration, completion: completion)
             }
         }

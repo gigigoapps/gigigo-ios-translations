@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GIGTranslations
 
 class MainViewController: UIViewController {
     
@@ -59,6 +60,9 @@ class MainViewController: UIViewController {
 extension MainViewController: MainPresenterOutput {
     
     func loadView(with viewModel: MainViewModel) {
+        self.initializeOptionButton.setTitle(translate("main_initialize"), for: .normal)
+        self.setLanguageOptionButton.setTitle(translate("main_set_language"), for: .normal)
+        self.translateOptionButton.setTitle(translate("main_translate"), for: .normal)
         self.initializeOptionButton.isEnabled = true
         self.setLanguageOptionButton.isEnabled = viewModel.isConfigured ? true : false
         self.translateOptionButton.isEnabled = viewModel.isConfigured && viewModel.hasLanguage ? true : false
