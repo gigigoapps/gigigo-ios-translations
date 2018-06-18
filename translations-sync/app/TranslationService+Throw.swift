@@ -10,7 +10,7 @@ import Foundation
 
 extension TranslationsService {
     
-    func fetchTranslations(of language: String, in configuration: Configuration, completion: @escaping (Result<Translations, Error>) throws -> Void) {
+    func fetchTranslations(of language: String, in configuration: Configuration, completion: @escaping (Result<TranslationsModel, Error>) throws -> Void) {
         self.fetchTranslations(of: language, in: configuration) { result in
             do {
                 try completion(result)
