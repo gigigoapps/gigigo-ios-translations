@@ -45,10 +45,10 @@ open class Translations: NSObject {
     /// - Parameters:
     ///   - configurationURL: `URL` to the translations configuration file for the integrating app.
     ///   - bundle: `Bundle`for the integrating app, used for loading default translations.
-    ///   - completion: Closure for handling the result of the setup operation. Returns: `true` on success, `false` otherwise.
+    ///   - completion: Closure for handling the result of the setup operation. Returns: a `TranslationsError` on failure.
     ///
     /// - Since: 1.0
-    public class func setup(configurationURL: URL, bundle: Bundle, completion: ((Bool) -> Void)?) {
+    public class func setup(configurationURL: URL, bundle: Bundle, completion: ((TranslationsResult<TranslationsError>) -> Void)?) {
         self.translationsController.setup(bundle: bundle)
         self.translationsController.set(configurationURL: configurationURL, completion: completion)
     }
@@ -57,8 +57,8 @@ open class Translations: NSObject {
     ///
     /// - Parameters:
     ///   - configurationURL: `URL` to the translations configuration file for the integrating app.
-    ///   - completion: Closure for handling the result of the setup operation. Returns: `true` on success, `false` otherwise.
-    public class func set(configurationURL: URL, completion: ((Bool) -> Void)?) {
+    ///   - completion: Closure for handling the result of the setup operation. Returns: `TranslationsError` on failure.
+    public class func set(configurationURL: URL, completion: ((TranslationsResult<TranslationsError>) -> Void)?) {
         self.translationsController.set(configurationURL: configurationURL, completion: completion)
     }
     
@@ -75,13 +75,13 @@ open class Translations: NSObject {
     ///
     /// - Parameters:
     ///   - language: `String` representation for language key.
-    ///   - completion: Closure for handling the result of the set language operation. Returns: `true` on success, `false` otherwise.
+    ///   - languageSyncCompletion: Closure for handling the result of the language synchronization operation. Returns: `TranslationsError` on failure.
     ///
     /// - Since: 1.0
-    public class func set(language: String, completion: ((Bool) -> Void)?) {
+    public class func set(language: String, languageSyncCompletion: ((TranslationsResult<TranslationsError>) -> Void)?) {
         self.translationsController.set(
             language: language,
-            completion: completion
+            completion: languageSyncCompletion
         )
     }
     

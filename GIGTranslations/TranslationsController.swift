@@ -33,25 +33,25 @@ class TranslationsController {
         self.translationsDataManager = translationsDataManager
     }
     
-    func set(configurationURL: URL, completion: ((Bool) -> Void)?) {
+    func set(configurationURL: URL, completion: ((TranslationsResult<TranslationsError>) -> Void)?) {
         guard let translationsDataManager = self.translationsDataManager else {
-            print("The SDK is not configure yet. Please, call to setup(bundle:) method")
-            completion?(false)
+            print("The SDK is not configured yet. Please, call setup(bundle:) method")
+            completion?(.error(.missingConfigurationSetup))
             return
         }
         let configurationInteractor = ConfigurationInteractor(
             configurationService: ConfigurationService(),
             translationsDataManager: translationsDataManager
         )
-        configurationInteractor.configure(with: configurationURL) { success in
-            completion?(success)
+        configurationInteractor.configure(with: configurationURL) { result in
+            completion?(result)
             self.syncTranslations()
         }
     }
     
     func languages() -> [String] {
         guard let translationsDataManager = self.translationsDataManager else {
-            print("The SDK is not configure yet. Please, call to setup(bundle:) method")
+            print("The SDK is not configured yet. Please, call setup(bundle:) method")
             return []
         }
         let configurationInteractor = ConfigurationInteractor(
@@ -61,10 +61,10 @@ class TranslationsController {
         return configurationInteractor.languages()
     }
     
-    func set(language: String, completion: ((Bool) -> Void)?) {
+    func set(language: String, completion: ((TranslationsResult<TranslationsError>) -> Void)?) {
         guard let translationsDataManager = self.translationsDataManager else {
-            print("The SDK is not configure yet. Please, call to setup(bundle:) method")
-            completion?(false)
+            print("The SDK is not configured yet. Please, call setup(bundle:) method")
+            completion?(.error(.missingConfigurationSetup))
             return
         }
         let translationsInteractor = TranslationsInteractor(
@@ -77,7 +77,7 @@ class TranslationsController {
     
     func value(for key: String) -> String {
         guard let translationsDataManager = self.translationsDataManager else {
-            print("The SDK is not configure yet. Please, call to setup(bundle:) method")
+            print("The SDK is not configured yet. Please, call setup(bundle:) method")
             return key
         }
         return translationsDataManager.translation(for: key)

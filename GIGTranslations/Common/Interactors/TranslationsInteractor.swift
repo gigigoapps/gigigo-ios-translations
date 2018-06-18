@@ -28,9 +28,9 @@ class TranslationsInteractor {
     
     // MARK: - Public methods
     
-    func set(language: String, completion: ((Bool) -> Void)?) {
+    func set(language: String, completion: ((TranslationsResult<TranslationsError>) -> Void)?) {
         guard let configuration = self.translationsDataManager.loadConfiguration() else {
-            completion?(false)
+            completion?(.error(.missingConfigurationSetup))
             return
         }
         self.translationsService.fetchTranslationsLastUpdateDate(of: language, in: configuration) { (lastUpdateDate) in
@@ -38,7 +38,7 @@ class TranslationsInteractor {
                 if translations.lastUpdateDate != lastUpdateDate {
                     self.fetchTranslations(for: language, in: configuration, completion: completion)
                 } else {
-                    completion?(true)
+                    completion?(.success())
                 }
             } else {
                 self.fetchTranslations(for: language, in: configuration, completion: completion)
@@ -55,7 +55,12 @@ class TranslationsInteractor {
             print("Will fetch translations for language: \(language)")
             self.fetchTranslations(for: language.key, in: configuration) { (result) in
                 self.fetchLanguagesGroup.leave()
-                print("Fetch completed \(result ? "succesfully" : "with failure")")
+                switch result {
+                case .success:
+                    print("Fetch completed succesfully")
+                case .error:
+                    print("Fetch completed with failure")
+                }
             }
         }
         self.fetchLanguagesGroup.notify(queue: DispatchQueue.main) {
@@ -65,14 +70,14 @@ class TranslationsInteractor {
     
     // MARK: - Private helpers
     
-    func fetchTranslations(for language: String, in configuration: Configuration, completion: ((Bool) -> Void)?) {
+    func fetchTranslations(for language: String, in configuration: ConfigurationModel, completion: ((TranslationsResult<TranslationsError>) -> Void)?) {
         self.translationsService.fetchTranslations(of: language, in: configuration, completion: { (result) in
             switch result {
             case .success(let translations):
                 self.translationsDataManager.save(translations: translations)
-                completion?(true)
+                completion?(.success())
             case .error:
-                completion?(false)
+                completion?(.error(.languageSyncFailure))
             }
         })
     }

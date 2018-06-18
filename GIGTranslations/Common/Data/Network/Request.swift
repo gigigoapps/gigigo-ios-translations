@@ -13,15 +13,6 @@ private enum HTTPMethod: String {
     case head = "HEAD"
 }
 
-enum Result<SuccessType, ErrorType> {
-    case success(SuccessType)
-    case error(ErrorType)
-}
-
-enum RequestError: Error {
-    case invalidResponseFormat
-}
-
 class Response {
     
     // MARK: - Public attributes

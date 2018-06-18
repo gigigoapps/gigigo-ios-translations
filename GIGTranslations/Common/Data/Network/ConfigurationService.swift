@@ -9,19 +9,19 @@
 import Foundation
 
 protocol ConfigurationServiceInput {
-    func fetchConfig(of url: URL, completion: @escaping (Result<Configuration, Error>) -> Void)
+    func fetchConfig(of url: URL, completion: @escaping (Result<ConfigurationModel, Error>) -> Void)
 }
 
 struct ConfigurationService: ConfigurationServiceInput {
     
-    func fetchConfig(of url: URL, completion: @escaping (Result<Configuration, Error>) -> Void) {
+    func fetchConfig(of url: URL, completion: @escaping (Result<ConfigurationModel, Error>) -> Void) {
         Request.get(url) { result in
             switch result {
             case .success(let response):
-                guard let languages = response.body(toType: [String: String].self) else { return completion(.error(NSError.unexpected())) }
+                guard let languages = response.body(toType: [String: String].self) else { return completion(.error(TranslationsError.badConfigurationResponse)) }
                 let dateString = response.headers()?["Last-Modified"] as? String
                 let date = Date(from: dateString, withFormat: "E, d MMM yyyy HH:mm:ss Z")
-                let configuration = Configuration(
+                let configuration = ConfigurationModel(
                     path: url,
                     lastUpdateDate: date ?? Date(),
                     languages: languages.mapValues({ URL(string: $0) })

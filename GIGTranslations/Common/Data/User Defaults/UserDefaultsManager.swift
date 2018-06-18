@@ -19,11 +19,11 @@ class UserDefaultsManager {
     
     // MARK: - Private attributes
     
-    let userDefaults: UserDefaults
+    let userDefaults: UserDefaultsProtocol
     
     // MARK: - Public methods
     
-    init(userDefaults: UserDefaults) {
+    init(userDefaults: UserDefaultsProtocol) {
         self.userDefaults = userDefaults
     }
     
@@ -67,14 +67,14 @@ class UserDefaultsManager {
 
 extension UserDefaultsManager: TranslationsStore {
     
-    func save(configuration: Configuration) {
+    func save(configuration: ConfigurationModel) {
         let encodedConfiguration = try? PropertyListEncoder().encode(configuration)
         self.userDefaults.set(encodedConfiguration, forKey: UserDefaultsKeys.configuration)
     }
     
-    func loadConfiguration() -> Configuration? {
+    func loadConfiguration() -> ConfigurationModel? {
         guard let data = self.userDefaults.value(forKey: UserDefaultsKeys.configuration) as? Data else { return nil }
-        return try? PropertyListDecoder().decode(Configuration.self, from: data)
+        return try? PropertyListDecoder().decode(ConfigurationModel.self, from: data)
     }
     
     func save(language: String) {
@@ -95,7 +95,6 @@ extension UserDefaultsManager: TranslationsStore {
             // Add key for language translations
             self.storeLanguage(with: key)
         }
-        self.userDefaults.synchronize()
     }
     
     func loadTranslations(for language: String) -> TranslationsModel? {

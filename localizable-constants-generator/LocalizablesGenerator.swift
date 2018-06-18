@@ -38,7 +38,7 @@ struct LocalizablesGenerator {
         }
     }
     
-    private func downloadConfig(_ completion: @escaping (Configuration) throws -> Void) throws {
+    private func downloadConfig(_ completion: @escaping (ConfigurationModel) throws -> Void) throws {
         self.configurationService.fetchConfig(of: self.indexURL) { result in
             switch result {
             case .success(let configuration):
@@ -53,7 +53,7 @@ struct LocalizablesGenerator {
         }
     }
     
-    private func downloadTranslations(of language: String, in configuration: Configuration, completion: @escaping (TranslationsModel) throws -> Void) throws {
+    private func downloadTranslations(of language: String, in configuration: ConfigurationModel, completion: @escaping (TranslationsModel) throws -> Void) throws {
         self.translationsService.fetchTranslations(of: language, in: configuration) { result in
             switch result {
             case .success(let response):

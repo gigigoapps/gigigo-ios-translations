@@ -32,11 +32,11 @@ class TranslationsStoreMock: TranslationsStore {
     }
     
     
-    func save(configuration: Configuration) {
+    func save(configuration: ConfigurationModel) {
         
     }
     
-    func loadConfiguration() -> Configuration? {
+    func loadConfiguration() -> ConfigurationModel? {
         return nil
     }
     

@@ -55,7 +55,7 @@ class DownloadManager {
         }
     }
     
-    private func checkTranslationsAndDownload(of index: Int, in configuration: Configuration) throws {
+    private func checkTranslationsAndDownload(of index: Int, in configuration: ConfigurationModel) throws {
         let language = self.languages[index]
         if TranslationsFile(language: language).exist() {
             self.checkTranslationsFile(of: language, in: configuration) { newDate in
@@ -78,7 +78,7 @@ class DownloadManager {
         }
     }
     
-    private func downloadTranslation(of index: Int, in configuration: Configuration) throws {
+    private func downloadTranslation(of index: Int, in configuration: ConfigurationModel) throws {
         let language = self.languages[index]
         try self.downloadTranslations(of: language, in: configuration) { response in
             let lastModified = response.lastUpdateDate
@@ -88,7 +88,7 @@ class DownloadManager {
         }
     }
     
-    private func downloadNext(_ index: Int, in configuration: Configuration) throws {
+    private func downloadNext(_ index: Int, in configuration: ConfigurationModel) throws {
         if self.languages.count > index + 1 {
             try self.checkTranslationsAndDownload(of: index + 1, in: configuration)
         } else {
@@ -97,7 +97,7 @@ class DownloadManager {
         }
     }
     
-    private func downloadConfig(_ completion: @escaping (Configuration) throws -> Void) throws {
+    private func downloadConfig(_ completion: @escaping (ConfigurationModel) throws -> Void) throws {
         self.configurationService.fetchConfig(of: self.indexURL) { result in
             switch result {
             case .success(let configuration):
@@ -112,7 +112,7 @@ class DownloadManager {
         }
     }
     
-    private func checkTranslationsFile(of language: String, in configuration: Configuration, completion: @escaping (Date?) throws -> Void) {
+    private func checkTranslationsFile(of language: String, in configuration: ConfigurationModel, completion: @escaping (Date?) throws -> Void) {
         self.translationsService.fetchTranslationsLastUpdateDate(of: language, in: configuration) { date in
             do {
                 try completion(date)
@@ -122,7 +122,7 @@ class DownloadManager {
         }
     }
     
-    private func downloadTranslations(of language: String, in configuration: Configuration, completion: @escaping (TranslationsModel) throws -> Void) throws {
+    private func downloadTranslations(of language: String, in configuration: ConfigurationModel, completion: @escaping (TranslationsModel) throws -> Void) throws {
         self.translationsService.fetchTranslations(of: language, in: configuration) { result in
             switch result {
             case .success(let response):

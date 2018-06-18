@@ -19,7 +19,7 @@ class TranslationsWrapper {
         Translations.setup(bundle: .main)
     }
     
-    func configure(with URL: URL, completion: ((Bool) -> Void)?) {
+    func configure(with URL: URL, completion: ((TranslationsResult<TranslationsError>) -> Void)?) {
         Translations.setup(configurationURL: URL, bundle: Bundle.main, completion: completion)
     }
     
@@ -27,8 +27,8 @@ class TranslationsWrapper {
         return Translations.languages()
     }
     
-    func setLanguage(_ language: String, completion: ((Bool) -> Void)?) {
-        Translations.set(language: language, completion: completion)
+    func setLanguage(_ language: String, completion: ((TranslationsResult<TranslationsError>) -> Void)?) {
+        Translations.set(language: language, languageSyncCompletion: completion)
     }
     
     func value(for key: String) -> String? {
