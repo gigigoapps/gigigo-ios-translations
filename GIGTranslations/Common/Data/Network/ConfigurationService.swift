@@ -18,7 +18,7 @@ struct ConfigurationService: ConfigurationServiceInput {
         Request.get(url) { result in
             switch result {
             case .success(let response):
-                guard let languages = response.body(toType: [String: String].self) else { return completion(.error(NSError.unexpected())) }
+                guard let languages = response.body(toType: [String: String].self) else { return completion(.error(TranslationsError.badConfigurationResponse)) }
                 let dateString = response.headers()?["Last-Modified"] as? String
                 let date = Date(from: dateString, withFormat: "E, d MMM yyyy HH:mm:ss Z")
                 let configuration = ConfigurationModel(

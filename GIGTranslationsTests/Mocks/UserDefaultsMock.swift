@@ -11,11 +11,11 @@ import Foundation
 
 class UserDefaultsMock: UserDefaultsProtocol {
     
-    // MARK: -  Public properties
+    // MARK: - Public properties
     
     var stubDictionary: [String: Any]?
     
-    // MARK: -  Private properties
+    // MARK: - Private properties
 
     fileprivate var userDefaultsDictionary = [String: Any]()
     

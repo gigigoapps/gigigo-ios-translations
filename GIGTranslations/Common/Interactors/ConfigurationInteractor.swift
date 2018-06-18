@@ -24,14 +24,14 @@ class ConfigurationInteractor {
     
     // MARK: - Public methods
 
-    func configure(with url: URL, completion: @escaping (Bool) -> Void) {
+    func configure(with url: URL, completion: @escaping (TranslationsResult<TranslationsError>) -> Void) {
         self.configurationService.fetchConfig(of: url) { result in
             switch result {
             case .success(let configuration):
                 self.translationsDataManager.save(configuration: configuration)
-                completion(true)
+                completion(.success())
             case .error:
-                completion(false)
+                completion(.error(.badConfigurationResponse))
             }
         }
     }

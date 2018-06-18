@@ -17,7 +17,7 @@ struct TranslationsService: TranslationsServiceInput {
     
     func fetchTranslations(of language: String, in configuration: ConfigurationModel, completion: @escaping (Result<TranslationsModel, Error>) -> Void) {
         guard let languageURL = configuration.languages[language], let URL = languageURL else {
-            return completion(.error(NSError(domain: "The url for language \(language) is not correct", code: 0, userInfo: nil)))
+            return completion(.error(TranslationsError.invalidLanguageKey))
         }
         Request.get(URL) { (result) in
             switch result {
@@ -29,7 +29,7 @@ struct TranslationsService: TranslationsServiceInput {
                         let translations = TranslationsModel(language: language, lastUpdateDate: lastUpdateDate, translations: responseTranslations)
                         completion(.success(translations))
                     } else {
-                        completion(.error(RequestError.invalidResponseFormat))
+                        completion(.error(TranslationsError.languageSyncFailure))
                     }
             case .error(let error):
                 completion(.error(error))

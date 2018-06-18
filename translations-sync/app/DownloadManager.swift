@@ -122,7 +122,7 @@ class DownloadManager {
         }
     }
     
-    private func downloadTranslations(of language: String, in configuration: ConfigurationModel, completion: @escaping (Translations) throws -> Void) throws {
+    private func downloadTranslations(of language: String, in configuration: ConfigurationModel, completion: @escaping (TranslationsModel) throws -> Void) throws {
         self.translationsService.fetchTranslations(of: language, in: configuration) { result in
             switch result {
             case .success(let response):

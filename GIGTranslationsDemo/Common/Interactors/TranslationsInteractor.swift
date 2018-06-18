@@ -29,10 +29,11 @@ class TranslationsInteractor: TranslationsInteractorInput {
     func configureTranslations(with url: String, completion: ((Bool) -> Void)?) {
         guard let URL = URL(string: url) else { return }
         TranslationsWrapper.shared.configure(with: URL) { (result) in
-            if result {
+            switch result {
+            case .success:
                 self.translationsModel.configuration = URL
                 completion?(true)
-            } else {
+            case .error:
                 completion?(false)
             }
         }
@@ -49,10 +50,11 @@ class TranslationsInteractor: TranslationsInteractorInput {
     func setLanguage(_ language: String, completion: ((Bool) -> Void)?) {
         guard !language.isEmpty else { return }
         TranslationsWrapper.shared.setLanguage(language) { (result) in
-            if result {
+            switch result {
+            case .success:
                 self.translationsModel.language = language
                 completion?(true)
-            } else {
+            case .error:
                 completion?(false)
             }
         }
