@@ -40,7 +40,7 @@ class App {
             >> translations-sync [configuration-url] [--ios-loc-file]
             
             - configuration-url: The configuration url (i.e. http://....index.json)
-            --ios-loc-file: If you want to create a file with a constant for each translation
+            --ios-strings-file: If you want to create a file with a constant for each translation
             
             """,
             minArgs: 1,
@@ -74,7 +74,7 @@ class App {
     private func configuration(from args: [String]?) -> AppConfiguration {
         guard let args = args else { return AppConfiguration(configurationURL: nil, generateiOSFile: false) }
         let configURL = args.first(where: { $0.isStringLink() })
-        let ioLocFile = args.first(where: { $0 == "--ios-loc-file" }) != nil
+        let ioLocFile = args.first(where: { $0.lowercased() == "--ios-loc-file" }) != nil
         return AppConfiguration(
             configurationURL: configURL,
             generateiOSFile: ioLocFile
