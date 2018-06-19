@@ -26,7 +26,7 @@ extension String {
             .joined()
     }
     
-    func isStringLink() -> Bool {
+    func isLink() -> Bool {
         let types: NSTextCheckingResult.CheckingType = [.link]
         let detector = try? NSDataDetector(types: types.rawValue)
         guard (detector != nil && self.count > 0) else { return false }
