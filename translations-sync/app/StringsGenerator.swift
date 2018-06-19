@@ -8,32 +8,39 @@
 
 import Foundation
 
-struct LocalizablesGenerator {
+struct StringsGenerator {
     
     private let configurationService = ConfigurationService()
     private let translationsService = TranslationsService()
     let indexURL: URL
     
-    public func generate() throws {
+    public func generate(_ completion: @escaping () -> Void) throws {
         try self.downloadConfig { config in
             guard let first = config.languages.keys.first else { return }
             try self.downloadTranslations(of: first, in: config) { translations in
                 let constants = translations.translations.keys.map { key in
-                    "let kLocale\(key.underLineToCamelCase()) = translate(\"\(key)\")"
+                    "static let \(key.underLinedToCamelCased()) = translate(\"\(key)\")"
                 }
                 let fileValue = """
-                /// Localizable.swift
+                /// Strings.swift
                 ///
-                /// Auto-generated file (by localizable-constants-generator)
+                /// Auto-generated file (by translations-sync)
                 ///
                 
                 import Foundation
                 import GIGTranslations
                 
-                \(constants.joined(separator: "\n"))
+                struct Strings {
+                
+                \t\(constants.joined(separator: "\n\t"))
+                
+                }
                 
                 """
-                System.createFile(at: System.current() + "/LocalizableConstants.swift", contents: fileValue.data(using: .utf8)!)
+                let fileName = System.current() + "/Strings.swift"
+                System.createFile(at: fileName, contents: fileValue.data(using: .utf8)!)
+                logInfo("Strings file generated in: \(fileName)")
+                completion()
             }
         }
     }

@@ -17,14 +17,6 @@ class ArgumentsValidator {
     let maxArgs: Int?
     let helpMessage: String
     
-    // MARK: - Private attributes
-    
-    typealias Validation = ([Int], ([String]) -> Bool)
-    
-    private var validations: [Validation] = []
-    private var finallyCompletionBlock: (() throws -> Void)?
-    
-    
     // MARK: - Public methods
     
     init(args: [String]?, helpMessage: String, minArgs: Int? = nil, maxArgs: Int? = nil) {

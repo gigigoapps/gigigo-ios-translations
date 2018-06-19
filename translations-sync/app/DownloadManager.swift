@@ -20,6 +20,7 @@ class DownloadManager {
     private let translationsService = TranslationsService()
     private var languages: [String] = []
     private let configurationFile = ConfigurationFile()
+    private var downloadCompletionBlock: (() throws -> Void)? = nil
     
     // MARK: - Public methods
     
@@ -34,7 +35,8 @@ class DownloadManager {
     ///
     /// - Parameter completion: when the process did finish
     /// - Throws: if any error occurs
-    func downloadAll(_ completion: () -> Void) throws {
+    func downloadAll(_ completion: @escaping () throws -> Void) throws {
+        self.downloadCompletionBlock = completion
         try self.downloadConfig { config in
             log("The config file contains the following languages: \(String(describing: config.languages.keys))")
             self.languages = config.languages.keys.map({ $0 })
@@ -93,7 +95,7 @@ class DownloadManager {
             try self.checkTranslationsAndDownload(of: index + 1, in: configuration)
         } else {
             log("Sync process finished")
-            exit(0)
+            try self.downloadCompletionBlock?()
         }
     }
     
