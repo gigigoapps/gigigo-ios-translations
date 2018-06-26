@@ -16,7 +16,7 @@ class ConfigurationFile {
     
     // MARK: - Private attributes
     
-    private let configJsonPath = pwd() + ".config.json"
+    private let configJsonPath = pwd() + Constants.configFilename
     
     // MARK: - Public methods
     

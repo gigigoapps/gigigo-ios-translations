@@ -52,7 +52,7 @@ class DownloadManager {
         var setOfCurrentLanguages = Set(self.currentLanguageFiles())
         setOfCurrentLanguages.subtract(setOfLanguages)
         setOfCurrentLanguages.forEach {
-            System.removeItem(at: pwd() + $0 + ".json")
+            System.removeItem(at: pwd() + $0 + Constants.JSONFileExtension)
             logWarn("Removing '\($0)'")
         }
     }
@@ -141,7 +141,7 @@ class DownloadManager {
     
     private func currentLanguageFiles() -> [String] {
         return System.listItems(in: pwd())?
-            .filter { $0.contains(".json") && $0 != ".config.json" }
-            .map { $0.replacingOccurrences(of: ".json", with: "") } ?? []
+            .filter { $0.contains(Constants.JSONFileExtension) && $0 != Constants.configFilename }
+            .map { $0.replacingOccurrences(of: Constants.JSONFileExtension, with: "") } ?? []
     }
 }

@@ -37,7 +37,7 @@ class App {
             ## Tranlations sync ##
             ##      Usage       ##
 
-            >> translations-sync [configuration-url] [--ios-loc-file]
+            >> translations-sync [configuration-url] [--ios-strings-file]
             
             - configuration-url: The configuration url (i.e. http://....index.json)
             --ios-strings-file: If you want to create a file with a constant for each translation
