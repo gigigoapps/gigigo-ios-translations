@@ -17,6 +17,7 @@
 		022953BB20D2BADD00BE9CC6 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 022953B320D2BAC000BE9CC6 /* Quick.framework */; };
 		022E3A9320D0FAB2000ECEDA /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022E3A9220D0FAB2000ECEDA /* Session.swift */; };
 		022E3A9520D13093000ECEDA /* TranslationsDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 022E3A9420D13093000ECEDA /* TranslationsDataManager.swift */; };
+		0252D78520E3D54F00C3965F /* TranslationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0252D78420E3D54F00C3965F /* TranslationsResponse.swift */; };
 		025AD38020C6D513007E4695 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD37F20C6D513007E4695 /* main.swift */; };
 		025AD38E20C6D538007E4695 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD38520C6D537007E4695 /* Log.swift */; };
 		025AD38F20C6D538007E4695 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 025AD38620C6D537007E4695 /* System.swift */; };
@@ -39,7 +40,7 @@
 		0291D8DE20C7E3D000B95143 /* TranslationService+Throw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0291D8DD20C7E3D000B95143 /* TranslationService+Throw.swift */; };
 		0291D8E020C7EECE00B95143 /* NSError+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0291D8DF20C7EECE00B95143 /* NSError+Extension.swift */; };
 		0291D8E120C7EEFC00B95143 /* NSError+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0291D8DF20C7EECE00B95143 /* NSError+Extension.swift */; };
-		0291D8E320C7F28D00B95143 /* TranslationFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0291D8E220C7F28D00B95143 /* TranslationFile.swift */; };
+		0291D8E320C7F28D00B95143 /* TranslationsFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0291D8E220C7F28D00B95143 /* TranslationsFile.swift */; };
 		0291D8E720C8249300B95143 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0291D8E620C8249300B95143 /* Date+Extension.swift */; };
 		0291D8E820C8249600B95143 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0291D8E620C8249300B95143 /* Date+Extension.swift */; };
 		02A830A320D393030018B378 /* Nimble.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 022953B220D2BABF00BE9CC6 /* Nimble.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -165,6 +166,7 @@
 		022953B320D2BAC000BE9CC6 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = SOURCE_ROOT; };
 		022E3A9220D0FAB2000ECEDA /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		022E3A9420D13093000ECEDA /* TranslationsDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsDataManager.swift; sourceTree = "<group>"; };
+		0252D78420E3D54F00C3965F /* TranslationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsResponse.swift; sourceTree = "<group>"; };
 		025AD37D20C6D513007E4695 /* translations-sync */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "translations-sync"; sourceTree = BUILT_PRODUCTS_DIR; };
 		025AD37F20C6D513007E4695 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		025AD38520C6D537007E4695 /* Log.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -183,7 +185,7 @@
 		0291D8DB20C7E37800B95143 /* ConfigurationService+Throw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ConfigurationService+Throw.swift"; sourceTree = "<group>"; };
 		0291D8DD20C7E3D000B95143 /* TranslationService+Throw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TranslationService+Throw.swift"; sourceTree = "<group>"; };
 		0291D8DF20C7EECE00B95143 /* NSError+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSError+Extension.swift"; sourceTree = "<group>"; };
-		0291D8E220C7F28D00B95143 /* TranslationFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationFile.swift; sourceTree = "<group>"; };
+		0291D8E220C7F28D00B95143 /* TranslationsFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationsFile.swift; sourceTree = "<group>"; };
 		0291D8E620C8249300B95143 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		02A830A520D398410018B378 /* Translations+Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Translations+Mock.swift"; sourceTree = "<group>"; };
 		02A830A720D39E260018B378 /* FileSystemManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystemManagerTests.swift; sourceTree = "<group>"; };
@@ -341,12 +343,13 @@
 				025AD38A20C6D538007E4695 /* ArgumentsValidator.swift */,
 				025AD38B20C6D538007E4695 /* Abort.swift */,
 				025AD38C20C6D538007E4695 /* ConfigurationFile.swift */,
-				0291D8E220C7F28D00B95143 /* TranslationFile.swift */,
+				0291D8E220C7F28D00B95143 /* TranslationsFile.swift */,
 				025AD38D20C6D538007E4695 /* App.swift */,
 				0291D8D920C7E08600B95143 /* DownloadManager.swift */,
 				0291D8DB20C7E37800B95143 /* ConfigurationService+Throw.swift */,
 				0291D8DD20C7E3D000B95143 /* TranslationService+Throw.swift */,
 				61AF031920E242DF00E3EF46 /* Constants.swift */,
+				0252D78420E3D54F00C3965F /* TranslationsResponse.swift */,
 			);
 			path = app;
 			sourceTree = "<group>";
@@ -876,6 +879,7 @@
 				025AD39020C6D538007E4695 /* Dispatch.swift in Sources */,
 				0291D8D720C7DEE500B95143 /* Configuration.swift in Sources */,
 				025AD39120C6D538007E4695 /* Strings.swift in Sources */,
+				0252D78520E3D54F00C3965F /* TranslationsResponse.swift in Sources */,
 				0291D8DE20C7E3D000B95143 /* TranslationService+Throw.swift in Sources */,
 				619FB3D220D7B883004E0023 /* Result.swift in Sources */,
 				025AD38F20C6D538007E4695 /* System.swift in Sources */,
@@ -883,7 +887,7 @@
 				61A7ABC420D25FEF00D078A0 /* TranslationsModel.swift in Sources */,
 				025AD39820C6D940007E4695 /* Request.swift in Sources */,
 				025AD38020C6D513007E4695 /* main.swift in Sources */,
-				0291D8E320C7F28D00B95143 /* TranslationFile.swift in Sources */,
+				0291D8E320C7F28D00B95143 /* TranslationsFile.swift in Sources */,
 				025AD39220C6D538007E4695 /* ArgumentsValidator.swift in Sources */,
 				02700EF320D8E02D00ABD1C8 /* StringsGenerator.swift in Sources */,
 				619FB3CF20D7AA5D004E0023 /* TranslationsError.swift in Sources */,

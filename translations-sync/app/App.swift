@@ -8,9 +8,28 @@
 
 import Foundation
 
+enum Platform {
+    
+    case iOS
+    case android
+    case universal
+    
+    func fileExtension() -> String {
+        switch self {
+        case .iOS:
+            return "strings"
+        case .android:
+            return "xml"
+        case .universal:
+            return "json"
+        }
+    }
+}
+
 struct AppConfiguration {
     let configurationURL: String?
     let generateiOSFile: Bool
+    let platform: Platform
 }
 
 class App {
@@ -37,14 +56,17 @@ class App {
             ## Tranlations sync ##
             ##      Usage       ##
 
-            >> translations-sync [configuration-url] [--ios-strings-file]
+            >> translations-sync [configuration-url] [--iOS|--android|--universal] [--ios-strings-file]
             
-            - configuration-url: The configuration url (i.e. http://....index.json)
-            --ios-strings-file: If you want to create a file with a constant for each translation
+            - configuration-url: the configuration url (i.e. http://....index.json)
+            --universal: (default) download the translations files in 'json' format
+            --iOS: download the translations files in 'strings' format
+            --android: download the translations files in 'xml' format
+            --ios-strings-file: if you want to create a swift file with a constant for each translation
             
             """,
             minArgs: 1,
-            maxArgs: 3
+            maxArgs: 4
         )
         try argumentsValidator.validate()
         let configuration = self.configuration(from: args)
@@ -59,7 +81,7 @@ class App {
     
     private func start(_ configuration: AppConfiguration) throws {
         let indexURL = try self.configurationFile.indexURL()
-        self.downloadManager = DownloadManager(indexURL: indexURL)
+        self.downloadManager = DownloadManager(indexURL: indexURL, platform: configuration.platform)
         try self.downloadManager?.downloadAll {
             if configuration.generateiOSFile {
                 try StringsGenerator(indexURL: indexURL).generate() {
@@ -72,12 +94,30 @@ class App {
     }
     
     private func configuration(from args: [String]?) -> AppConfiguration {
-        guard let args = args else { return AppConfiguration(configurationURL: nil, generateiOSFile: false) }
+        guard let args = args else { return AppConfiguration(configurationURL: nil, generateiOSFile: false, platform: .universal) }
         let configURL = args.first(where: { $0.isLink() })
         let generateiOSFile = args.first(where: { $0.lowercased() == "--ios-strings-file" }) != nil
+        let iOSPlatform = args.first(where: { $0.lowercased() == "--ios" }) != nil
+        let androidPlatform = args.first(where: { $0.lowercased() == "--android" }) != nil
+        let platform: Platform = {
+            if iOSPlatform {
+                return Platform.iOS
+            } else if androidPlatform {
+                return Platform.android
+            }
+            return Platform.universal
+        }()
         return AppConfiguration(
             configurationURL: configURL,
-            generateiOSFile: generateiOSFile
+            generateiOSFile: generateiOSFile,
+            platform: platform
         )
+    }
+}
+
+private extension Bool {
+    
+    static func ?? (lhs: Bool, rhs: Bool) -> Bool {
+        return lhs ? lhs : rhs
     }
 }

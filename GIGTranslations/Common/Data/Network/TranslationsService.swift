@@ -15,6 +15,20 @@ protocol TranslationsServiceInput {
 
 struct TranslationsService: TranslationsServiceInput {
     
+    func fetchTranslationsResponse(of language: String, in configuration: ConfigurationModel, completion: @escaping (Result<Response, Error>) -> Void) {
+        guard let languageURL = configuration.languages[language], let URL = languageURL else {
+            return completion(.error(TranslationsError.invalidLanguageKey))
+        }
+        Request.get(URL) { (result) in
+            switch result {
+            case .success(let response):
+                completion(.success(response))
+            case .error(let error):
+                completion(.error(error))
+            }
+        }
+    }
+    
     func fetchTranslations(of language: String, in configuration: ConfigurationModel, completion: @escaping (Result<TranslationsModel, Error>) -> Void) {
         guard let languageURL = configuration.languages[language], let URL = languageURL else {
             return completion(.error(TranslationsError.invalidLanguageKey))
@@ -35,7 +49,6 @@ struct TranslationsService: TranslationsServiceInput {
                 completion(.error(error))
             }
         }
-        //(URL, completion: )
     }
     
     func fetchTranslationsLastUpdateDate(of language: String, in configuration: ConfigurationModel, completion: @escaping (Date?) -> Void) {

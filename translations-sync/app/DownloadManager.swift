@@ -13,6 +13,7 @@ class DownloadManager {
     // MARK: - Public attributes
     
     let indexURL: URL
+    let platform: Platform
     
     // MARK: - Private attributes
     
@@ -27,8 +28,9 @@ class DownloadManager {
     /// Setup with the coonfiguration index URL
     ///
     /// - Parameter indexURL: The index URL
-    init(indexURL: URL) {
+    init(indexURL: URL, platform: Platform) {
         self.indexURL = indexURL
+        self.platform = platform
     }
     
     /// Start the download process of all information (config file + all translation files)
@@ -59,7 +61,7 @@ class DownloadManager {
     
     private func checkTranslationsAndDownload(of index: Int, in configuration: ConfigurationModel) throws {
         let language = self.languages[index]
-        if TranslationsFile(language: language).exist() {
+        if TranslationsFile(language: language, platform: self.platform).exist() {
             self.checkTranslationsFile(of: language, in: configuration) { newDate in
                 if let newDate = newDate, let lastModified = self.configurationFile.lastModified(of: language) {
                     if !lastModified.isSameDate(that: newDate) {
@@ -84,7 +86,7 @@ class DownloadManager {
         let language = self.languages[index]
         try self.downloadTranslations(of: language, in: configuration) { response in
             let lastModified = response.lastUpdateDate
-            try TranslationsFile(language: language).set(contents: response.translations)
+            try TranslationsFile(language: language, platform: self.platform).set(content: response.data)
             try self.configurationFile.set(lastModifiedDate: lastModified, of: language)
             try self.downloadNext(index, in: configuration)
         }
@@ -124,12 +126,22 @@ class DownloadManager {
         }
     }
     
-    private func downloadTranslations(of language: String, in configuration: ConfigurationModel, completion: @escaping (TranslationsModel) throws -> Void) throws {
-        self.translationsService.fetchTranslations(of: language, in: configuration) { result in
+    private func downloadTranslations(of language: String, in configuration: ConfigurationModel, completion: @escaping (TranslationsResponse) throws -> Void) throws {
+        self.translationsService.fetchTranslationsResponse(of: language, in: configuration) { result in
             switch result {
             case .success(let response):
+                guard let data = response.data else {
+                    throw Abort(reason: "Translations for \(language) are in invalid format")
+                }
+                let date: Date = {
+                    if  let lastModifiedString = response.headers()?["Last-Modified"] as? String,
+                        let lastUpdateDate = Date(from: lastModifiedString, withFormat: "E, d MMM yyyy HH:mm:ss Z") {
+                        return lastUpdateDate
+                    }
+                    return Date()
+                }()
                 do {
-                    try completion(response)
+                    try completion(TranslationsResponse(data: data, lastUpdateDate: date))
                 } catch let error {
                     throw Abort(reason: error.localizedDescription)
                 }
