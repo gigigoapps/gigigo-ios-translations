@@ -74,10 +74,10 @@ class App {
     private func configuration(from args: [String]?) -> AppConfiguration {
         guard let args = args else { return AppConfiguration(configurationURL: nil, generateiOSFile: false) }
         let configURL = args.first(where: { $0.isLink() })
-        let ioLocFile = args.first(where: { $0.lowercased() == "--ios-strings-file" }) != nil
+        let generateiOSFile = args.first(where: { $0.lowercased() == "--ios-strings-file" }) != nil
         return AppConfiguration(
             configurationURL: configURL,
-            generateiOSFile: ioLocFile
+            generateiOSFile: generateiOSFile
         )
     }
 }
