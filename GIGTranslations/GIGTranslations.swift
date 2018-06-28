@@ -53,7 +53,7 @@ open class Translations: NSObject {
         self.translationsController.set(configurationURL: configurationURL, completion: completion)
     }
     
-    /// !!!
+    /// Configures the framework `URL` to the translations configuration file for the integrating app.
     ///
     /// - Parameters:
     ///   - configurationURL: `URL` to the translations configuration file for the integrating app.
