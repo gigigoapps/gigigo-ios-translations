@@ -1,21 +1,23 @@
-# Gigigo tranlations sdk
+# GIGTranslations SDK
 
 ![Language](https://img.shields.io/badge/Language-Swift-orange.svg)
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 
-## Integrating
+## Integration
+
+For supporting translations from Gigigo in your app or library, you can integrate through the dependency manager Carthage as explained below.
 
 ### Using Carthage
 
-Add the following line to your `Cartfile` 
+Add the following line to your `Cartfile` to add GIGTranslations as a dependency for your project.
 
 ```
 github "XXXXX/gigigo-translations-lib" ~> 1.0
 ```
 
-## Set up
+## Setup
 
 The GIGTranslations SDK is based on `json` format way to translate the strings of your application. So, the first thing you have to do is configure your translations files. This files needs a flatted-json-format `key`: `value` in order to work properly. The name of file for each language have to be `[language-code].json`, i.e.
 `en.json`. Then, add all your keys to this json file:
