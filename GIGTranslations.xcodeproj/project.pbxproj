@@ -317,27 +317,27 @@
 		025AD37E20C6D513007E4695 /* translations-sync */ = {
 			isa = PBXGroup;
 			children = (
-				025AD38820C6D538007E4695 /* app */,
-				025AD38420C6D537007E4695 /* helpers */,
+				0266FFC920E4BBAB00FF8331 /* Extension */,
+				025AD38820C6D538007E4695 /* App */,
+				025AD38420C6D537007E4695 /* Helpers */,
 				025AD37F20C6D513007E4695 /* main.swift */,
 			);
 			path = "translations-sync";
 			sourceTree = "<group>";
 		};
-		025AD38420C6D537007E4695 /* helpers */ = {
+		025AD38420C6D537007E4695 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				025AD38520C6D537007E4695 /* Log.swift */,
 				025AD38620C6D537007E4695 /* System.swift */,
 				025AD38720C6D537007E4695 /* Dispatch.swift */,
 			);
-			path = helpers;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
-		025AD38820C6D538007E4695 /* app */ = {
+		025AD38820C6D538007E4695 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				0264825920D804F700B08947 /* String+Extension.swift */,
 				0264825720D804E600B08947 /* StringsGenerator.swift */,
 				025AD38920C6D538007E4695 /* Strings.swift */,
 				025AD38A20C6D538007E4695 /* ArgumentsValidator.swift */,
@@ -346,12 +346,20 @@
 				0291D8E220C7F28D00B95143 /* TranslationsFile.swift */,
 				025AD38D20C6D538007E4695 /* App.swift */,
 				0291D8D920C7E08600B95143 /* DownloadManager.swift */,
-				0291D8DB20C7E37800B95143 /* ConfigurationService+Throw.swift */,
-				0291D8DD20C7E3D000B95143 /* TranslationService+Throw.swift */,
 				61AF031920E242DF00E3EF46 /* Constants.swift */,
 				0252D78420E3D54F00C3965F /* TranslationsResponse.swift */,
 			);
-			path = app;
+			path = App;
+			sourceTree = "<group>";
+		};
+		0266FFC920E4BBAB00FF8331 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				0264825920D804F700B08947 /* String+Extension.swift */,
+				0291D8DB20C7E37800B95143 /* ConfigurationService+Throw.swift */,
+				0291D8DD20C7E3D000B95143 /* TranslationService+Throw.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		0291D8D320C7D5C000B95143 /* Model */ = {
