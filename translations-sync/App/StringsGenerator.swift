@@ -19,7 +19,7 @@ struct StringsGenerator {
             guard let first = config.languages.keys.first else { return }
             try self.downloadTranslations(of: first, in: config) { translations in
                 let constants = translations.translations.keys.sorted().map { key in
-                    "static let \(key.underLinedToCamelCased()) = translate(\"\(key)\")"
+                    "static var \(key.underLinedToCamelCased()): String { translate(\"\(key)\") }"
                 }
                 let fileValue = """
                 /// Strings.swift
