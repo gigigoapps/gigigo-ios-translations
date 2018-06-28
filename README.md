@@ -76,6 +76,46 @@ let key = translate("key_1")
 ```
 
 
-## Translations script
+# Translations script
 
-(WIP)
+This script provide a easy way to download all your translation files resources. You just need to add the same configuration url provided to the SDK and it will download all languages and save it in the correct format. This script creates a `config.json` file with all configuration needed in order to improve it usage. 
+
+## Install
+
+`bash <(curl -s https://raw.githubusercontent.com/jerilyngigigo/gigigo-tranlations-ios-lib/develop/scripts/install_translations_sync.sh)`
+
+## Usage
+
+```
+>> translations-sync [configuration-url] [--iOS|--android|--universal] [--ios-strings-file]
+
+- configuration-url: the configuration url (i.e. http://....index.json)
+--universal: (default) download the translations files in 'json' format
+--iOS: download the translations files in 'strings' format
+--android: download the translations files in 'xml' format
+--ios-strings-file: if you want to create a swift file with a constant for each translation
+```
+
+An example of usage could be:
+
+```
+>> translations-sync "http://.../index.json"
+```
+
+### iOS strings file
+
+This option generates a swift file with a constant for each translation. This only works if the language file is a **json** type. With this file included in your project, you just need to call to `Strings.keyGenerated` to obtain the value of the translation. An example of file created is:
+
+```swift
+import Foundation
+import GIGTranslations
+
+struct Strings {
+	static let homeLoginButton = translate("home_login_button")
+	static let homeLogoutButton = translate("home_logout_button")
+}
+
+```
+
+So, if you want to translate the `"home_login_button"` key, just call `Strings.homeLoginButton`.
+
