@@ -31,7 +31,7 @@ Secondly, we have to create a configuration file indicating where is each langua
 
 ```json
 {
-	"default": "https://route/to/default.json"
+	"default": "https://route/to/default.json",
 	"en": "https://route/to/en.json"
 }
 ```
