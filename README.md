@@ -113,8 +113,8 @@ import Foundation
 import GIGTranslations
 
 struct Strings {
-	static let homeLoginButton = translate("home_login_button")
-	static let homeLogoutButton = translate("home_logout_button")
+	static var homeLoginButton: String { translate("home_login_button") }
+	static var homeLogoutButton: String { translate("home_logout_button") }
 }
 
 ```

@@ -9,6 +9,6 @@
 import Foundation
 
 struct Constants {
-    static let configFilename = "config.json"
+    static let configFilename = ".config.json"
     static let JSONFileExtension = ".json"
 }

@@ -108,7 +108,7 @@ class DownloadManager {
                 do {
                     try completion(configuration)
                 } catch let error {
-                    throw Abort(reason: error.localizedDescription)
+                    handleThrow(error)
                 }
             case .error:
                 throw Abort(reason: Strings.Errors.configurationURLIsNotCorrect)
@@ -121,12 +121,21 @@ class DownloadManager {
             do {
                 try completion(date)
             } catch let error {
-                throw Abort(reason: error.localizedDescription)
+                handleThrow(error)
             }
         }
     }
     
     private func downloadTranslations(of language: String, in configuration: ConfigurationModel, completion: @escaping (TranslationsResponse) throws -> Void) throws {
+        
+        guard
+            let languageURL = configuration.languages[language],
+            let URL = languageURL,
+            URL.lastPathComponent.contains(self.platform.fileExtension())
+        else {
+            throw Abort(reason: "Translations for '--\(self.platform)' should be '.\(self.platform.fileExtension())' files")
+        }
+        
         self.translationsService.fetchTranslationsResponse(of: language, in: configuration) { result in
             switch result {
             case .success(let response):
@@ -143,7 +152,7 @@ class DownloadManager {
                 do {
                     try completion(TranslationsResponse(data: data, lastUpdateDate: date))
                 } catch let error {
-                    throw Abort(reason: error.localizedDescription)
+                    handleThrow(error)
                 }
             case .error(let error):
                 throw Abort(reason: error.localizedDescription)
