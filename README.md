@@ -14,7 +14,7 @@ For supporting translations from Gigigo in your app or library, you can integrat
 Add the following line to your `Cartfile` to add GIGTranslations as a dependency for your project.
 
 ```
-github "XXXXX/gigigo-translations-lib" ~> 1.0
+github "gigigoapps/gigigo-ios-translations" ~> 1.0
 ```
 
 ## Setup
@@ -84,7 +84,7 @@ This script provide a easy way to download all your translation files resources.
 
 ## Install
 
-`bash <(curl -s https://raw.githubusercontent.com/jerilyngigigo/gigigo-tranlations-ios-lib/develop/scripts/install_translations_sync.sh)`
+`bash <(curl -s https://raw.githubusercontent.com/gigigoapps/gigigo-ios-translations/develop/scripts/install_translations_sync.sh)`
 
 ## Usage
 
