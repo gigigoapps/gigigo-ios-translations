@@ -36,15 +36,19 @@ struct TranslationsService: TranslationsServiceInput {
         Request.get(URL) { (result) in
             switch result {
             case .success(let response):
-                    if let body = try? response.body(),
-                        let responseTranslations = body as? [String: String],
-                        let lastModifiedString = response.headers()?["Last-Modified"] as? String,
-                        let lastUpdateDate = Date(from: lastModifiedString, withFormat: "E, d MMM yyyy HH:mm:ss Z") {
-                        let translations = TranslationsModel(language: language, lastUpdateDate: lastUpdateDate, translations: responseTranslations)
-                        completion(.success(translations))
-                    } else {
-                        completion(.error(TranslationsError.languageSyncFailure))
-                    }
+                guard
+                    let body = try? response.body(),
+                    let responseTranslations = body as? [String: String]
+                else {
+                    return completion(.error(TranslationsError.languageSyncFailure))
+                }
+                if let lastModifiedString = response.headers()?["Last-Modified"] as? String, let lastUpdateDate = Date(from: lastModifiedString, withFormat: "E, d MMM yyyy HH:mm:ss Z") {
+                    let translations = TranslationsModel(language: language, lastUpdateDate: lastUpdateDate, translations: responseTranslations)
+                    completion(.success(translations))
+                } else {
+                    let translations = TranslationsModel(language: language, lastUpdateDate: Date(), translations: responseTranslations)
+                    completion(.success(translations))
+                }
             case .error(let error):
                 completion(.error(error))
             }
@@ -61,8 +65,8 @@ struct TranslationsService: TranslationsServiceInput {
                 guard
                     let dateString = headers?["Last-Modified"] as? String,
                     let date = Date(from: dateString, withFormat: "E, d MMM yyyy HH:mm:ss Z")
-                else {
-                    return completion(nil)
+                    else {
+                        return completion(nil)
                 }
                 completion(date)
             case .error:

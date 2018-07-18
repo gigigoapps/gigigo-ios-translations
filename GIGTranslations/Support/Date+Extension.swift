@@ -26,6 +26,7 @@ extension Date {
         let dateFormat = DateFormatter()
         dateFormat.dateFormat = format
         dateFormat.timeZone = TimeZone(abbreviation: "CET")
+        dateFormat.locale = Locale(identifier: "en_US_POSIX")
         if let date =  dateFormat.date(from: string) {
             self = date
         } else {
