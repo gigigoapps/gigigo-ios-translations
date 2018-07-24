@@ -49,9 +49,9 @@ class TranslationsDataManager {
     }
     
     func languages() -> [String] {
-        let memoryLanguages = self.memoryStore.loadConfiguration()?.languages.keys.map({ $0 })
-        let diskLanguages = self.diskStore.loadConfiguration()?.languages.keys.map({ $0 })
-        return memoryLanguages ?? diskLanguages ?? []
+        return self.memoryStore.loadConfiguration()?.languages.keys.map({ $0 }) ??
+            self.diskStore.loadConfiguration()?.languages.keys.map({ $0 }) ??
+            []
     }
     
     func loadConfiguration() -> ConfigurationModel? {
@@ -64,23 +64,21 @@ class TranslationsDataManager {
     }
 
     func loadTranslations(for language: String) -> TranslationsModel? {
-        let memoryTranslations = self.memoryStore.loadTranslations(for: language)
-        let diskTranslations = self.diskStore.loadTranslations(for: language)
-        let localTranlations = self.localLoader.loadTranslations(for: language)
-        return memoryTranslations ?? diskTranslations ?? localTranlations
+        return self.memoryStore.loadTranslations(for: language) ??
+            self.diskStore.loadTranslations(for: language) ??
+            self.localLoader.loadTranslations(for: language)
     }
     
     func loadLanguage() -> String? {
-        let memoryLanguage = self.memoryStore.loadLanguage()
-        let diskLanguage = self.diskStore.loadLanguage()
-        let localLanguage = self.localLoader.loadLanguage()
-        return memoryLanguage ?? diskLanguage ?? localLanguage
+        return self.memoryStore.loadLanguage() ??
+            self.diskStore.loadLanguage()??
+            self.localLoader.loadLanguage()
     }
     
     func translation(for key: String) -> String {
-        let memoryTranslation = self.memoryStore.translation(for: key)
-        let diskTranslation = self.diskStore.translation(for: key)
-        let localTranslation = self.localLoader.translation(for: key)
-        return memoryTranslation ?? diskTranslation ?? localTranslation ?? NSLocalizedString(key, comment: "")
+        return self.memoryStore.translation(for: key) ??
+            self.diskStore.translation(for: key) ??
+            self.localLoader.translation(for: key) ??
+            NSLocalizedString(key, comment: "")
     }
 }
