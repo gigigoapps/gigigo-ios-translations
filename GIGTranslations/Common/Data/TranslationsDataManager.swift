@@ -71,7 +71,7 @@ class TranslationsDataManager {
     
     func loadLanguage() -> String? {
         return self.memoryStore.loadLanguage() ??
-            self.diskStore.loadLanguage()??
+            self.diskStore.loadLanguage() ??
             self.localLoader.loadLanguage()
     }
     

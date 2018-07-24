@@ -21,7 +21,7 @@ class DownloadManager {
     private let translationsService = TranslationsService()
     private var languages: [String] = []
     private let configurationFile = ConfigurationFile()
-    private var downloadCompletionBlock: (() throws -> Void)? = nil
+    private var downloadCompletionBlock: (() throws -> Void)?
     
     // MARK: - Public methods
     

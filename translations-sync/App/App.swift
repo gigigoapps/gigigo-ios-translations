@@ -84,7 +84,7 @@ class App {
         self.downloadManager = DownloadManager(indexURL: indexURL, platform: configuration.platform)
         try self.downloadManager?.downloadAll {
             if configuration.generateiOSFile {
-                try StringsGenerator(indexURL: indexURL).generate() {
+                try StringsGenerator(indexURL: indexURL).generate {
                     exit(0)
                 }
             } else {
