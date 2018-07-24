@@ -57,8 +57,9 @@ Translations.setup(bundle: Bundle.main)
 ### Knowing the configuration URL
 
 ```swift
+guard let configurationURL = URL(string: "https:/path/to/your/configuration.json") else { return }
 Translations.setup(
-	configurationURL: URL(string: "https:/path/to/your/configuration.json")!, 
+	configurationURL: configurationURL, 
 	bundle: Bundle.main
 )
 ```
@@ -72,9 +73,9 @@ Translations.set(language: "en")
 When you want to retrieve a translation for a specific key, you can use two methods:
 
 ```swift
-let key = Translations.value(for: "key_1")
+let value = Translations.value(for: "key_1")
 // or
-let key = translate("key_1")
+let value = translate("key_1")
 ```
 
 
