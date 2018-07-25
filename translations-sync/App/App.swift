@@ -49,7 +49,7 @@ class App {
     ///
     /// - Parameter args: arguments of app
     func run(args: [String]?) throws {
-        log("Tranlations sync v1.0.0")
+        log("Tranlations sync v1.0.2")
         let argumentsValidator = ArgumentsValidator(
             args: args,
             helpMessage: """
