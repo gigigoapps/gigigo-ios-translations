@@ -1,7 +1,11 @@
 # GIGTranslations SDK
 
 ![Language](https://img.shields.io/badge/Language-Swift-orange.svg)
+<<<<<<< Updated upstream
 ![Version](https://img.shields.io/badge/version-1.0.2-blue.svg)
+=======
+![Version](https://img.shields.io/badge/version-1.0.4-blue.svg)
+>>>>>>> Stashed changes
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 
