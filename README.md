@@ -1,7 +1,7 @@
 # GIGTranslations SDK
 
 ![Language](https://img.shields.io/badge/Language-Swift-orange.svg)
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.0.2-blue.svg)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 
@@ -114,8 +114,8 @@ import Foundation
 import GIGTranslations
 
 struct Strings {
-	static var homeLoginButton: String { translate("home_login_button") }
-	static var homeLogoutButton: String { translate("home_logout_button") }
+	static var homeLoginButton: String { return translate("home_login_button") }
+	static var homeLogoutButton: String { return translate("home_logout_button") }
 }
 
 ```
