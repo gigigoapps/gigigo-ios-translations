@@ -35,7 +35,7 @@ class FileSystemManager: TranslationsLoader {
     }
     
     func translation(for key: String) -> String? {
-        guard let language = self.language else {
+        guard let language = self.loadLanguage() else {
             return self.loadTranslations(for: "default")?.translations[key]
         }
         return self.loadTranslations(for: language)?.translations[key] ?? self.loadTranslations(for: "default")?.translations[key]
