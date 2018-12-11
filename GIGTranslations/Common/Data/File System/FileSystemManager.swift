@@ -29,6 +29,12 @@ class FileSystemManager: TranslationsLoader {
             let data = FileManager.default.contents(atPath: path),
             let translations = try? JSONDecoder().decode([String: String].self, from: data)
         else {
+            let getLanguage = language.split(separator: "-")
+            if getLanguage.count > 1 {
+                let language = String(getLanguage[0])
+                self.language = language
+                return loadTranslations(for: language)
+            }
             return nil
         }
         return TranslationsModel(language: language, lastUpdateDate: Date(), translations: translations)
